@@ -1,0 +1,360 @@
+/* CSS Document */
+
+  /***PREMIERE LIGNE***/
+  /**table gauche**/
+.barre_haut {   
+  display: flex;   
+  flex-direction: row;   
+  justify-content: space-between;   
+  flex-wrap: nowrap;   
+  align-items: center;   
+  padding: 5px 0; }
+  
+ /*Div qui contient le pseudo et le rang*/
+.spro_rang {
+display: flex;
+    background: var(--neutral);
+    flex-wrap: wrap;
+    border-radius: 10px 30px 30px 10px;
+    border: var(--neutralDarker) 1px solid;
+}
+
+/*Div qui contient le pseudo*/
+.spro_username {      padding: 4px 0 0 12px;
+    border-bottom: var(--neutralDarker2) 1px solid;
+    text-align: left;
+    font-size: 15px;
+    height: 31px;
+    box-sizing: border-box;
+    width: 100%;
+    font-family:var(--special-font5);
+}
+
+.spro_rang2 {
+    width: 100%;
+    justify-content: flex-end;
+    font-size: 12px;
+    line-height: 28px;
+    display:flex;
+    font-family:var(--special-font);
+    text-transform:uppercase;
+    font-weight:500;
+}
+
+/*Styling de limage*/
+.spro_rang2 img {        width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    background: ;
+    border: ;
+    margin: -31px 0 0 7px;
+}
+  
+  /**table centre**/
+  /*Div qui contient le FC et Pseudo IRL*/
+  .barre_haut1 {    
+  width: 65%;    
+  height: 60px;         
+  border: var(--neutralDarker) 1px solid;     
+  padding: 0 10px;     
+  border-radius: 10px;     
+  background-color: var(--neutral);
+  display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;} 
+  
+   /*Div de la derniere connexion*/ 
+  .spro_lastvisit {           
+  text-align: justify;                    
+  line-height: 24px;        
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;}
+  
+  /***DEUXIEME LIGNE***/
+  /**table gauche**/
+  .spro_1 {    
+ /* background: var(--neutral);    
+  padding: 10px; */    
+  border-radius: 10px;     
+  display: flex;    
+  margin: 20px 0;     
+ /* border: var(--border1);*/ }
+  
+/*Div à gauche qui contient avatar*/ 
+  .spro_2 {     
+  border-radius: 10px;     
+  width: 232px;     
+  box-sizing: border-box;     
+  display: flex;     
+  flex-direction: column; } 
+   
+  /*Div contenant lavatar*/ 
+  .spro_avatar {         
+  background: var(--background2);     
+  padding: 6px;     
+  border-radius: 10px;     
+  box-sizing: border-box; } 
+  
+  /*Styling de lavatar*/ 
+  .spro_avatar img {
+  border-radius: 10px;     
+  max-width: 200px;} 
+  
+   .spro_avatar2 {         
+  border-top: var(--neutralDarker) solid 4px;
+  border-bottom: var(--neutralDarker2) solid 4px;
+  border-radius: 50px 0;     
+  box-sizing: border-box;
+  margin-bottom: 25px;} 
+  
+  /*Styling de lavatar*/ 
+  .spro_avatar2 img {
+  border-radius: 50px 0;     
+  max-width: 200px;}
+  
+    /*Div contenant les liens en bas*/ 
+  .spro_links {    
+  display: flex;     
+  margin: 7px 0 0;   
+  flex-direction: column; } 
+  
+  /*Styling des liens*/ 
+  .spro_links a {         
+  width: 100%;     
+  line-height: 29px;     
+  background: var(--degrateneutral);     
+  text-align: center;     
+  text-transform: uppercase;     
+  letter-spacing: 1px;     
+  font-weight: bold;     
+  border-radius: 10px;     
+  font-size: 12px; } 
+  
+  .spro_links a:nth-child(2) {     
+  margin:2px 0; }
+  
+  /**Table centre**/ 
+  .spro_3 {     
+  margin: 0 0 0 7px;     
+  width: 100%; } 
+   
+  .spro_5 {
+  display: flex;} 
+   
+  .spro_6 {   
+  width: 60%;     
+  margin: 0 7px 0 0;   
+  height: 450px; } 
+  
+  /*Div contenant contact et les infos*/ 
+  .spro_profile {    
+  border: var(--neutralDarker) 1px solid;     
+  padding: 10px;     
+  border-radius: 10px;   
+  height: 100%;
+  background:var(--neutral);}
+  
+  /*Div contenant le en ligne et les images contact*/ 
+  .spro_contact {      
+  border-bottom: var(--border1);     
+  padding: 0 0 7px;     
+  margin: 0 0 7px;     
+  display: flex;     
+  text-transform: uppercase;     
+  justify-content: space-evenly;     
+  font-weight: bold;     
+  color: var(--textColorAccent);     
+  font-size: 11px;     
+  align-items: center; } 
+  
+  /*Styling images contact*/ 
+  .spro_contact img { width: 23px;     
+  background: var(--background1);     
+  padding: 3px;     
+  box-sizing: border-box;     
+  border-radius: 5px; } 
+  
+  /**Table droit**/
+  /*Div contenant la feuille de personnage*/ 
+  .spro_4 {    
+  width: 40%;     
+  border: var(--neutralDarker) 1px solid;     
+  padding: 10px;     
+  box-sizing: border-box;   
+  border-radius: 10px;    
+  overflow: auto;
+  height: 450px;
+  background: var(--neutral);
+  }
+  
+  
+  /*Div contenant toutes les infos*/ 
+  .spro_info {          
+  height: 95%;     
+  overflow: auto;
+      border-top: var(--neutralDarker2) 1px solid;
+      box-sizing: border-box;
+      padding: 10px 0 0;
+      margin: 7px 0 0;
+  }
+  
+  .alt {
+   display: flex;
+   flex-direction: row-reverse;
+   justify-content: space-around;
+   align-items: center;
+   flex-wrap: nowrap;
+   padding: 5px 0;}
+  
+  .user_field {
+  font-size: 12px;
+    text-align: justify;
+    color: var(--textColorBase);
+    font-weight: normal;
+    font-family: var(--font);
+    letter-spacing: 1px;
+    line-height: 15px;}
+  
+   .field_label{
+  font-size:var(--normal-size);
+       float:none;
+       font-family:var(--special-font);
+       background: var(--degrateneutral);
+       -webkit-background-clip: text;
+       color:transparent;
+       font-weight:600;
+   }
+  
+  .spro_info1 {   
+  height: 90%;   
+  width: 100%;
+  overflow: auto;} 
+  
+  .spro_info1 img {
+  height: 80px;
+  border-radius:10px;
+  width:-webkit-fill-available;
+  object-fit: cover;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  
+  .spro_info img { 
+  max-width:200px;   
+  border-radius:10px;} 
+  
+  /*Styling et mise en page des infos*/ 
+  .left-box { 
+  width: 100%;  
+  display: flex;   
+  grid-gap: 5px;   
+  flex-direction: column;   
+  justify-content: space-around;   
+  flex-wrap: nowrap;
+} 
+  
+  .left-box1 {   
+  width: 100%;     
+  height: 30px;     
+  display: flex;     
+  flex-direction: column-reverse;     
+  justify-content: space-evenly;     
+  font-family: var(--special-font);     
+  font-weight: bold;     
+  align-items: flex-start;     
+  font-size: 14px;     
+  flex-wrap: nowrap;     
+  line-height: 10px; } 
+  
+  dl, dt {     
+  text-align: justify;     
+  width: 95%;     
+  font-size: var(--normal-size);     
+  font-weight: 600;     
+  color: var(--textColorAccent);   
+  font-family: var(--font); }
+  
+  dl {
+      display:block;}
+ 
+  dd {     
+  margin: 0 0 5px 0;
+  padding: 3px;
+  text-align: justify;
+  font-weight: normal;
+  color: var(--textColorBase);
+  font-family: var(--font);
+  }
+  
+  /*Div titre feuille de personnage*/ 
+  .spro_frpgtitle {     
+  background-image: var(--degrateneutral);     
+  font-size: 12px;     
+  text-align: center;     
+  font-weight: 600;     
+  border-radius: 4px; } 
+  
+  /*Div avec scroll pour feuille personnage*/ 
+  .spro_frpg {     
+  margin: 7px 0 0;     
+  height: 95%;     
+  overflow: auto;     
+  border-top: var(--neutralDarker2) 1px solid;     
+  box-sizing: border-box;     
+  padding: 10px 0 0; 
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+} 
+  
+  /*Styling des champs*/ 
+  frpg {font-weight: 700;     
+  letter-spacing: 1px;     
+  color: var(--acc1);     
+  text-transform: uppercase;   
+  font-size: 13px;} 
+  
+  /*Styling où le texte se trouve*/ 
+  .spro_frpg textarea {     
+  width: 100%!important;     
+  height: 93px!important;     
+  border: var(--border1);     
+  border-radius: 10px;     
+  margin: 10px 0 12px;     
+  overflow: auto;     
+  box-sizing: border-box; } 
+  
+  .inputbox:hover {     
+  border: var(--border1);}
+  
+  /*icon edition*/
+.ajax-profil_edit::before{content:'\ea1b';font-family:var(--icfont)}
+.ajax-profil_edit{opacity:1;color:var(--co-2);font-size:var(--s-size);margin-left:5px;padding-left:3px;background:var(--noir);width:17px;height:16px;border-radius:50%}
+.ajax-profil_edit img{opacity: 0}
+
+.inputbox,
+input[type="text"],
+select {
+padding: 5px;
+color: var(--tx)!important;
+text-align: justify;
+border-bottom: 1px solid var(--base-1);
+transition: all .5s;
+}
+
+.inputbox:hover, input[type="text"]:hover {
+border-bottom: 1px solid var(--co-1);
+}
+
+.inputbox:focus,
+input[type="text"]:focus {outline:none;border-bottom:2px solid var(--co-2)!important}
+
+textarea.inputbox {
+padding-right: 3px;
+}

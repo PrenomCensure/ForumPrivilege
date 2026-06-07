@@ -1,0 +1,59 @@
+/* BOTTIN AVATARS */
+/* BLOCS LETTRES */
+.AB2C label {
+background:var(--neutralDark); color:white;
+}
+/* BLOC LISTE */
+.contentAB2C {
+background:var(--neutral)
+}
+/* INTITULE LETTRE LISTE */
+.contentAB2C span {
+border-bottom-color:black; color:black;
+}
+
+*, ::after, ::before {
+box-sizing:content-box; -moz-box-sizing:initial; -webkit-box-sizing:initial;
+}
+
+.AB2C {
+margin:5px auto; width:650px; 
+text-align:left; font-family:var(--special-font6); line-height:16px; 
+}
+.AB2C::after {
+content:''; display:table; clear:both;
+}
+.AB2C input[type=radio] {
+display:none;
+}
+.AB2C label {
+display:flex; justify-content:center; align-items:center; float:left; clear:left; margin-right:10px; margin-bottom:14px;
+width:180px; height:87px; padding:5px; overflow:hidden;
+text-align:center; text-transform:uppercase; font-size:24px; line-height:normal; border-radius:10px;
+opacity:0.5; filter:grayscale(1); -webkit-filter:grayscale(1);
+}
+.AB2C label:hover {
+opacity:1; filter:grayscale(0); -webkit-filter:grayscale(0);
+}
+.AB2C [id^="OAB2C"]:checked + label {
+opacity:1; filter:grayscale(0); -webkit-filter:grayscale(0);
+}
+#OAB2C1:checked ~ #contentAB2C1,
+#OAB2C2:checked ~ #contentAB2C2,
+#OAB2C3:checked ~ #contentAB2C3,
+#OAB2C4:checked ~ #contentAB2C4,
+#OAB2C5:checked ~ #contentAB2C5,
+#OAB2C6:checked ~ #contentAB2C6,
+#OAB2C7:checked ~ #contentAB2C7,
+#OAB2C8:checked ~ #contentAB2C8 {
+display:block;
+}
+.contentAB2C {
+display:none; 
+width:400px; height:405px; padding:12px; overflow-y:auto; border:2px solid var(--textColorBase);
+text-align:justify; font-size:13px; font-family:var(--font); border-radius:10px;
+}
+.contentAB2C span {
+display:block; margin-bottom:5px; padding-bottom:3px; border-bottom:2px solid;
+text-align:right; font-weight:bold; 
+}
