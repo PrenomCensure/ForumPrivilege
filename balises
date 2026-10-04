@@ -1,0 +1,98 @@
+/****** ------------------------------------------------------------------------------
+ ****** BALISES DE MESSAGE (à écrire dans les messages, ex. <dial>Bonjour</dial>) ******/
+
+/* Dialogue : couleur d'accent, serif, guillemets automatiques */
+dial { color: var(--accentClr); font-family: var(--special-font); font-weight: 600; }
+dial::before { content: "« "; }
+dial::after  { content: " »"; }
+
+/* Pensée : italique atténué */
+pens { font-style: italic; opacity: .75; }
+
+/* Lieu / heure : en-tête de scène centré entre deux filets */
+lieu {
+    display: block;
+    margin: 18px 0;
+    padding: 7px 0;
+    text-align: center;
+    font-family: var(--mono-font);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--neutralDarker);
+    border-bottom: 1px solid var(--neutralDarker);
+}
+
+/* Hors RP : petite boîte pointillée */
+hrp {
+    display: block;
+    margin: 12px 0;
+    padding: 8px 12px;
+    font-family: var(--mono-font);
+    font-size: 11px;
+    border: 1px dashed var(--neutralDarker);
+    border-radius: var(--rayon-m);
+    opacity: .8;
+}
+hrp::before { content: "HRP · "; font-weight: 700; }
+
+/* Surlignage : soulignement doré */
+surl {
+    text-decoration: underline;
+    text-decoration-color: var(--color2);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+/* Lettrine : grande première lettre du paragraphe */
+cap { display: block; }
+cap::first-letter {
+    float: left;
+    padding: 4px 8px 0 0;
+    font-family: var(--special-font);
+    font-size: 3.4em;
+    font-weight: 700;
+    line-height: .85;
+    color: var(--accentClr);
+}
+
+/* Citation / épigraphe : liserés violet et rose, comme les cartes du forum */
+cit {
+    display: block;
+    margin: 14px 0;
+    padding: 10px 20px;
+    text-align: center;
+    font-style: italic;
+    background: var(--color5);
+    border-top: 3px solid var(--color1);
+    border-bottom: 3px solid var(--color4);
+    border-radius: var(--rayon-l);
+}
+
+/* SMS : sms = reçu (gauche), sms2 = envoyé (droite) */
+sms, sms2 {
+    display: block;
+    width: fit-content;
+    max-width: 70%;
+    margin: 6px 0;
+    padding: 8px 14px;
+    font-size: 13px;
+    background: var(--neutralDark);
+    border-radius: 16px 16px 16px 4px;
+}
+sms2 {
+    margin-left: auto;
+    background: var(--color5);
+    border: var(--border);
+    border-radius: 16px 16px 4px 16px;
+}
+
+/* Séparateur de scène */
+sep {
+    display: block;
+    margin: 18px 0;
+    text-align: center;
+    letter-spacing: .6em;
+    opacity: .6;
+}
+sep::before { content: "· · ·"; }
