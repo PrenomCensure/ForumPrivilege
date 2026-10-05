@@ -9,12 +9,14 @@
 
 .SOB_insta {
   /* Les couleurs reprennent celle du texte du forum (héritée du message) :
-     fond transparent, traits et boutons en transparence de cette couleur.
-     Le clair / sombre du forum est donc suivi automatiquement. */
+     fond transparent, boutons en transparence de cette couleur.
+     La carte et ses traits utilisent --neutralDark / --neutralDarker du forum
+     (avec un repli si elles n'existent pas). */
   --ig-bg: transparent;
   --ig-text: currentColor;
   --ig-muted: color-mix(in srgb, currentColor 62%, transparent);
-  --ig-line: color-mix(in srgb, currentColor 18%, transparent);
+  --ig-line: var(--neutralDarker, color-mix(in srgb, currentColor 22%, transparent));
+  --ig-card: var(--neutralDark, color-mix(in srgb, currentColor 8%, transparent));
   --ig-btn: color-mix(in srgb, currentColor 12%, transparent);
   --ig-btn-hover: color-mix(in srgb, currentColor 20%, transparent);
   --ig-blue: #0095f6;
@@ -23,24 +25,24 @@
   /* La mise en page mobile suit la largeur de la carte, pas celle de l'écran */
   container-type: inline-size;
 
-  max-width: 935px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 24px 16px 0;
+  padding: 16px 16px 0;
   box-sizing: border-box;
   border: 1px solid var(--ig-line);
-  border-radius: 20px;
-  background: linear-gradient(to top, transparent, color-mix(in srgb, var(--ig-text) 6%, var(--ig-bg)));
+  border-radius: 16px;
+  background: linear-gradient(to top, transparent, var(--ig-card));
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 17px;
   text-align: left;
 }
 
 /* Forcer le noir Instagram : class="SOB_insta sombre" */
-.SOB_insta.sombre { --ig-bg: #000; color: #f5f5f5; background: var(--ig-bg); }
+.SOB_insta.sombre { --ig-bg: #000; --ig-line: #262626; --ig-card: #000; color: #f5f5f5; background: var(--ig-bg); }
 
 /* Forcer le blanc Instagram : class="SOB_insta clair" */
-.SOB_insta.clair { --ig-bg: #fff; color: #000; background: var(--ig-bg); }
+.SOB_insta.clair { --ig-bg: #fff; --ig-line: #dbdbdb; --ig-card: #fff; color: #000; background: var(--ig-bg); }
 
 /* Sans carte (profil à plat, comme sur Instagram) : class="SOB_insta plat" */
 .SOB_insta.plat {
@@ -65,18 +67,18 @@
 /* ---------- En-tête ---------- */
 .SOB_instatop {
   display: grid;
-  grid-template-columns: 150px 1fr;
-  column-gap: 40px;
-  row-gap: 18px;
+  grid-template-columns: 96px 1fr;
+  column-gap: 24px;
+  row-gap: 8px;
   align-items: center;
-  margin-bottom: 44px;
+  margin-bottom: 16px;
 }
 
 .SOB_instatopava {
   grid-row: 1 / span 3;
   justify-self: center;
-  width: 150px;
-  height: 150px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -87,22 +89,22 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .SOB_instarow1 ipsd {
-  font-size: 20px;
-  line-height: 25px;
-  margin-right: 12px;
+  font-size: 17px;
+  line-height: 22px;
+  margin-right: 8px;
 }
 
 .SOB_instarow1 i { cursor: pointer; }
 
 .SOB_insta ifollow,
 .SOB_insta icontact {
-  padding: 7px 16px;
+  padding: 5px 12px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   line-height: 18px;
   color: #fff;
@@ -117,21 +119,21 @@
 .SOB_insta icontact:hover { background: var(--ig-btn-hover); }
 
 /* Ligne 2 : publications, followers, suivis */
-.SOB_instarow2 { display: flex; gap: 40px; font-weight: 600; font-size: 16px; }
+.SOB_instarow2 { display: flex; gap: 22px; font-weight: 600; font-size: 14px; }
 .SOB_instarow2 span { display: inline-block; }
 .SOB_instarow2 iposts,
-.SOB_instarow2 ifollowers { font-weight: 400; font-size: 16px; color: var(--ig-text); }
+.SOB_instarow2 ifollowers { font-weight: 400; font-size: 14px; color: var(--ig-text); }
 
 /* Ligne 3 : nom + bio */
 .SOB_instarow3 { min-width: 0; }
-.SOB_insta iusername { display: block; font-weight: 600; font-size: 14px; }
+.SOB_insta iusername { display: block; font-weight: 600; font-size: 13px; }
 .SOB_insta ibio { display: block; margin-top: 2px; white-space: pre-line; }
 
 /* ---------- À la une (stories) ---------- */
 .SOB_instastory {
   display: flex;
-  gap: 28px;
-  padding: 0 0 44px;
+  gap: 16px;
+  padding: 0 0 14px;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -142,19 +144,19 @@
   flex-direction: column;
   align-items: center;
   flex: 0 0 auto;
-  width: 77px;
-  font-size: 12px;
+  width: 56px;
+  font-size: 11px;
   font-weight: 600;
-  line-height: 16px;
+  line-height: 14px;
   text-align: center;
   cursor: pointer;
 }
 
 .SOB_instastory img {
-  width: 77px;
-  height: 77px;
-  margin-bottom: 14px;
-  padding: 3px;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 5px;
+  padding: 2px;
   border: 1px solid var(--ig-line);
   border-radius: 50%;
   object-fit: cover;
@@ -166,7 +168,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 60px;
+  column-gap: 40px;
   border-top: 1px solid var(--ig-line);
 }
 
@@ -177,10 +179,10 @@
   align-items: center;
   gap: 6px;
   margin-top: -1px;
-  padding: 16px 0;
+  padding: 10px 0;
   border-top: 1px solid transparent;
   color: var(--ig-muted);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -201,9 +203,9 @@
   display: none;
   flex: 0 0 100%;
   width: 100%;
-  margin-top: 4px;
+  margin-top: 3px;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
+  gap: 3px;
 }
 
 .SOB_instamiddleonglets input:checked + .SOB_instaongletcont { display: grid; }
@@ -211,7 +213,7 @@
 .SOB_instaongletcont img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   background: var(--ig-line);
   cursor: pointer;
@@ -298,23 +300,23 @@
 
 /* Tailles selon l'emplacement */
 .SOB_instarow1 i.cp-plus,
-.SOB_instarow1 i.th { width: 24px; height: 24px; }
+.SOB_instarow1 i.th { width: 20px; height: 20px; }
 .SOB_insta ifollow i,
 .SOB_insta icontact i { width: 1em; height: 1em; margin-right: 4px; }
 .SOB_instaonglets i { width: 14px; height: 14px; }
 
 /* ---------- Mobile ---------- */
-@container (max-width: 560px) {
+@container (max-width: 420px) {
   .SOB_instatop {
-    grid-template-columns: 86px 1fr;
-    column-gap: 20px;
-    row-gap: 14px;
-    margin-bottom: 20px;
+    grid-template-columns: 72px 1fr;
+    column-gap: 16px;
+    row-gap: 10px;
+    margin-bottom: 12px;
   }
 
-  .SOB_instatopava { grid-row: 1; width: 86px; height: 86px; }
+  .SOB_instatopava { grid-row: 1; width: 72px; height: 72px; }
 
-  .SOB_instarow1 ipsd { flex: 0 0 100%; margin: 0 0 4px; font-size: 20px; }
+  .SOB_instarow1 ipsd { flex: 0 0 100%; margin: 0 0 2px; font-size: 16px; }
 
   .SOB_instarow2,
   .SOB_instarow3 { grid-column: 1 / -1; }
@@ -323,23 +325,23 @@
     justify-content: space-around;
     gap: 0;
     margin: 0 -16px;
-    padding: 12px 0;
+    padding: 8px 0;
     border-top: 1px solid var(--ig-line);
     border-bottom: 1px solid var(--ig-line);
-    font-size: 14px;
+    font-size: 13px;
     text-align: center;
   }
   .SOB_instarow2 span { flex: 1; }
   .SOB_instarow2 iposts,
   .SOB_instarow2 ifollowers {
     display: block;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--ig-muted);
   }
 
-  .SOB_instastory { gap: 16px; padding: 0 0 20px; }
-  .SOB_instastory span { width: 64px; }
-  .SOB_instastory img { width: 64px; height: 64px; margin-bottom: 8px; }
+  .SOB_instastory { gap: 12px; padding: 0 0 12px; }
+  .SOB_instastory span { width: 50px; }
+  .SOB_instastory img { width: 50px; height: 50px; margin-bottom: 4px; }
 
   .SOB_instamiddleonglets { column-gap: 0; }
   .SOB_instaonglets { flex: 1; justify-content: center; }
