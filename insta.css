@@ -4,19 +4,19 @@
    Tout est limité à .SOB_insta : aucun effet sur le reste du forum.
    Autonome : polices système + icônes SVG intégrées, rien d'externe.
    Remplace l'ancien composant « momento » (fichier insta.css).
-   Thème : suit le forum (clair/sombre). Carte arrondie par défaut. Options de classe : sombre, clair, plat.
+   Couleurs : héritées du texte du forum (clair/sombre automatique). Carte arrondie par défaut. Options de classe : sombre, clair, plat.
    ========================================================== */
 
 .SOB_insta {
-  /* Les couleurs suivent le thème du forum : fond transparent, et textes,
-     traits et boutons dérivés de --textColorBase. Si le thème change cette
-     variable (clair / sombre), la carte suit toute seule. */
+  /* Les couleurs reprennent celle du texte du forum (héritée du message) :
+     fond transparent, traits et boutons en transparence de cette couleur.
+     Le clair / sombre du forum est donc suivi automatiquement. */
   --ig-bg: transparent;
-  --ig-text: var(--textColorBase, #f5f5f5);
-  --ig-muted: color-mix(in srgb, var(--ig-text) 62%, transparent);
-  --ig-line: color-mix(in srgb, var(--ig-text) 18%, transparent);
-  --ig-btn: color-mix(in srgb, var(--ig-text) 12%, transparent);
-  --ig-btn-hover: color-mix(in srgb, var(--ig-text) 20%, transparent);
+  --ig-text: currentColor;
+  --ig-muted: color-mix(in srgb, currentColor 62%, transparent);
+  --ig-line: color-mix(in srgb, currentColor 18%, transparent);
+  --ig-btn: color-mix(in srgb, currentColor 12%, transparent);
+  --ig-btn-hover: color-mix(in srgb, currentColor 20%, transparent);
   --ig-blue: #0095f6;
   --ig-blue-hover: #1877f2;
 
@@ -30,23 +30,17 @@
   border: 1px solid var(--ig-line);
   border-radius: 20px;
   background: linear-gradient(to top, transparent, color-mix(in srgb, var(--ig-text) 6%, var(--ig-bg)));
-  color: var(--ig-text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
   text-align: left;
 }
 
-/* Repli si le forum ne définit pas --textColorBase : réglage clair/sombre du navigateur */
-@media (prefers-color-scheme: light) {
-  .SOB_insta { --ig-text: var(--textColorBase, #111); }
-}
-
 /* Forcer le noir Instagram : class="SOB_insta sombre" */
-.SOB_insta.sombre { --ig-bg: #000; --ig-text: #f5f5f5; }
+.SOB_insta.sombre { --ig-bg: #000; color: #f5f5f5; background: var(--ig-bg); }
 
 /* Forcer le blanc Instagram : class="SOB_insta clair" */
-.SOB_insta.clair { --ig-bg: #fff; --ig-text: #000; }
+.SOB_insta.clair { --ig-bg: #fff; color: #000; background: var(--ig-bg); }
 
 /* Sans carte (profil à plat, comme sur Instagram) : class="SOB_insta plat" */
 .SOB_insta.plat {
