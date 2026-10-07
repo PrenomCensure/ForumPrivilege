@@ -5,9 +5,13 @@
    Autonome : polices système + icônes SVG intégrées, rien d'externe.
    Remplace l'ancien composant « momento » (fichier insta.css).
    Couleurs : héritées du texte du forum (clair/sombre automatique). Carte arrondie par défaut. Options de classe : sombre, clair, plat.
+   Contient aussi : publications [instapost], stories [instastory], commentaires [instacom].
    ========================================================== */
 
-.SOB_insta {
+.SOB_insta,
+.SOB_igpost,
+.SOB_igstory,
+.SOB_igcom {
   /* Les couleurs reprennent celle du texte du forum (héritée du message) :
      fond transparent, boutons en transparence de cette couleur.
      La carte et ses traits utilisent --neutralDark / --neutralDarker du forum
@@ -39,21 +43,23 @@
 }
 
 /* Forcer le noir Instagram : class="SOB_insta sombre" */
-.SOB_insta.sombre { --ig-bg: #000; --ig-line: #262626; --ig-card: #000; color: #f5f5f5; background: var(--ig-bg); }
+.SOB_insta.sombre, .SOB_igpost.sombre, .SOB_igstory.sombre, .SOB_igcom.sombre { --ig-bg: #000; --ig-line: #262626; --ig-card: #000; color: #f5f5f5; background: var(--ig-bg); }
 
 /* Forcer le blanc Instagram : class="SOB_insta clair" */
-.SOB_insta.clair { --ig-bg: #fff; --ig-line: #dbdbdb; --ig-card: #fff; color: #000; background: var(--ig-bg); }
+.SOB_insta.clair, .SOB_igpost.clair, .SOB_igstory.clair, .SOB_igcom.clair { --ig-bg: #fff; --ig-line: #dbdbdb; --ig-card: #fff; color: #000; background: var(--ig-bg); }
 
 /* Sans carte (profil à plat, comme sur Instagram) : class="SOB_insta plat" */
-.SOB_insta.plat {
+.SOB_insta.plat,
+.SOB_igpost.plat,
+.SOB_igstory.plat,
+.SOB_igcom.plat {
   border: 0;
   border-radius: 0;
   background: var(--ig-bg);
 }
 
-.SOB_insta *,
-.SOB_insta *::before,
-.SOB_insta *::after { box-sizing: border-box; }
+.SOB_insta *, .SOB_igpost *, .SOB_igstory *, .SOB_igcom *,
+.SOB_insta *::before, .SOB_insta *::after { box-sizing: border-box; }
 
 /* Les balises personnalisées deviennent de vrais éléments */
 .SOB_insta ipsd,
@@ -347,6 +353,134 @@
   .SOB_instaonglets { flex: 1; justify-content: center; }
   .SOB_instaongletcont { gap: 2px; margin-top: 2px; }
 }
+
+/* ==========================================================
+   Publications, stories et commentaires
+   ========================================================== */
+.SOB_igava {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Publication ---------- */
+.SOB_igpost { max-width: 400px; padding: 0 0 12px; overflow: hidden; }
+
+.SOB_igphead { display: flex; align-items: center; gap: 10px; padding: 10px 12px; }
+.SOB_igpseudo { display: block; font-weight: 600; font-size: 13px; line-height: 16px; }
+.SOB_iglieu { display: block; font-size: 11px; line-height: 14px; color: var(--ig-muted); }
+
+.SOB_igmedia { position: relative; }
+.SOB_igslide {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.SOB_igslide::-webkit-scrollbar { display: none; }
+.SOB_igslide img {
+  flex: 0 0 100%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  scroll-snap-align: start;
+  background: var(--ig-line);
+}
+
+.SOB_ignav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 26px;
+  height: 26px;
+  min-width: 0;
+  margin: -13px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .5);
+  color: #fff;
+  font: 700 18px/26px Arial, sans-serif;
+  text-align: center;
+  text-shadow: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  opacity: .85;
+}
+.SOB_ignav:hover { opacity: 1; background: rgba(0, 0, 0, .7); }
+.SOB_igprev { left: 6px; }
+.SOB_ignext { right: 6px; }
+.SOB_igcount {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .55);
+  color: #fff;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+.SOB_igdots { display: flex; justify-content: center; gap: 4px; padding: 8px 0 0; }
+.SOB_igdots span { width: 6px; height: 6px; border-radius: 50%; background: color-mix(in srgb, currentColor 30%, transparent); }
+.SOB_igdots span.on { background: var(--ig-blue); }
+
+.SOB_igbar { display: flex; align-items: center; gap: 12px; padding: 8px 12px 0; }
+.SOB_igbar svg { display: block; }
+.SOB_igsave { margin-left: auto; }
+.SOB_iglikes { padding: 6px 12px 0; font-weight: 600; }
+.SOB_igcaption { padding: 4px 12px 0; }
+.SOB_igmore { padding: 4px 12px 0; color: var(--ig-muted); }
+.SOB_igdate { padding: 4px 12px 0; color: var(--ig-muted); font-size: 10px; text-transform: uppercase; letter-spacing: .3px; }
+
+/* ---------- Story ---------- */
+.SOB_igstory,
+.SOB_igstory.clair,
+.SOB_igstory.sombre,
+.SOB_igstory.plat { position: relative; max-width: 200px; padding: 0; overflow: hidden; background: #000; color: #fff; }
+.SOB_igstory .SOB_igslide img { aspect-ratio: 9 / 16; background: #222; }
+.SOB_igstory::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  background: linear-gradient(rgba(0, 0, 0, .55), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+.SOB_igsbars { position: absolute; top: 7px; left: 8px; right: 8px; z-index: 2; display: flex; gap: 3px; }
+.SOB_igsbars span { flex: 1; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, .4); }
+.SOB_igsbars span.on { background: #fff; }
+.SOB_igshead {
+  position: absolute; top: 16px; left: 8px; right: 8px; z-index: 2;
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+.SOB_igshead .SOB_igava { width: 24px; height: 24px; }
+.SOB_igshead span { opacity: .8; }
+.SOB_igstory .SOB_ignav { width: 22px; height: 22px; margin-top: -11px; font-size: 16px; line-height: 22px; }
+.SOB_igstext {
+  position: absolute; left: 10px; right: 10px; bottom: 14px; z-index: 2;
+  padding: 6px 10px; border-radius: 8px;
+  background: rgba(0, 0, 0, .5); text-align: center; font-size: 13px; line-height: 17px;
+}
+
+/* ---------- Commentaire ---------- */
+.SOB_igcom { display: flex; align-items: flex-start; gap: 10px; max-width: 400px; padding: 10px 12px; }
+.SOB_igcom.reponse { max-width: 360px; }
+.SOB_igcbody { flex: 1; min-width: 0; }
+.SOB_igctext { overflow-wrap: anywhere; }
+.SOB_igcmeta { display: flex; gap: 12px; margin-top: 4px; font-size: 11px; color: var(--ig-muted); }
+.SOB_igcheart { flex: none; margin-top: 4px; color: var(--ig-muted); }
+.SOB_igcheart svg { display: block; }
 
 /* ---------- Conservé de l'ancien insta.css (pastille ✓), au cas où elle serve ailleurs ---------- */
 .verif::after {content:'✓';font-family: var(--special-font);font-size: var(--little-size);margin-left: 5px;width: 16px;height: 16px;color: white;background-color: var(--neutralDark);border-radius: 100%;display: inline-flex;justify-content: center;align-items: center;}
