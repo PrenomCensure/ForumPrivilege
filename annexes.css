@@ -1,0 +1,168 @@
+/* ============================================================
+   PRIVILÈGE — BIBLIOTHÈQUE D'ANNEXES v1.0
+   Fichier autonome : annexes.css
+   Complément au thème existant, sans remplacer couleursfonts.css
+   Toutes les règles sont limitées au bloc .priv-annexe.
+   Compatible avec les variables :root / [data-color-scheme="dark"].
+   ============================================================ */
+
+.priv-annexe {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--textColor);
+  font-family: var(--font);
+  font-size: var(--normal-size, 14px);
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+.priv-annexe, .priv-annexe * { box-sizing: border-box; }
+
+/* Bandeau et présentation du document */
+.priv-annexe .priv-entete {
+  margin-bottom: 25px;
+  padding: 22px 24px;
+  background: var(--neutrallight);
+  border-top: 3px solid var(--color1);
+  border-bottom: 3px solid var(--color4);
+  border-radius: var(--rayon-l, 6px);
+}
+.priv-annexe .priv-surtitle,
+.priv-annexe .priv-meta,
+.priv-annexe .priv-label,
+.priv-annexe .priv-source,
+.priv-annexe .priv-pied,
+.priv-annexe .priv-date {
+  font-family: var(--mono-font);
+  font-size: 10px;
+  letter-spacing: .09em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+.priv-annexe .priv-surtitle { color: var(--accentClr); font-weight: 700; }
+.priv-annexe .priv-titre {
+  margin: 8px 0 10px;
+  padding: 0;
+  color: var(--textColorAccent);
+  font-family: var(--special-font);
+  font-style: italic;
+  font-size: clamp(25px, 4vw, 34px);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: .01em;
+}
+.priv-annexe .priv-meta { color: var(--textColor); opacity: .78; }
+.priv-annexe .priv-intro {
+  margin: 0 0 24px;
+  color: var(--textColorAccent);
+  font-family: var(--special-font);
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* Composition du contenu */
+.priv-annexe .priv-section { margin: 24px 0; }
+.priv-annexe .priv-h2 {
+  margin: 0 0 13px;
+  padding: 0 0 8px;
+  color: var(--textColorAccent);
+  border-bottom: 1px solid var(--neutralDarker);
+  font-family: var(--special-font);
+  font-size: 22px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.35;
+  text-transform: none;
+  text-align: left;
+}
+.priv-annexe .priv-h3 {
+  margin: 20px 0 9px;
+  color: var(--accentClr);
+  font-family: var(--mono-font);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+.priv-annexe .priv-texte { margin: 0 0 15px; text-align: justify; }
+.priv-annexe .priv-texte a,
+.priv-annexe .priv-liste a { color: var(--accentClr); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Citation éditoriale : div plutôt que blockquote pour ne pas
+   hériter des styles de citation RP déjà présents sur le forum. */
+.priv-annexe .priv-citation {
+  margin: 21px 0;
+  padding: 15px 20px;
+  color: var(--textColorAccent);
+  background: var(--color5);
+  border-left: 3px solid var(--color1);
+  border-radius: 0 var(--rayon-l, 6px) var(--rayon-l, 6px) 0;
+  font-family: var(--special-font);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.7;
+}
+.priv-annexe .priv-source {
+  display: block;
+  margin-top: 10px;
+  color: var(--textColor);
+  font-style: normal;
+  opacity: .82;
+}
+
+/* Encadrés : information, précision, vigilance */
+.priv-annexe .priv-note,
+.priv-annexe .priv-alerte {
+  margin: 20px 0;
+  padding: 14px 17px;
+  background: var(--neutrallight);
+  border: var(--border);
+  border-left: 3px solid var(--color2);
+  border-radius: var(--rayon-m, 4px);
+}
+.priv-annexe .priv-alerte { border-left-color: var(--color4); }
+.priv-annexe .priv-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accentClr);
+  font-weight: 700;
+}
+
+/* Listes, repères chronologiques, séparateurs */
+.priv-annexe .priv-liste { margin: 10px 0 18px; padding: 0 0 0 23px; list-style: disc; }
+.priv-annexe .priv-liste li { margin: 0 0 8px; padding: 0; list-style: inherit; }
+.priv-annexe .priv-chrono {
+  margin: 18px 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--color1);
+}
+.priv-annexe .priv-evenement { margin: 0; padding: 0 0 16px 14px; }
+.priv-annexe .priv-evenement:last-child { padding-bottom: 0; }
+.priv-annexe .priv-date { display: block; margin-bottom: 4px; color: var(--accentClr); font-weight: 700; }
+.priv-annexe .priv-separateur {
+  margin: 27px 0;
+  color: var(--accentClr);
+  letter-spacing: .55em;
+  text-align: center;
+}
+.priv-annexe .priv-separateur::before { content: '· · ·'; }
+.priv-annexe .priv-pied {
+  margin-top: 28px;
+  padding-top: 12px;
+  border-top: 1px solid var(--neutralDarker);
+  color: var(--textColor);
+  opacity: .78;
+}
+
+/* Écrans étroits : pas de débordement dans la colonne des messages */
+@media (max-width: 620px) {
+  .priv-annexe .priv-entete { padding: 16px; }
+  .priv-annexe .priv-intro { font-size: 16px; }
+  .priv-annexe .priv-h2 { font-size: 20px; }
+  .priv-annexe .priv-texte { text-align: left; }
+  .priv-annexe .priv-citation { padding: 13px 15px; font-size: 16px; }
+}
