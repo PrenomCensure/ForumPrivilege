@@ -1,0 +1,341 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PRIVILÈGE / Wombat NEXUS — Dossier citoyen / V1
+   CSS COMPLET — à héberger sur GitHub dans ForumPrivilege.
+   La portée .wombat-aside préserve le profil complet, le QEEL, la PA,
+   les mini-profils des sujets et le fonctionnement de Wombat.js.
+   Aucune donnée ou bouton Forumactif n'est remplacé.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.wombat-aside,
+.wombat-aside * { box-sizing: border-box; }
+
+/* 01 / FENÊTRE */
+.wombat-aside {
+  --nw-surface: var(--neutral, #18181c);
+  --nw-card: var(--neutrallight, #202026);
+  --nw-depth: var(--neutralDark, #222229);
+  --nw-line: var(--neutralDarker, #2c2c35);
+  --nw-ink: var(--textColorAccent, #f4f3f8);
+  --nw-copy: var(--textColor, #c9c8d2);
+  --nw-gold: var(--color2, #e3b98a);
+  --nw-purple: var(--color1, #6a46a0);
+  --nw-rose: var(--color4, #d98f9a);
+  width: min(760px, calc(100vw - 28px)) !important;
+  max-width: 760px !important;
+  height: max-content;
+  max-height: calc(100dvh - 32px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--nw-surface);
+  color: var(--nw-copy);
+  border: 1px solid var(--nw-line);
+  border-top: 2px solid var(--nw-purple);
+  border-bottom: 2px solid var(--nw-rose);
+  border-radius: 4px;
+  box-shadow: 0 22px 75px rgba(0,0,0,.45);
+  scrollbar-width: thin;
+  scrollbar-color: var(--nw-line) transparent;
+}
+
+.wombat-overlay { background: #0c0b12; }
+.wombat-overlay.open { opacity: .70; }
+
+/* 02 / EN-TÊTE NEXUS — sans inventer d'identifiant citoyen */
+.wombat-aside #wombat {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 16px 14px !important;
+  border: 0 !important;
+  border-radius: 0;
+  background: var(--nw-surface) !important;
+  color: var(--nw-copy);
+  min-width: 0;
+}
+
+.wombat-aside #wombat::before {
+  content: '◇  NEXUS  /  CITIZEN RECORD                                      NEW YORK · 2046';
+  display: block;
+  margin: 0 -16px 0;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--nw-line);
+  color: var(--nw-gold);
+  font: 700 9px/1.6 var(--mono-font, 'Space Mono', monospace);
+  letter-spacing: .105em;
+  white-space: pre-wrap;
+  background: var(--nw-card);
+}
+
+.wombat-aside #wombat > h1,
+.wombat-aside #wombat > .page-title {
+  display: block;
+  margin: 0 !important;
+  padding: 15px 3px 13px !important;
+  text-align: center;
+  text-transform: none;
+  font: italic 700 clamp(23px, 3vw, 30px)/1.2 var(--special-font, Georgia, serif);
+  letter-spacing: .035em;
+  color: var(--nw-ink);
+  border-bottom: 1px solid var(--nw-line);
+  overflow-wrap: anywhere;
+}
+
+/* 03 / IDENTITÉ / CHAMPS / CONTACT : vraies données du template */
+.wombat-aside #wombat .user_profile {
+  display: grid !important;
+  grid-template-columns: 166px minmax(0, 1fr) 144px;
+  align-items: stretch;
+  gap: 12px !important;
+  margin: 13px 0 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  min-width: 0;
+}
+
+/* Portrait. Ne touche PAS aux avatars du reste du forum. */
+.wombat-aside #wombat .profile_avatar {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  position: relative;
+  width: 100% !important;
+  min-width: 0;
+  height: 266px;
+  padding: 4px;
+  overflow: hidden;
+  background: var(--nw-depth);
+  border: 1px solid var(--nw-line);
+  border-left: 3px solid var(--nw-gold);
+  border-top: 3px solid var(--nw-purple);
+  border-bottom: 3px solid var(--nw-rose);
+  border-radius: 3px;
+}
+.wombat-aside #wombat .profile_avatar img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 1px !important;
+  box-shadow: none !important;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* Les informations au centre : défilement interne, jamais coupées */
+.wombat-aside #wombat .profile_content {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  width: auto !important;
+  min-width: 0;
+  height: 266px !important;
+  max-height: 266px !important;
+  padding: 11px 12px !important;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  background: var(--nw-card) !important;
+  color: var(--nw-copy) !important;
+  border: 1px solid var(--nw-line);
+  border-radius: 3px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--nw-line) transparent;
+  overflow-wrap: anywhere;
+}
+
+.wombat-aside #wombat .profile_field {
+  display: grid;
+  grid-template-columns: minmax(92px, 43%) minmax(0, 1fr);
+  gap: 5px 8px;
+  align-items: start;
+  width: auto;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--nw-line);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.wombat-aside #wombat .profile_field:last-child { border-bottom: 0; }
+.wombat-aside #wombat .profile_field label,
+.wombat-aside #wombat .profile_field label > span,
+.wombat-aside #wombat .profile_field > strong {
+  color: var(--nw-gold) !important;
+  font: 700 9px/1.55 var(--mono-font, monospace);
+  text-transform: uppercase;
+  letter-spacing: .015em;
+  opacity: .88;
+  overflow-wrap: anywhere;
+}
+.wombat-aside #wombat .profile_field field,
+.wombat-aside #wombat .profile_field .field_uneditable {
+  position: static;
+  display: block;
+  min-width: 0;
+  color: var(--nw-copy);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.wombat-aside #wombat .profile_content a {
+  text-decoration: none;
+  color: var(--nw-ink);
+}
+.wombat-aside #wombat .profile_content a:hover {
+  color: var(--nw-gold);
+}
+
+/* Panneau latéral de rang / présence / contact */
+.wombat-aside #wombat .profile_infos {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
+  width: auto !important;
+  min-width: 0;
+  min-height: 266px;
+  gap: 10px;
+  margin: 0 !important;
+  padding: 12px 10px !important;
+  background: var(--nw-card) !important;
+  color: var(--nw-copy);
+  border: 1px solid var(--nw-line);
+  border-radius: 3px;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.wombat-aside #wombat .profile_contact,
+.wombat-aside #wombat .profile_contact.right {
+  float: none !important;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--nw-line);
+}
+.wombat-aside #wombat .profile_contact form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5px;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+.wombat-aside #wombat .profile_contact form > div {
+  margin: 0 !important;
+  min-width: 0;
+}
+.wombat-aside #wombat .profile_contact a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 26px;
+  min-width: 26px;
+  padding: 3px 4px;
+  border: 1px solid var(--nw-line);
+  background: var(--nw-depth);
+  border-radius: 2px;
+}
+.wombat-aside #wombat .profile_contact a:hover { border-color: var(--nw-gold); }
+.wombat-aside #wombat .profile_contact img {
+  display: block;
+  max-width: 18px;
+  max-height: 18px;
+  width: auto;
+  height: auto;
+  border-radius: 0 !important;
+}
+.wombat-aside #wombat .profile_infos .online {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  padding: 5px 7px;
+  border: 1px solid var(--nw-line);
+  color: var(--nw-copy);
+  background: var(--nw-depth);
+  font: 9px/1.5 var(--mono-font, monospace);
+  text-transform: uppercase;
+}
+.wombat-aside #wombat .profile_infos .online:empty { display: none; }
+
+/* Bas de fenêtre ; on conserve le lien / les commandes du profil */
+.wombat-aside #wombat .profile_admin {
+  margin: 12px 0 0 !important;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--nw-line);
+  text-align: center;
+  font: 700 10px/1.6 var(--mono-font, monospace);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.wombat-aside #wombat .profile_admin a {
+  color: var(--nw-gold);
+}
+.wombat-aside #wombat::after {
+  content: 'PUBLIC RECORD  /  NEXUS INTERFACE';
+  display: block;
+  margin-top: 11px;
+  text-align: right;
+  color: var(--nw-copy);
+  opacity: .53;
+  font: 8px/1.5 var(--mono-font, monospace);
+  letter-spacing: .12em;
+}
+.wombat-aside #wombat a:focus-visible {
+  outline: 2px solid var(--nw-gold);
+  outline-offset: 2px;
+}
+
+/* 04 / RESPONSIVE */
+@media (max-width: 680px) {
+  .wombat-aside #wombat .user_profile {
+    grid-template-columns: 116px minmax(0, 1fr);
+    gap: 9px !important;
+  }
+  .wombat-aside #wombat .profile_avatar {
+    grid-column: 1;
+    grid-row: 1;
+    height: 205px;
+  }
+  .wombat-aside #wombat .profile_content {
+    grid-column: 2;
+    grid-row: 1;
+    height: 205px !important;
+    max-height: 205px !important;
+  }
+  .wombat-aside #wombat .profile_infos {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    min-height: 0;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wombat-aside #wombat .profile_contact,
+  .wombat-aside #wombat .profile_contact.right {
+    width: auto;
+    padding: 0;
+    border-bottom: 0;
+  }
+  .wombat-aside #wombat .profile_field {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+@media (max-width: 390px) {
+  .wombat-aside #wombat { padding: 0 9px 10px !important; }
+  .wombat-aside #wombat::before { margin: 0 -9px; padding: 10px; font-size: 8px; }
+  .wombat-aside #wombat .user_profile { grid-template-columns: 92px minmax(0,1fr); }
+  .wombat-aside #wombat .profile_avatar,
+  .wombat-aside #wombat .profile_content { height: 182px !important; max-height: 182px !important; }
+  .wombat-aside #wombat .profile_content { padding: 7px 9px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wombat-aside { transition: none !important; }
+}
