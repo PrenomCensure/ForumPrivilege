@@ -1,0 +1,137 @@
+/* PRIVILÈGE / NEXUS — Wombat V3 / Champs non renseignés.
+   Fonctionne même si Wombat injecte son contenu après le chargement.
+   Ne modifie pas les variables ni les routines AJAX de Forumactif. */
+(function () {
+  'use strict';
+
+  var MODAL_SELECTOR = '.wombat-aside #wombat';
+  var scheduled = false;
+
+  function normalize(s) {
+    return (s || '').replace(/[\u00a0\u202f\u200b]/g, ' ').trim();
+  }
+
+  function emptyValue(text) {
+    var val = normalize(text).replace(/\s/g, '');
+    return val === '' || /^[-\u2012\u2013\u2014\u2212]+$/.test(val);
+  }
+
+  function isBlankField(row) {
+    var value = row.querySelector('field');
+    if (!value) return false;
+
+    // Conserver un champ en cours d'édition : le membre doit pouvoir le saisir.
+    var visibleEdit = value.querySelector('.field_editable:not(.invisible)');
+    if (visibleEdit) return false;
+
+    // Examiner une COPIE du contenu pour exclure les contrôles invisibles d'édition.
+    var copy = value.cloneNode(true);
+    var ignored = copy.querySelectorAll(
+      '.field_editable, .ajax-profil_edit, .ajax-profil_valid, ' +
+      'script, style, input, textarea, select, button'
+    );
+    Array.prototype.forEach.call(ignored, function (node) { node.remove(); });
+
+    // Une vraie image ou un vrai lien doit rester visible, même sans texte.
+    if (copy.querySelector('a[href], img[src], svg, video, audio, iframe')) return false;
+    return emptyValue(copy.textContent);
+  }
+
+  function review(root) {
+    var content = root.querySelector('.profile_content');
+    if (!content) return;
+
+    var fields = content.querySelectorAll('.profile_field');
+    var count = 0;
+    Array.prototype.forEach.call(fields, function (row) {
+      var blank = isBlankField(row);
+      if (blank) count++;
+      row.classList.toggle('nw-empty-field', blank);
+    });
+
+    // Les champs de profil éditables restent accessibles via cette commande.
+    // Le bouton de modification RPG, s'il existe, reste toujours affiché.
+    var canEdit = !!content.querySelector('.field_editable');
+    var toggle = content.querySelector('.nw-empty-toggle');
+
+    if (!count || !canEdit) {
+      if (toggle) toggle.remove();
+      content.classList.remove('nw-show-empty');
+      return;
+    }
+
+    if (!toggle) {
+      toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'nw-empty-toggle';
+      toggle.addEventListener('click', function () {
+        content.classList.toggle('nw-show-empty');
+        review(root);
+      });
+      // Avant la section RPG, mais après les informations civiles.
+      var rpg = content.querySelector('.nw-rpg-section');
+      if (rpg) content.insertBefore(toggle, rpg);
+      else content.appendChild(toggle);
+    }
+
+    var expanded = content.classList.contains('nw-show-empty');
+    toggle.setAttribute('aria-expanded', String(expanded));
+    var label = expanded
+      ? 'MASQUER LES CHAMPS VIDES'
+      : 'AFFICHER LES CHAMPS VIDES (' + count + ')';
+    if (toggle.textContent !== label) toggle.textContent = label;
+  }
+
+  function apply() {
+    var roots = document.querySelectorAll(MODAL_SELECTOR);
+    Array.prototype.forEach.call(roots, review);
+  }
+
+  function schedule() {
+    if (scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(function () {
+      scheduled = false;
+      apply();
+    });
+  }
+
+  function relevantMutation(mutation) {
+    var target = mutation.target.nodeType === 1
+      ? mutation.target
+      : mutation.target.parentElement;
+    if (target && target.closest && target.closest('.wombat-aside')) return true;
+
+    if (mutation.addedNodes) {
+      for (var i = 0; i < mutation.addedNodes.length; i++) {
+        var node = mutation.addedNodes[i];
+        if (node.nodeType !== 1) continue;
+        if (node.matches('.wombat-aside') || node.querySelector('.wombat-aside')) return true;
+      }
+    }
+    return false;
+  }
+
+  function init() {
+    schedule();
+    var observer = new MutationObserver(function (mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        if (relevantMutation(mutations[i])) {
+          schedule();
+          break;
+        }
+      }
+    });
+    observer.observe(document.body, {
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
