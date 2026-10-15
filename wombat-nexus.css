@@ -452,3 +452,35 @@
 .wombat-aside #wombat .profile_admin .followBtn:hover {
   border-color: var(--nw-gold);
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   V3 — Masquer UNIQUEMENT les champs dont la valeur visible est vide
+   (tiret -, – ou —), identifiés par wombat-nexus-fields.js.
+   Les vrais contenus, champs éditables et contrôles RPG sont conservés.
+   Affichage ciblé uniquement sur la fenêtre Wombat.
+   ═══════════════════════════════════════════════════════════════════ */
+.wombat-aside #wombat .profile_content:not(.nw-show-empty) .profile_field.nw-empty-field {
+  display: none !important;
+}
+.wombat-aside #wombat .nw-empty-toggle {
+  display: block;
+  width: 100%;
+  margin: 9px 0 8px;
+  padding: 7px 9px;
+  border: 1px solid var(--nw-line);
+  border-radius: 2px;
+  background: var(--nw-depth);
+  color: var(--nw-gold);
+  font: 700 9px/1.55 var(--mono-font, monospace);
+  letter-spacing: .035em;
+  text-align: left;
+  cursor: pointer;
+}
+.wombat-aside #wombat .nw-empty-toggle:hover,
+.wombat-aside #wombat .nw-empty-toggle:focus-visible {
+  border-color: var(--nw-gold);
+  outline-offset: 2px;
+}
+.wombat-aside #wombat .nw-empty-toggle[aria-expanded="true"] {
+  color: var(--nw-copy);
+}
