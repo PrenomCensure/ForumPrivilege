@@ -1,4 +1,4 @@
-/* PRIVILÈGE — Registre citoyen NEXUS / LISTE DES MEMBRES V1.
+/* PRIVILÈGE — Registre citoyen NEXUS / LISTE DES MEMBRES V2 COMPACTE.
    A héberger sur GitHub, à la racine du dépôt ForumPrivilege.
    Tout est isolé sous .pr-directory. Aucune modification du QEEL/PA. */
 .pr-directory,.pr-directory *{box-sizing:border-box}
@@ -56,3 +56,19 @@
 @media(max-width:820px){.pr-directory .pd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:530px){.pr-directory{padding:10px}.pr-directory .pd-top{align-items:flex-start}.pr-directory .pd-toptag{display:none}.pr-directory .pd-title{font-size:20px}.pr-directory .pd-grid{grid-template-columns:1fr}.pr-directory .pd-card-main{grid-template-columns:76px minmax(0,1fr)}.pr-directory .pd-search{padding:9px}.pr-directory .pd-submit[type="submit"]{width:100%}.pr-directory .pd-footer{font-size:7px}}
 @media(prefers-reduced-motion:reduce){.pr-directory .pd-card{transition:none}}
+
+
+/* PRIVILÈGE — AJUSTEMENT V2 COMPACT
+   Portrait légèrement réduit et cartes resserrées.
+   Nombre de messages masqué sans modifier les variables natives Forumactif. */
+.pr-directory .pd-card{min-height:0}
+.pr-directory .pd-card-main{grid-template-columns:72px minmax(0,1fr);gap:9px;padding:9px 10px 4px;align-items:start}
+.pr-directory .pd-avatar{width:72px;height:92px}
+.pr-directory .pd-name{margin:2px 0 5px}
+.pr-directory .pd-facts{gap:5px}
+.pr-directory .pd-fact{display:block;line-height:1.5}
+.pr-directory .pd-fact dt{display:inline;line-height:1.5}
+.pr-directory .pd-fact dd{display:inline;margin-left:4px;line-height:1.5}
+.pr-directory .pd-fact:last-child{display:none}
+.pr-directory .pd-bottom{margin:0 10px 7px;padding-top:5px}
+@media(max-width:530px){.pr-directory .pd-card-main{grid-template-columns:72px minmax(0,1fr)}}
