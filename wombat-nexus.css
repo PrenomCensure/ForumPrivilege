@@ -339,3 +339,116 @@
 @media (prefers-reduced-motion: reduce) {
   .wombat-aside { transition: none !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   V2 — Ajustements vérifiés avec le véritable profile_view_body.
+   Les données Forumactif restent natives. Aucune règle n'affecte les
+   autres profils ou la liste des membres.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Les deux <br> du template historique sont retirés dans la V2.
+   Ceci protège aussi un ancien template qui les contiendrait encore. */
+.wombat-aside #wombat .profile_infos > br { display: none !important; }
+
+/* Certains champs de contact natifs affichent seulement un tiret.
+   On écarte uniquement les emplacements sans lien, image ou contrôle. */
+.wombat-aside #wombat .profile_contact form > div:not(:has(a, button, input, select, textarea, img, svg)) {
+  display: none !important;
+}
+
+/* Rang et présence : vrais textes fournis par Forumactif. */
+.wombat-aside #wombat .nw-rank {
+  display: block;
+  margin: 0;
+  padding: 8px 0 10px;
+  border-bottom: 1px solid var(--nw-line);
+  color: var(--nw-gold);
+  font: italic 700 13px/1.4 var(--special-font, Georgia, serif);
+  overflow-wrap: anywhere;
+}
+.wombat-aside #wombat .nw-rank:empty { display: none; }
+.wombat-aside #wombat .nw-presence {
+  display: block;
+  margin: 0;
+  color: var(--nw-copy);
+  font: 10px/1.6 var(--mono-font, monospace);
+  overflow-wrap: anywhere;
+}
+.wombat-aside #wombat .nw-presence:empty { display: none; }
+.wombat-aside #wombat .nw-presence .online {
+  display: inline-block;
+  padding: 4px 6px;
+  color: var(--nw-copy);
+  font: inherit;
+  background: var(--nw-depth);
+  border: 1px solid var(--nw-line);
+  border-radius: 2px;
+}
+
+/* Les liens longs associés au nombre de messages restent disponibles,
+   mais ils sont moins dominants dans le registre. */
+.wombat-aside #wombat #opentopics,
+.wombat-aside #wombat #alltopics,
+.wombat-aside #wombat #allposts {
+  font-size: 10px;
+  line-height: 1.6;
+  text-decoration: underline;
+  text-decoration-color: var(--nw-line);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+/* La feuille RPG se trouve AU CENTRE, après les champs de profil.
+   Le bloc n'apparaît que lorsque Forumactif émet switch_rpg. */
+.wombat-aside #wombat .nw-rpg-section {
+  margin: 13px 0 0;
+  padding: 0;
+  border: 1px solid var(--nw-line);
+  border-left: 2px solid var(--nw-purple);
+  border-radius: 2px;
+  background: var(--nw-depth);
+}
+.wombat-aside #wombat .nw-rpg-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 7px 9px;
+  border-bottom: 1px solid var(--nw-line);
+  color: var(--nw-gold);
+  font: 700 9px/1.5 var(--mono-font, monospace);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.wombat-aside #wombat .nw-rpg-heading span {
+  color: var(--nw-copy);
+  opacity: .60;
+  font-size: 8px;
+}
+.wombat-aside #wombat .nw-rpg-section .profile_field {
+  margin: 0 9px !important;
+}
+.wombat-aside #wombat .nw-rpg-section .submit-buttons {
+  margin: 7px 9px 9px;
+  padding: 4px 0 0;
+  border: 0;
+  text-align: left;
+}
+
+/* Bouton suivre / boutons admin : cohérence avec les petites commandes NEXUS. */
+.wombat-aside #wombat .profile_admin .followBtn {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 5px 0 0;
+  padding: 6px 9px;
+  border: 1px solid var(--nw-line);
+  border-radius: 2px;
+  background: var(--nw-depth);
+  color: var(--nw-gold);
+  font: 700 9px/1.5 var(--mono-font, monospace);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.wombat-aside #wombat .profile_admin .followBtn:hover {
+  border-color: var(--nw-gold);
+}
