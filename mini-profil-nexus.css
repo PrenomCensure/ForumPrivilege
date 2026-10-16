@@ -1,7 +1,7 @@
 /* ========================================================================
-   PRIVILÈGE — NEXUS / MINI-PROFIL DANS LES SUJETS — V1
+   PRIVILÈGE — NEXUS / MINI-PROFIL DANS LES SUJETS — V3
    Feuille autonome, chargée APRÈS le CSS général.
-   Nécessite le template viewtopic_body_NEXUS_AES_COMPLET.html.
+   Nécessite le template viewtopic_body_NEXUS_AES_V3_COMPLET.html.
    N'altère pas le Wombat (#wombat), ni la fiche citoyenne, ni le QEEL.
    Remplace les anciennes feuilles profil.css et profilsujet.css.
    ======================================================================== */
@@ -225,19 +225,9 @@
 }
 .post_row .pn-mini .pf-p1 .field_content a{color:var(--pn-primary);text-decoration:underline;text-decoration-color:var(--pn-border);text-underline-offset:2px}
 .post_row .pn-mini .pf-p1 .field_content img{max-width:100%;height:auto}
-.post_row .pn-mini .pf-p1 .field_separator,
-.post_row .pn-mini .pn-native-awards,
-.post_row .pn-mini .pn-native-awards #list_awards{display:none!important}
+.post_row .pn-mini .pf-p1 .field_separator{display:none!important}
 .post_row .pn-mini .pn-no-data{margin:0;color:var(--pn-fg);opacity:.7;font:9px/1.6 var(--mono-font,monospace)}
 .post_row .pn-mini .pn-no-data[hidden]{display:none!important}
-
-/* Feuille RPG native : styles locaux non intrusifs. */
-.post_row .pn-mini .pf-p2 :is(dl,dt,dd){width:auto;margin:0;float:none;display:block;text-align:left;max-width:100%}
-.post_row .pn-mini .pf-p2 dl{margin:0 0 9px}
-.post_row .pn-mini .pf-p2 dt{color:var(--pn-gold);font:700 9px/1.5 var(--mono-font,monospace);text-transform:uppercase}
-.post_row .pn-mini .pf-p2 dd{margin:2px 0 8px;color:var(--pn-primary);font-size:11px}
-.post_row .pn-mini .pf-p2 img{max-width:100%;height:auto}
-.post_row .pn-mini .pf-p2 textarea{max-width:100%;box-sizing:border-box}
 
 /* Contacts : empêche définitivement l'effet « Profil MPAutre » collé. */
 .post_row .pn-mini .profil_contact{
@@ -283,4 +273,162 @@
 }
 @media(prefers-reduced-motion:reduce){
   .post_row .pn-mini .pf-nav label{transition:none}
+}
+
+/* ========================================================================
+   V3 — FEUILLE DE PERSONNAGE / CHARACTER ARCHIVE
+   Habillage limité à l'onglet FICHE du mini-profil. Source native
+   {postrow.displayed.POSTER_RPG} conservée sans changer les champs.
+   Ne requiert AUCUN JS additionnel ni plugin d'onglets.
+   ======================================================================== */
+.post_row .pn-mini .pf-panel.pf-p2{
+  padding:0;
+  max-height:290px;
+  border-top:3px solid var(--pn-lilac);
+  border-bottom:2px solid var(--pn-rose);
+  background:var(--pn-card);
+}
+.post_row .pn-mini .pn-rpg-head{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:10px 12px;
+  background:linear-gradient(110deg,var(--pn-depth),var(--pn-card));
+  border-bottom:1px solid var(--pn-border);
+}
+.post_row .pn-mini .pn-rpg-headline{
+  display:block;
+  font:700 8px/1.5 var(--mono-font,'Space Mono',monospace);
+  letter-spacing:.075em;
+  text-transform:uppercase;
+  color:var(--pn-gold);
+}
+.post_row .pn-mini .pn-rpg-sigil{
+  color:var(--pn-gold);font:20px/1 Georgia,serif;opacity:.9;
+}
+.post_row .pn-mini .pn-rpg-source{
+  min-width:0;
+  padding:12px;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  font:11px/1.7 var(--font,'Open Sans',Arial,sans-serif);
+  color:var(--pn-primary);
+}
+/* Titre généré par Forumactif ou par les paramètres de la feuille RPG. */
+.post_row .pn-mini .pn-rpg-source :is(h2,h3,h4,h5,.h3,.h4,.rpg_title,.rpg-title,.title){
+  display:block;
+  padding:0 0 7px;
+  margin:0 0 10px;
+  border-bottom:1px solid var(--pn-border);
+  color:var(--pn-primary);
+  font:italic 700 15px/1.35 var(--special-font,Georgia,serif);
+  text-transform:none;
+  letter-spacing:normal;
+  background:none;
+}
+/* Quand le titre natif est un simple div sans sous-éléments. */
+.post_row .pn-mini .pn-rpg-source > div:first-child:not(:has(*)){
+  margin:0 0 10px;
+  padding:0 0 7px;
+  border-bottom:1px solid var(--pn-border);
+  color:var(--pn-primary);
+  font:italic 700 15px/1.35 var(--special-font,Georgia,serif);
+}
+/* Titres/champs HTML natifs : support de dl/details et de tableaux Forumactif. */
+.post_row .pn-mini .pn-rpg-source dl,
+.post_row .pn-mini .pn-rpg-source dl.details{
+  display:block!important;
+  width:100%!important;
+  margin:0;
+  padding:0;
+  background:transparent;
+}
+.post_row .pn-mini .pn-rpg-source dt,
+.post_row .pn-mini .pn-rpg-source dd{
+  display:block;
+  float:none;
+  width:auto;
+  max-width:100%;
+  margin:0;
+  padding:0;
+  text-align:left;
+}
+.post_row .pn-mini .pn-rpg-source dt,
+.post_row .pn-mini .pn-rpg-source .field_label,
+.post_row .pn-mini .pn-rpg-source :is(.rpg-label,.rpg_label){
+  display:block;
+  margin:0 0 5px;
+  color:var(--pn-gold);
+  background:none;
+  font:700 9px/1.6 var(--mono-font,'Space Mono',monospace);
+  text-transform:uppercase;
+  letter-spacing:.025em;
+}
+.post_row .pn-mini .pn-rpg-source dd,
+.post_row .pn-mini .pn-rpg-source .field_content,
+.post_row .pn-mini .pn-rpg-source :is(.rpg-value,.rpg_value){
+  display:block;
+  min-width:0;
+  margin:0 0 10px;
+  padding:8px 9px;
+  background:var(--pn-depth);
+  border:1px solid var(--pn-border);
+  border-left:2px solid var(--pn-lilac);
+  border-radius:3px;
+  color:var(--pn-primary);
+  font:11px/1.65 var(--font,'Open Sans',Arial,sans-serif);
+  overflow-wrap:anywhere;
+}
+.post_row .pn-mini .pn-rpg-source .user_field{
+  margin:0 0 9px;
+  padding:0;
+  border:0;
+  display:block;
+  color:var(--pn-primary);
+}
+/* Un champ composé d'un simple paragraphe reste lisible même sans dt/dd. */
+.post_row .pn-mini .pn-rpg-source p{margin:0 0 9px;line-height:1.7}
+.post_row .pn-mini .pn-rpg-source p:last-child{margin-bottom:0}
+.post_row .pn-mini .pn-rpg-source :is(b,strong){color:var(--pn-gold);font-weight:700}
+.post_row .pn-mini .pn-rpg-source a{color:var(--pn-primary);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--pn-lilac)}
+.post_row .pn-mini .pn-rpg-source a:hover{color:var(--pn-gold)}
+.post_row .pn-mini .pn-rpg-source img{max-width:100%!important;height:auto!important;border-radius:3px}
+/* Cas où Forumactif émet une table pour les informations RPG. */
+.post_row .pn-mini .pn-rpg-source table{
+  display:table;
+  width:100%!important;
+  border-collapse:collapse;
+  border:0;
+  table-layout:fixed;
+}
+.post_row .pn-mini .pn-rpg-source :is(td,th){
+  padding:6px 4px;
+  border-bottom:1px solid var(--pn-border);
+  vertical-align:top;
+  text-align:left;
+  overflow-wrap:anywhere;
+  font-size:10px;
+}
+.post_row .pn-mini .pn-rpg-source th{color:var(--pn-gold);font-weight:700}
+/* Champs de saisie visibles selon les droits utilisateur. */
+.post_row .pn-mini .pn-rpg-source :is(textarea,input,select){
+  max-width:100%;width:100%;min-width:0;
+  margin:4px 0 8px;
+  padding:6px;
+  color:var(--pn-primary);
+  background:var(--pn-depth);
+  border:1px solid var(--pn-border);
+  border-radius:3px;
+  font:11px/1.5 var(--font,Arial,sans-serif);
+}
+.post_row .pn-mini .pn-rpg-source input[type=checkbox],
+.post_row .pn-mini .pn-rpg-source input[type=radio]{width:auto}
+.post_row .pn-mini .pn-rpg-foot{
+  margin:0 12px;
+  padding:8px 0 10px;
+  border-top:1px solid var(--pn-border);
+  color:var(--pn-fg);
+  opacity:.58;
+  text-align:right;
+  font:700 7px/1.5 var(--mono-font,'Space Mono',monospace);
+  letter-spacing:.035em;
+  text-transform:uppercase;
 }
