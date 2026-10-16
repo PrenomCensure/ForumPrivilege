@@ -1,0 +1,387 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PRIVILÈGE — WOMBAT NEXUS / VERSION CONSOLIDÉE 1.0
+   Remplace les anciennes feuilles Wombat V1/V2/V3 et le correctif V4.
+   Toutes les règles sont limitées à .wombat-aside (fenêtre du plugin).
+   Le style de la page profil complète hors Wombat reste intact.
+   ═══════════════════════════════════════════════════════════════════ */
+.wombat-aside,.wombat-aside *{box-sizing:border-box}
+.wombat-aside{
+  --nx-bg:var(--neutral,#18181c);
+  --nx-panel:var(--neutrallight,#202026);
+  --nx-deep:var(--neutralDark,#222229);
+  --nx-line:var(--neutralDarker,#2c2c35);
+  --nx-text:var(--textColor,#c9c8d2);
+  --nx-bright:var(--textColorAccent,#f4f3f8);
+  --nx-gold:var(--color2,#e3b98a);
+  --nx-violet:var(--color1,#6a46a0);
+  --nx-rose:var(--color4,#d98f9a);
+  width:min(780px,calc(100vw - 24px))!important;
+  max-width:780px!important;
+  height:max-content;
+  max-height:calc(100dvh - 24px);
+  overflow-x:hidden;
+  overflow-y:auto;
+  scrollbar-width:thin;
+  color:var(--nx-text);
+  background:var(--nx-bg)!important;
+  border:1px solid var(--nx-line);
+  border-top:2px solid var(--nx-violet);
+  border-bottom:2px solid var(--nx-rose);
+  border-radius:4px;
+  box-shadow:0 24px 65px rgba(0,0,0,.38);
+}
+.wombat-overlay.open{opacity:.65}
+.wombat-aside #wombat{
+  width:100%!important;
+  min-width:0;
+  margin:0!important;
+  padding:0 16px 12px!important;
+  background:var(--nx-bg)!important;
+  border:0!important;
+  border-radius:0;
+  color:var(--nx-text);
+}
+.wombat-aside #wombat:before{
+  content:'◇   NEXUS / CITIZEN RECORD';
+  display:block;
+  margin:0 -16px;
+  padding:12px 18px;
+  background:var(--nx-panel);
+  border-bottom:1px solid var(--nx-line);
+  color:var(--nx-gold);
+  font:700 9px/1.6 var(--mono-font,monospace);
+  letter-spacing:.12em;
+}
+.wombat-aside #wombat:after{
+  content:'PUBLIC RECORD  /  NEXUS INTERFACE';
+  display:block;
+  margin-top:9px;
+  text-align:right;
+  color:var(--nx-text);
+  opacity:.58;
+  font:8px/1.5 var(--mono-font,monospace);
+  letter-spacing:.09em;
+}
+.wombat-aside #wombat > .page-title{
+  display:block;
+  margin:0!important;
+  padding:15px 5px 13px!important;
+  border-bottom:1px solid var(--nx-line);
+  text-align:center;
+  font:italic 700 clamp(23px,3vw,30px)/1.25 var(--special-font,Georgia,serif);
+  text-transform:none;
+  letter-spacing:.02em;
+  overflow-wrap:anywhere;
+}
+.wombat-aside #wombat .user_profile{
+  display:grid!important;
+  grid-template-columns:155px minmax(0,1fr) 148px;
+  align-items:start!important;
+  gap:12px!important;
+  margin:12px 0 0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  min-width:0;
+}
+/* 01 — portrait */
+.wombat-aside #wombat .profile_avatar{
+  grid-column:1;
+  grid-row:1;
+  display:block;
+  position:relative;
+  width:100%!important;
+  height:270px!important;
+  min-width:0;
+  margin:0!important;
+  padding:4px;
+  background:var(--nx-deep);
+  border:1px solid var(--nx-line);
+  border-top:3px solid var(--nx-violet);
+  border-bottom:3px solid var(--nx-rose);
+  border-left:3px solid var(--nx-gold);
+  border-radius:3px;
+  overflow:hidden;
+}
+.wombat-aside #wombat .profile_avatar img{
+  display:block;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:cover;
+  object-position:center 20%;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:1px!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+/* 02 — dossier et champs */
+.wombat-aside #wombat .profile_content{
+  grid-column:2;
+  grid-row:1;
+  display:block;
+  width:auto!important;
+  min-width:0;
+  height:270px!important;
+  max-height:270px!important;
+  margin:0!important;
+  padding:9px 12px!important;
+  overflow-x:hidden;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:var(--nx-line) transparent;
+  border:1px solid var(--nx-line);
+  border-radius:3px;
+  background:var(--nx-panel)!important;
+  color:var(--nx-text)!important;
+  overflow-wrap:anywhere;
+}
+.wombat-aside #wombat .profile_field{
+  display:grid;
+  grid-template-columns:minmax(94px,42%) minmax(0,1fr);
+  gap:8px;
+  align-items:start;
+  margin:0!important;
+  padding:8px 0!important;
+  border-bottom:1px solid var(--nx-line);
+  font:11px/1.5 var(--font,Arial,sans-serif);
+}
+.wombat-aside #wombat .profile_field label,
+.wombat-aside #wombat .profile_field label > span{
+  font:700 8px/1.65 var(--mono-font,monospace);
+  color:var(--nx-gold)!important;
+  text-transform:uppercase;
+  letter-spacing:.015em;
+  opacity:.9;
+  overflow-wrap:anywhere;
+}
+.wombat-aside #wombat .profile_field field{
+  display:block;
+  min-width:0;
+  position:relative;
+  color:var(--nx-text);
+  overflow-wrap:anywhere;
+}
+.wombat-aside #wombat .profile_field a{
+  color:var(--nx-bright);
+  font-weight:600;
+  font-size:10px;
+  text-decoration:none;
+}
+.wombat-aside #wombat .profile_field a:hover{color:var(--nx-gold)}
+.wombat-aside #wombat .profile_content .nx-empty-field,
+.wombat-aside #wombat .profile_content .nx-badge-source{display:none!important}
+.wombat-aside #wombat .profile_content.nx-show-blank .nx-empty-field{display:grid!important}
+.wombat-aside #wombat .nx-reveal{
+  display:block;
+  width:100%;
+  margin:8px 0 5px;
+  padding:7px 9px;
+  border:1px solid var(--nx-line);
+  border-radius:2px;
+  background:var(--nx-deep);
+  color:var(--nx-gold);
+  font:700 9px/1.5 var(--mono-font,monospace);
+  text-align:left;
+  cursor:pointer;
+}
+.wombat-aside #wombat .nx-reveal:hover{border-color:var(--nx-gold)}
+/* RPG : bloc distinct, conserver les champs et l'édition */
+.wombat-aside #wombat .nw-rpg-section{
+  margin:12px 0 0;
+  padding:0;
+  border:1px solid var(--nx-line);
+  border-left:2px solid var(--nx-violet);
+  border-radius:2px;
+  background:var(--nx-deep);
+}
+.wombat-aside #wombat .nw-rpg-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  padding:7px 8px;
+  border-bottom:1px solid var(--nx-line);
+  color:var(--nx-gold);
+  font:700 9px/1.5 var(--mono-font,monospace);
+  text-transform:uppercase;
+  letter-spacing:.025em;
+}
+.wombat-aside #wombat .nw-rpg-heading span{font-size:8px;opacity:.64;color:var(--nx-text)}
+.wombat-aside #wombat .nw-rpg-section .profile_field{margin:0 8px!important}
+.wombat-aside #wombat .nw-rpg-section .submit-buttons{margin:8px!important;padding:0;border:0;text-align:center}
+/* 03 — distinctions et statut */
+.wombat-aside #wombat .profile_infos{
+  grid-column:3;
+  grid-row:1;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:0!important;
+  width:auto!important;
+  min-width:0;
+  min-height:0!important;
+  height:auto!important;
+  max-height:270px;
+  overflow-x:hidden;
+  overflow-y:auto;
+  margin:0!important;
+  padding:10px!important;
+  background:var(--nx-panel)!important;
+  border:1px solid var(--nx-line);
+  border-radius:3px;
+  color:var(--nx-text);
+  scrollbar-width:thin;
+}
+.wombat-aside #wombat .nw-side-kicker{
+  display:block;
+  margin-bottom:7px;
+  font:700 8px/1.5 var(--mono-font,monospace);
+  color:var(--nx-gold);
+  text-transform:uppercase;
+  letter-spacing:.035em;
+  overflow-wrap:anywhere;
+}
+.wombat-aside #wombat .nw-distinctions{padding:0 0 10px;border-bottom:1px solid var(--nx-line)}
+.wombat-aside #wombat .nw-badge-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:5px;
+}
+.wombat-aside #wombat .nw-badge-grid:empty{display:none}
+.wombat-aside #wombat .nw-badge{
+  --medal:var(--nx-gold);
+  position:relative;
+  display:grid;
+  place-items:center;
+  height:36px;
+  min-width:0;
+  padding:5px;
+  color:var(--medal);
+  border:1px solid var(--nx-line);
+  border-top:2px solid var(--medal);
+  border-radius:3px;
+  background:var(--nx-deep);
+  cursor:help;
+}
+.wombat-aside #wombat .nw-badge:hover,
+.wombat-aside #wombat .nw-badge:focus-visible{outline:1px solid var(--medal);outline-offset:1px}
+.wombat-aside #wombat .nw-badge svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.wombat-aside #wombat .nw-badge--D01{--medal:#b2a3bf}
+.wombat-aside #wombat .nw-badge--D02{--medal:#dcad7b}
+.wombat-aside #wombat .nw-badge--D03{--medal:#a9a1e5}
+.wombat-aside #wombat .nw-badge--D04{--medal:#cf8f9a}
+.wombat-aside #wombat .nw-badge--D05{--medal:#a5adb4}
+.wombat-aside #wombat .nw-badge--D06{--medal:#d5bd89}
+.wombat-aside #wombat .nw-badge-empty{
+  display:block;
+  color:var(--nx-text);
+  font:italic 10px/1.5 var(--special-font,Georgia,serif);
+  opacity:.7;
+}
+.wombat-aside #wombat .nw-badge-grid:not(:empty)+.nw-badge-empty{display:none}
+.wombat-aside #wombat .nw-status-panel{padding:10px 0;border-bottom:1px solid var(--nx-line)}
+.wombat-aside #wombat .nw-rank{
+  display:block;
+  color:var(--nx-bright);
+  font:italic 700 12px/1.45 var(--special-font,Georgia,serif);
+  overflow-wrap:anywhere;
+  margin:0 0 5px;
+}
+.wombat-aside #wombat .nw-rank.nx-rank-empty{display:none}
+.wombat-aside #wombat .nw-presence{
+  display:block;
+  font:10px/1.5 var(--mono-font,monospace);
+  color:var(--nx-text);
+}
+.wombat-aside #wombat .nw-presence:empty{display:none}
+.wombat-aside #wombat .nw-presence .online{display:inline}
+.wombat-aside #wombat .nw-comms{padding:10px 0 0}
+.wombat-aside #wombat .profile_contact,
+.wombat-aside #wombat .profile_contact.right{
+  display:block;
+  width:auto;
+  margin:0;
+  padding:0;
+  float:none!important;
+  border:0;
+}
+.wombat-aside #wombat .profile_contact form{display:flex!important;align-items:center;justify-content:start;gap:5px;flex-wrap:wrap;margin:0}
+.wombat-aside #wombat .profile_contact form > div{margin:0!important;min-width:0}
+.wombat-aside #wombat .profile_contact form > div:nth-child(n+4){display:initial}
+.wombat-aside #wombat .profile_contact form > div.nx-contact-empty{display:none!important}
+.wombat-aside #wombat .profile_contact a{
+  display:inline-flex;
+  min-width:26px;
+  min-height:26px;
+  justify-content:center;
+  align-items:center;
+  padding:4px;
+  color:var(--nx-bright);
+  background:var(--nx-deep);
+  border:1px solid var(--nx-line);
+  border-radius:2px;
+}
+.wombat-aside #wombat .profile_contact a:hover{border-color:var(--nx-gold)}
+.wombat-aside #wombat .profile_contact img{display:block;max-width:17px!important;max-height:17px!important;width:auto!important;height:auto!important;object-fit:contain;border:0!important;border-radius:0!important}
+/* Bas du dossier */
+.wombat-aside #wombat .profile_admin{
+  margin:12px 0 0!important;
+  padding:9px 0 0;
+  border-top:1px solid var(--nx-line);
+  color:var(--nx-gold);
+  text-align:center;
+  font:700 10px/1.6 var(--mono-font,monospace);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.wombat-aside #wombat .profile_admin a{color:var(--nx-gold)}
+.wombat-aside #wombat .profile_admin .followBtn{
+  display:inline-flex;
+  align-items:center;
+  max-width:100%;
+  margin:0 6px 0 0!important;
+  padding:6px 8px!important;
+  color:var(--nx-gold)!important;
+  background:var(--nx-panel)!important;
+  border:1px solid var(--nx-line)!important;
+  border-radius:2px!important;
+  font:700 9px/1.5 var(--mono-font,monospace)!important;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  box-shadow:none!important;
+  cursor:pointer;
+}
+.wombat-aside #wombat .profile_admin .followBtn:hover{border-color:var(--nx-gold)!important}
+.wombat-aside #wombat a:focus-visible,
+.wombat-aside #wombat button:focus-visible{outline:2px solid var(--nx-gold);outline-offset:2px}
+@media(max-width:680px){
+  .wombat-aside #wombat .user_profile{grid-template-columns:112px minmax(0,1fr);gap:9px!important}
+  .wombat-aside #wombat .profile_avatar{grid-column:1;grid-row:1;height:215px!important}
+  .wombat-aside #wombat .profile_content{grid-column:2;grid-row:1;height:215px!important;max-height:215px!important;padding:7px 9px!important}
+  .wombat-aside #wombat .profile_field{grid-template-columns:1fr;gap:3px}
+  .wombat-aside #wombat .profile_infos{grid-column:1/-1;grid-row:2;max-height:none;display:grid!important;grid-template-columns:1fr 1fr;gap:12px!important}
+  .wombat-aside #wombat .nw-distinctions{grid-row:1/3;grid-column:1;border-bottom:0;border-right:1px solid var(--nx-line);padding:0 12px 0 0}
+  .wombat-aside #wombat .nw-status-panel{grid-column:2;grid-row:1;padding:0 0 7px}
+  .wombat-aside #wombat .nw-comms{grid-column:2;grid-row:2;padding:0}
+}
+@media(max-width:390px){
+  .wombat-aside #wombat{padding:0 9px 10px!important}
+  .wombat-aside #wombat:before{margin:0 -9px;padding:10px;font-size:8px}
+  .wombat-aside #wombat .user_profile{grid-template-columns:90px minmax(0,1fr)!important}
+  .wombat-aside #wombat .profile_avatar,.wombat-aside #wombat .profile_content{height:200px!important;max-height:200px!important}
+}
+@media(prefers-reduced-motion:reduce){.wombat-aside{transition:none!important}}
+
+/* Contrastes adaptés au mode clair (les accents dorés pâles sont trop légers sur blanc). */
+[data-color-scheme="light"] .wombat-aside { --nx-gold:#835b3b; }
+[data-color-scheme="light"] .wombat-aside #wombat .nw-badge--D01{--medal:#705783}
+[data-color-scheme="light"] .wombat-aside #wombat .nw-badge--D02{--medal:#98602b}
+[data-color-scheme="light"] .wombat-aside #wombat .nw-badge--D03{--medal:#5d4caa}
+[data-color-scheme="light"] .wombat-aside #wombat .nw-badge--D04{--medal:#9e586c}
+[data-color-scheme="light"] .wombat-aside #wombat .nw-badge--D05{--medal:#5c6670}
+[data-color-scheme="light"] .wombat-aside #wombat .nw-badge--D06{--medal:#836227}
