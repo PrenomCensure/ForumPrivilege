@@ -1,7 +1,7 @@
 /* ========================================================================
-   PRIVILÈGE — NEXUS / MINI-PROFIL DANS LES SUJETS — V3
+   PRIVILÈGE — NEXUS / MINI-PROFIL DANS LES SUJETS — HARMONISÉ
    Feuille autonome, chargée APRÈS le CSS général.
-   Nécessite le template viewtopic_body_NEXUS_AES_V3_COMPLET.html.
+   Compatible avec le viewtopic_body NEXUS STABLE déjà installé.
    N'altère pas le Wombat (#wombat), ni la fiche citoyenne, ni le QEEL.
    Remplace les anciennes feuilles profil.css et profilsujet.css.
    ======================================================================== */
@@ -15,6 +15,8 @@
   --pn-primary:var(--textColorAccent,#f4f3f8);
   --pn-lilac:var(--color1,#7750a5);
   --pn-gold:var(--color2,#e3b98a);
+  /* Label commun : violet en clair, doré en sombre selon le thème. */
+  --pn-label:var(--accentClr,var(--pn-gold));
   --pn-rose:var(--color4,#d98f9a);
   width:250px;
   min-width:0;
@@ -47,7 +49,7 @@
   text-align:left;
   font:700 8px/1.4 var(--mono-font,'Space Mono',monospace);
   letter-spacing:.12em;
-  color:var(--pn-gold);
+  color:var(--pn-label);
   text-transform:uppercase;
   margin-bottom:7px;
   opacity:.92;
@@ -115,7 +117,7 @@
   justify-content:space-between;
   gap:4px;
   margin-bottom:6px;
-  color:var(--pn-gold);
+  color:var(--pn-label);
   font:700 8px/1.5 var(--mono-font,'Space Mono',monospace);
   letter-spacing:.07em;
 }
@@ -181,6 +183,24 @@
   scrollbar-width:thin;
   scrollbar-color:var(--pn-border) transparent;
 }
+/* INFOS : bandeau de section visuellement coordonné à CHARACTER ARCHIVE.
+   Pseudo-élément décoratif : aucun changement du template ou des champs. */
+.post_row .pn-mini .pf-panel.pf-p1{
+  max-height:290px;
+  padding:0 10px 10px;
+}
+.post_row .pn-mini .pf-panel.pf-p1::before{
+  content:"NEXUS / CITIZEN DATA";
+  display:block;
+  margin:0 -10px 8px;
+  padding:11px 12px;
+  background:linear-gradient(110deg,var(--pn-depth),var(--pn-card));
+  border-bottom:1px solid var(--pn-border);
+  font:700 8px/1.5 var(--mono-font,'Space Mono',monospace);
+  letter-spacing:.075em;
+  text-transform:uppercase;
+  color:var(--pn-label);
+}
 .post_row .pn-mini .pf-tabs > input:nth-of-type(1):checked ~ .pf-p1,
 .post_row .pn-mini .pf-tabs > input:nth-of-type(2):checked ~ .pf-p2{display:block}
 
@@ -209,11 +229,28 @@
   max-width:100%;
   background:none;
   -webkit-background-clip:initial;
-  color:var(--pn-gold);
+  color:var(--pn-label);
   font:700 9px/1.55 var(--mono-font,'Space Mono',monospace);
   letter-spacing:.025em;
   text-transform:uppercase;
   overflow-wrap:anywhere;
+}
+/* Forumactif peut placer un <span style="color:..."> DANS le libellé.
+   Le parent devient doré mais pas l'enfant : d'où les titres presque noirs.
+   On écrase cette couleur uniquement dans le mini-profil des messages. */
+.post_row .pn-mini .pf-p1 .user_field .field_label,
+.post_row .pn-mini .pf-p1 .user_field .field_label *{
+  color:var(--pn-label)!important;
+  -webkit-text-fill-color:var(--pn-label)!important;
+  background:none!important;
+  background-image:none!important;
+  text-shadow:none!important;
+  opacity:1!important;
+}
+.post_row .pn-mini .pf-p1 .user_field .field_label *{
+  font:inherit!important;
+  text-transform:inherit!important;
+  letter-spacing:inherit!important;
 }
 .post_row .pn-mini .pf-p1 .field_content{
   display:block;
@@ -299,10 +336,10 @@
   font:700 8px/1.5 var(--mono-font,'Space Mono',monospace);
   letter-spacing:.075em;
   text-transform:uppercase;
-  color:var(--pn-gold);
+  color:var(--pn-label);
 }
 .post_row .pn-mini .pn-rpg-sigil{
-  color:var(--pn-gold);font:20px/1 Georgia,serif;opacity:.9;
+  color:var(--pn-label);font:20px/1 Georgia,serif;opacity:.9;
 }
 .post_row .pn-mini .pn-rpg-source{
   min-width:0;
@@ -356,7 +393,7 @@
 .post_row .pn-mini .pn-rpg-source :is(.rpg-label,.rpg_label){
   display:block;
   margin:0 0 5px;
-  color:var(--pn-gold);
+  color:var(--pn-label);
   background:none;
   font:700 9px/1.6 var(--mono-font,'Space Mono',monospace);
   text-transform:uppercase;
@@ -447,6 +484,20 @@
   border-bottom:1px solid var(--pn-border);
   overflow-wrap:anywhere;
 }
+/* Le titre natif est un lien Forumactif : ici il ressemble à un titre,
+   sans perdre sa destination ni son accessibilité. */
+.post_row .pn-mini .pn-reg-title a{
+  font:inherit!important;
+  color:inherit!important;
+  text-decoration:none!important;
+  background:none!important;
+}
+.post_row .pn-mini .pn-reg-title a:hover,
+.post_row .pn-mini .pn-reg-title a:focus-visible{
+  color:var(--pn-label)!important;
+  text-decoration:underline!important;
+  text-underline-offset:3px;
+}
 .post_row .pn-mini .pn-reg-list {display:flex;flex-direction:column;gap:8px}
 .post_row .pn-mini .pn-reg-row {
   display:block;min-width:0;padding:0;margin:0;
@@ -455,7 +506,7 @@
 .post_row .pn-mini .pn-reg-label {
   display:block;margin:0 0 3px;padding:0;
   font:700 9px/1.5 var(--mono-font,'Space Mono',monospace);
-  color:var(--pn-gold);text-transform:uppercase;letter-spacing:.035em;
+  color:var(--pn-label);text-transform:uppercase;letter-spacing:.035em;
   background:none;opacity:1;
 }
 .post_row .pn-mini .pn-reg-value {
