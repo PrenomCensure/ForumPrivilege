@@ -521,3 +521,12 @@
 /* Les styles anciens de .pn-rpg-source dd/strong ne doivent pas
    écraser les cartes régularisées. */
 .post_row .pn-mini .pn-reg-value :is(b,strong){color:inherit}
+
+
+/* NEXUS — Masquer le titre Citizen Registry
+   uniquement dans les mini-profils des messages */
+
+.post_row .pn-mini .pn-reg-title {
+    display: none !important;
+}
+
