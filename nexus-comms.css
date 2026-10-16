@@ -1,0 +1,233 @@
+/* ========================================================================
+   PRIVILÈGE — NEXUS / COMMS v1.0 — STYLE COMMUN
+   S'applique SEULEMENT aux sujets du forum f4 et à leur vue Messenger.
+   Chargement conseillé : overall_header, après les feuilles générales.
+   ======================================================================== */
+:root {
+  --nxc-bg: var(--neutral, #19171f);
+  --nxc-panel: var(--neutrallight, #27222e);
+  --nxc-panel2: var(--neutralDark, #302a35);
+  --nxc-border: var(--neutralDarker, #4b4250);
+  --nxc-text: var(--textColor, #e8e2eb);
+  --nxc-strong: var(--textColorAccent, #f5f0f6);
+  --nxc-lilac: var(--color1, #8564a2);
+  --nxc-gold: var(--color2, #dfb78a);
+  --nxc-rose: var(--color4, #d4939b);
+  --nxc-mono: var(--mono-font, 'Space Mono', monospace);
+  --nxc-serif: var(--special-font, Georgia, serif);
+  --nxc-sans: var(--font, Arial, sans-serif);
+  --nxc-outgoing-bg: #503a59;
+  --nxc-outgoing-text: #f9f3fb;
+}
+
+/* ── Vue classique du sujet SMS ── */
+body.nxc-comms-topic .container > h1.page-title {
+  width: min(780px, 100%);
+  margin: 20px auto 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--nxc-border);
+  border-left: 3px solid var(--nxc-gold);
+  border-radius: 5px;
+  background: linear-gradient(110deg, var(--nxc-panel), var(--nxc-bg));
+  color: var(--nxc-strong);
+  font: italic 700 25px/1.3 var(--nxc-serif);
+  box-sizing: border-box;
+}
+body.nxc-comms-topic .container > h1.page-title::before {
+  content: 'NEXUS / PRIVATE TRANSMISSION';
+  display: block;
+  margin-bottom: 8px;
+  color: var(--nxc-gold);
+  font: 700 9px/1.5 var(--nxc-mono);
+  letter-spacing: .14em;
+  font-style: normal;
+}
+body.nxc-comms-topic .post.post_row.nxc-comms-post {
+  display: flex !important;
+  flex-direction: column !important;
+  width: min(780px, 100%) !important;
+  min-width: 0 !important;
+  margin: 0 auto 5px !important;
+  padding: 10px 16px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  box-sizing: border-box;
+  gap: 0;
+}
+/* Le message contient toujours son vrai contenu Forumactif : FAM peut le lire. */
+body.nxc-comms-topic .post_row.nxc-comms-post > .post_profile,
+body.nxc-comms-topic .post_row.nxc-comms-post .signature_div {
+  display: none !important;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post > .post_message.postbody.content {
+  position: relative;
+  display: block !important;
+  flex: none !important;
+  float: none !important;
+  width: fit-content !important;
+  min-width: 140px;
+  max-width: 78% !important;
+  align-self: flex-start !important;
+  margin: 0 !important;
+  padding: 12px 16px 12px !important;
+  box-sizing: border-box;
+  border: 1px solid var(--nxc-border);
+  border-left: 3px solid var(--nxc-lilac);
+  border-radius: 15px 15px 15px 4px;
+  background: var(--nxc-panel);
+  box-shadow: 0 5px 18px rgba(0,0,0,.07);
+  color: var(--nxc-text);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post > .post_message::before {
+  content: attr(data-nxc-author);
+  display: block;
+  margin-bottom: 8px;
+  color: var(--nxc-gold);
+  font: 700 9px/1.4 var(--nxc-mono);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post > .post_message > div:first-child {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  line-height: 1.7;
+  font: 13px/1.75 var(--nxc-sans);
+  overflow-wrap: anywhere;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post.nxc-comms-own > .post_message.postbody.content {
+  align-self: flex-end !important;
+  border: 1px solid #795c80;
+  border-right: 3px solid var(--nxc-gold);
+  border-radius: 15px 15px 4px 15px;
+  background: var(--nxc-outgoing-bg);
+  color: var(--nxc-outgoing-text);
+}
+body.nxc-comms-topic .post_row.nxc-comms-post.nxc-comms-own > .post_message::before {
+  color: #f1d4ab;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post > .post_details {
+  order: 2;
+  position: relative !important;
+  display: flex !important;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  width: auto !important;
+  padding: 5px 2px 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  font: 10px/1.5 var(--nxc-mono);
+  color: var(--nxc-text);
+  opacity: .75;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post.nxc-comms-own > .post_details {
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post > .post_details .post_date {
+  position: static !important;
+  font-size: 10px;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post > .post_details .profile-icons {
+  position: static !important;
+  display: flex;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+  opacity: .8;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post > .post_details .like_button {
+  position: static !important;
+  margin: 0;
+}
+body.nxc-comms-topic .post_row.nxc-comms-post .post_message img,
+body.nxc-comms-topic .post_row.nxc-comms-post .post_message iframe,
+body.nxc-comms-topic .post_row.nxc-comms-post .post_message table {
+  max-width: 100%;
+}
+
+/* ── Même langage graphique dans Messenger, sans remplacer sa mécanique ── */
+#FAM.nxc-comms-fam {
+  --nxc-fam-incoming: var(--nxc-panel, #27222e);
+}
+#FAM.nxc-comms-fam #FAM-toolbar .FAM-maintitle {
+  font: italic 700 21px/1.25 var(--nxc-serif) !important;
+  color: var(--nxc-strong) !important;
+}
+#FAM.nxc-comms-fam #FAM-toolbar .FAM-maintitle::before {
+  content: 'NEXUS / COMMS';
+  display: block;
+  margin-bottom: 5px;
+  color: var(--nxc-gold);
+  font: 700 8px/1.4 var(--nxc-mono);
+  letter-spacing: .13em;
+  font-style: normal;
+}
+#FAM.nxc-comms-fam .FAM-container-content {
+  border-top: 2px solid var(--nxc-lilac);
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg {
+  gap: 10px;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-text {
+  background: var(--nxc-fam-incoming) !important;
+  border: 1px solid var(--nxc-border) !important;
+  border-left: 2px solid var(--nxc-lilac) !important;
+  border-radius: 14px 14px 14px 4px !important;
+  padding: 11px 15px !important;
+  color: var(--nxc-text) !important;
+  font: 13px/1.65 var(--nxc-sans) !important;
+  overflow-wrap: anywhere;
+  box-shadow: 0 4px 13px rgba(0,0,0,.08);
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg.FAM-my-msg .FAM-msg-text {
+  background: var(--nxc-outgoing-bg) !important;
+  border: 1px solid #795c80 !important;
+  border-right: 2px solid var(--nxc-gold) !important;
+  border-radius: 14px 14px 4px 14px !important;
+  color: var(--nxc-outgoing-text) !important;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-info {
+  color: var(--nxc-text);
+  font: 9px/1.5 var(--nxc-mono);
+  letter-spacing: .035em;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-name,
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-date {
+  color: var(--nxc-text);
+  font-size: 10px;
+}
+#FAM.nxc-comms-fam #FAM-actions {
+  border: 1px solid var(--nxc-border);
+  border-radius: 9px;
+}
+#FAM.nxc-comms-fam #FAM-msg::placeholder {
+  color: var(--nxc-text);
+  opacity: .58;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-avatar {
+  border: 1px solid var(--nxc-border);
+  border-radius: 50%;
+}
+
+@media (max-width: 680px) {
+  body.nxc-comms-topic .post.post_row.nxc-comms-post { padding: 8px 4px !important; }
+  body.nxc-comms-topic .post_row.nxc-comms-post > .post_message.postbody.content {
+    max-width: 90% !important;
+  }
+  body.nxc-comms-topic .container > h1.page-title {
+    font-size: 20px;
+    padding: 12px;
+  }
+  #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-text {
+    padding: 9px 11px !important;
+    font-size: 12px !important;
+  }
+}
