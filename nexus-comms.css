@@ -1,5 +1,5 @@
 /* ========================================================================
-   PRIVILÈGE — NEXUS / COMMS v1.0 — STYLE COMMUN
+   PRIVILÈGE — NEXUS / COMMS v2.0 — STYLE COMMUN
    S'applique SEULEMENT aux sujets du forum f4 et à leur vue Messenger.
    Chargement conseillé : overall_header, après les feuilles générales.
    ======================================================================== */
@@ -153,72 +153,273 @@ body.nxc-comms-topic .post_row.nxc-comms-post .post_message table {
   max-width: 100%;
 }
 
-/* ── Même langage graphique dans Messenger, sans remplacer sa mécanique ── */
+/* ========================================================================
+   MESSENGER NEXUS / COMMS v2 — habillage CSS SEULEMENT
+   Actif uniquement quand le JavaScript f4 existant ajoute nxc-comms-fam.
+   Préserve les appels FAM, formulaires, fonctions, animations et messages.
+   ======================================================================== */
+
 #FAM.nxc-comms-fam {
-  --nxc-fam-incoming: var(--nxc-panel, #27222e);
+  /* Recalcul au niveau du Messenger : suit aussi un thème clair posé sur body. */
+  --nxc-bg: var(--neutral, #19171f);
+  --nxc-panel: var(--neutrallight, #27222e);
+  --nxc-panel2: var(--neutralDark, #302a35);
+  --nxc-border: var(--neutralDarker, #4b4250);
+  --nxc-text: var(--textColor, #e8e2eb);
+  --nxc-strong: var(--textColorAccent, #f5f0f6);
+  --nxc-lilac: var(--color1, #8564a2);
+  --nxc-gold: var(--color2, #dfb78a);
+  --nxc-rose: var(--color4, #d4939b);
+  /* La coque du Messenger reprend le fond du forum, pas un noir uni. */
+  background: var(--nxc-bg) !important;
+  color: var(--nxc-text);
+  box-shadow: 9px 0 35px rgba(0, 0, 0, .23);
+}
+
+#FAM.nxc-comms-fam #FAM-toolbar {
+  margin: 18px 20px 10px !important;
+  padding: 0 0 11px;
+  border-bottom: 1px solid var(--nxc-border);
 }
 #FAM.nxc-comms-fam #FAM-toolbar .FAM-maintitle {
-  font: italic 700 21px/1.25 var(--nxc-serif) !important;
+  margin: 0;
   color: var(--nxc-strong) !important;
+  font: italic 700 24px/1.18 var(--nxc-serif) !important;
+  letter-spacing: .01em;
 }
 #FAM.nxc-comms-fam #FAM-toolbar .FAM-maintitle::before {
   content: 'NEXUS / COMMS';
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   color: var(--nxc-gold);
-  font: 700 8px/1.4 var(--nxc-mono);
-  letter-spacing: .13em;
-  font-style: normal;
+  font: normal 700 9px/1.4 var(--nxc-mono);
+  letter-spacing: .17em;
 }
-#FAM.nxc-comms-fam .FAM-container-content {
-  border-top: 2px solid var(--nxc-lilac);
+#FAM.nxc-comms-fam #FAM-toolbar .FAM-maintitle::after {
+  content: 'TRANSMISSION NETWORK  /  NEW YORK, 2046';
+  display: block;
+  margin-top: 6px;
+  color: var(--nxc-text);
+  opacity: .55;
+  font: normal 600 8px/1.4 var(--nxc-mono);
+  letter-spacing: .08em;
 }
-#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg {
-  gap: 10px;
+#FAM.nxc-comms-fam #FAM-toolbar .FAM-toolbar-button {
+  color: var(--nxc-gold) !important;
 }
-#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-text {
-  background: var(--nxc-fam-incoming) !important;
-  border: 1px solid var(--nxc-border) !important;
-  border-left: 2px solid var(--nxc-lilac) !important;
-  border-radius: 14px 14px 14px 4px !important;
-  padding: 11px 15px !important;
+
+/* Onglets et petites commandes au-dessus de la conversation */
+#FAM.nxc-comms-fam #FAM-tab-container {
+  margin: 4px 20px 10px !important;
+}
+#FAM.nxc-comms-fam #FAM-tab-container .FAM-tab {
+  background: var(--nxc-panel) !important;
   color: var(--nxc-text) !important;
-  font: 13px/1.65 var(--nxc-sans) !important;
-  overflow-wrap: anywhere;
-  box-shadow: 0 4px 13px rgba(0,0,0,.08);
+  border: 1px solid var(--nxc-border);
+  border-radius: 5px !important;
+  min-height: 28px;
 }
-#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg.FAM-my-msg .FAM-msg-text {
-  background: var(--nxc-outgoing-bg) !important;
-  border: 1px solid #795c80 !important;
-  border-right: 2px solid var(--nxc-gold) !important;
-  border-radius: 14px 14px 4px 14px !important;
-  color: var(--nxc-outgoing-text) !important;
+#FAM.nxc-comms-fam #FAM-tab-container .FAM-tab.FAM-tab-active {
+  background: var(--nxc-gold) !important;
+  color: #211b22 !important;
+  border-color: var(--nxc-gold);
+  font-weight: 700;
+}
+#FAM.nxc-comms-fam #FAM-tab-container #FAM-tab-add {
+  background: var(--nxc-panel) !important;
+  color: var(--nxc-gold) !important;
+  border: 1px solid var(--nxc-border);
+  border-radius: 5px;
+}
+
+/* Surface de conversation : mêmes bordures violette/rose que le sujet RP */
+#FAM.nxc-comms-fam .FAM-container-content {
+  min-height: 0;
+  margin: 0 20px 14px !important;
+  border: 1px solid var(--nxc-border) !important;
+  border-top: 3px solid var(--nxc-lilac) !important;
+  border-bottom: 1px solid var(--nxc-rose) !important;
+  border-radius: 8px !important;
+  background: var(--nxc-panel) !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .09);
+  overflow: hidden;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic {
+  background:
+    radial-gradient(circle at 95% 10%, rgba(138, 95, 164, .065), transparent 48%),
+    var(--nxc-panel) !important;
+  padding: 0 24px 22px !important;
+  color: var(--nxc-text);
+}
+
+/* Réutilise le pseudo-élément déjà prévu par FAM, sans ajout de JS/HTML. */
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic::before {
+  content: 'NEXUS / TRANSMISSION LOG   ◇   NYC 2046' !important;
+  display: flex !important;
+  align-items: center;
+  height: 48px !important;
+  margin: 0 0 22px !important;
+  padding: 0 14px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--nxc-border);
+  border-left: 2px solid var(--nxc-gold);
+  background: var(--nxc-panel) !important;
+  color: var(--nxc-gold) !important;
+  font: normal 700 9px/1.4 var(--nxc-mono);
+  letter-spacing: .115em;
+  z-index: 8;
+  position: sticky;
+  top: 0;
+  pointer-events: none;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic::after {
+  /* Évite l'ancienne bande noire de fondu sous les messages. */
+  display: none !important;
+}
+
+/* Chaque message : bloc compact, auteur technique au-dessus, bulles lisibles. */
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin: 0 0 23px;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg.FAM-my-msg {
+  flex-direction: row-reverse;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-avatar {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid var(--nxc-border) !important;
+  background: var(--nxc-bg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(140, 98, 167, .08);
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-box {
+  width: min(78%, 570px) !important;
+  max-width: min(78%, 570px);
+  flex: 0 1 auto;
+  float: none !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg.FAM-my-msg .FAM-msg-box {
+  align-items: flex-end;
 }
 #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-info {
-  color: var(--nxc-text);
-  font: 9px/1.5 var(--nxc-mono);
-  letter-spacing: .035em;
+  order: -1;
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  margin: 0;
+  padding: 0 3px;
+  font: 700 9px/1.6 var(--nxc-mono);
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg.FAM-my-msg .FAM-msg-info {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
 }
 #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-name,
 #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-date {
-  color: var(--nxc-text);
-  font-size: 10px;
+  flex: 0 1 auto;
+  width: auto;
+  height: auto;
+  line-height: 1.6;
+  font-size: 9px !important;
 }
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-name {
+  color: var(--nxc-gold);
+  font-family: var(--nxc-mono) !important;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-date {
+  color: var(--nxc-text);
+  font-family: var(--nxc-mono) !important;
+  font-weight: 400;
+  opacity: .6;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  width: 100%;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg.FAM-my-msg .FAM-msg-content {
+  flex-direction: row-reverse;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-text {
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 62px;
+  padding: 13px 17px !important;
+  background: var(--nxc-bg) !important;
+  border: 1px solid var(--nxc-border) !important;
+  border-left: 3px solid var(--nxc-lilac) !important;
+  border-radius: 15px 15px 15px 4px !important;
+  color: var(--nxc-text) !important;
+  font: 13px/1.7 var(--nxc-sans) !important;
+  overflow-wrap: anywhere;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .09);
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg.FAM-my-msg .FAM-msg-text {
+  background: var(--nxc-outgoing-bg) !important;
+  color: var(--nxc-outgoing-text) !important;
+  border: 1px solid #795c80 !important;
+  border-right: 3px solid var(--nxc-gold) !important;
+  border-radius: 15px 15px 4px 15px !important;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg[data-compact="yes"] .FAM-msg-info {
+  display: none !important;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-actions {
+  flex-shrink: 0;
+}
+#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-button:hover {
+  color: var(--nxc-gold) !important;
+}
+
+/* Saisie : zone compacte intégrée au reste de NEXUS. */
 #FAM.nxc-comms-fam #FAM-actions {
-  border: 1px solid var(--nxc-border);
-  border-radius: 9px;
+  margin: 8px 20px 17px !important;
+  background: var(--nxc-bg) !important;
+  border: 1px solid var(--nxc-border) !important;
+  border-radius: 8px !important;
+  box-shadow: inset 3px 0 0 var(--nxc-lilac);
+  min-height: 55px;
+}
+#FAM.nxc-comms-fam #FAM-msg {
+  box-sizing: border-box;
+  color: var(--nxc-text) !important;
+  font: 12px/1.65 var(--nxc-mono) !important;
+  min-height: 55px;
+  padding: 15px 105px 13px 18px !important;
+  background: transparent !important;
 }
 #FAM.nxc-comms-fam #FAM-msg::placeholder {
-  color: var(--nxc-text);
-  opacity: .58;
+  color: var(--nxc-text) !important;
+  opacity: .56;
 }
-#FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-avatar {
-  border: 1px solid var(--nxc-border);
-  border-radius: 50%;
+#FAM.nxc-comms-fam #FAM-actions .FAM-buttons-container > button {
+  color: var(--nxc-gold) !important;
+}
+#FAM.nxc-comms-fam #FAM-actions .FAM-buttons-container > button:hover {
+  color: var(--nxc-lilac) !important;
 }
 
 @media (max-width: 680px) {
-  body.nxc-comms-topic .post.post_row.nxc-comms-post { padding: 8px 4px !important; }
+  body.nxc-comms-topic .post.post_row.nxc-comms-post {
+    padding: 8px 4px !important;
+  }
   body.nxc-comms-topic .post_row.nxc-comms-post > .post_message.postbody.content {
     max-width: 90% !important;
   }
@@ -226,8 +427,50 @@ body.nxc-comms-topic .post_row.nxc-comms-post .post_message table {
     font-size: 20px;
     padding: 12px;
   }
+  #FAM.nxc-comms-fam #FAM-toolbar {
+    margin: 12px 12px 7px !important;
+  }
+  #FAM.nxc-comms-fam #FAM-toolbar .FAM-maintitle {
+    font-size: 19px !important;
+  }
+  #FAM.nxc-comms-fam #FAM-toolbar .FAM-maintitle::after {
+    font-size: 7px;
+  }
+  #FAM.nxc-comms-fam #FAM-tab-container {
+    margin: 3px 12px 8px !important;
+  }
+  #FAM.nxc-comms-fam .FAM-container-content {
+    margin: 0 10px 10px !important;
+  }
+  #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic {
+    padding: 0 10px 14px !important;
+  }
+  #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic::before {
+    font-size: 8px;
+    letter-spacing: .04em;
+    padding: 0 8px;
+  }
+  #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-box {
+    width: min(86%, 570px) !important;
+    max-width: min(86%, 570px);
+  }
+  #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg {
+    gap: 5px;
+  }
+  #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-avatar {
+    width: 27px;
+    height: 27px;
+    flex-basis: 27px;
+  }
   #FAM.nxc-comms-fam #FAM-content.FAM-viewing-topic .FAM-msg-text {
-    padding: 9px 11px !important;
+    padding: 10px 12px !important;
     font-size: 12px !important;
+  }
+  #FAM.nxc-comms-fam #FAM-actions {
+    margin: 7px 10px 12px !important;
+  }
+  #FAM.nxc-comms-fam #FAM-msg {
+    font-size: 11px !important;
+    padding-right: 100px !important;
   }
 }
