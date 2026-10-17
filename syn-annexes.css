@@ -1,0 +1,62 @@
+/* PRIVILÈGE · ANNEXES SYN / V1 — héberger sur GitHub et charger dans overall_header.
+   Les deux sujets n'incluent volontairement ni CSS inline ni JavaScript. */
+.syn-annex,.syn-annex *{box-sizing:border-box}
+.syn-annex{
+  --sa-bg:var(--neutral,#19181d);
+  --sa-panel:var(--neutrallight,#24212b);
+  --sa-inset:var(--neutralDark,#211e27);
+  --sa-line:var(--neutralDarker,#403846);
+  --sa-ink:var(--textColorAccent,#f4f0f5);
+  --sa-text:var(--textColor,#c9c4cf);
+  --sa-gold:var(--accentClr,#dec49a);
+  --sa-purple:var(--color1,#77519e);
+  --sa-rose:var(--color4,#c98c9b);
+  width:100%;max-width:850px;margin:18px auto;
+  border:1px solid var(--sa-line);border-top:3px solid var(--sa-purple);border-bottom:2px solid var(--sa-rose);
+  border-radius:5px;overflow:hidden;background:var(--sa-bg);color:var(--sa-text);
+  font:13px/1.9 var(--font,'Open Sans',Arial,sans-serif);text-align:left;
+  box-shadow:0 10px 30px rgba(0,0,0,.10);
+}
+.syn-annex a{color:var(--sa-gold);text-decoration:none;border-bottom:1px solid currentColor}
+.syn-annex a:hover,.syn-annex a:focus-visible{color:var(--sa-ink)}
+.syn-annex a:focus-visible{outline:2px solid var(--sa-gold);outline-offset:3px}
+.syn-annex .sa-top{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 24px;background:var(--sa-panel);border-bottom:1px solid var(--sa-line)}
+.syn-annex .sa-mono{font:700 10px/1.5 var(--mono-font,'Space Mono',monospace);text-transform:uppercase;letter-spacing:.12em;color:var(--sa-gold)}
+.syn-annex .sa-state{font:9px/1.5 var(--mono-font,monospace);letter-spacing:.08em;color:var(--sa-text);text-transform:uppercase;opacity:.8}
+.syn-annex .sa-signal{display:inline-block;height:7px;width:7px;margin-right:8px;border-radius:50%;background:var(--sa-gold)}
+.syn-annex .sa-hero{padding:35px 34px 32px;background:linear-gradient(110deg,var(--sa-panel),var(--sa-bg));border-bottom:1px solid var(--sa-line)}
+.syn-annex .sa-eyebrow{color:var(--sa-gold);font:700 10px/1.6 var(--mono-font,monospace);letter-spacing:.17em;text-transform:uppercase}
+.syn-annex .sa-title{color:var(--sa-ink);font:italic 700 clamp(26px,4vw,42px)/1.14 var(--special-font,Georgia,serif);letter-spacing:.02em;margin:13px 0 8px;padding:0;border:0;text-transform:none}
+.syn-annex .sa-subtitle{display:block;margin:0 0 20px;color:var(--sa-gold);font:700 10px/1.6 var(--mono-font,monospace);letter-spacing:.16em;text-transform:uppercase}
+.syn-annex .sa-lead{font:italic 15px/1.9 var(--special-font,Georgia,serif);color:var(--sa-ink);max-width:680px;margin:0 0 12px}
+.syn-annex .sa-hero p{margin:10px 0 0}
+.syn-annex .sa-body{padding:7px 34px 26px}
+.syn-annex .sa-section{display:grid;grid-template-columns:58px minmax(0,1fr);gap:14px;padding:24px 0;border-bottom:1px solid var(--sa-line)}
+.syn-annex .sa-section:last-child{border-bottom:0}
+.syn-annex .sa-index{font:italic 700 29px/1.2 var(--special-font,Georgia,serif);color:var(--sa-gold);opacity:.6}
+.syn-annex .sa-kicker{display:block;color:var(--sa-gold);font:700 9px/1.6 var(--mono-font,monospace);letter-spacing:.12em;text-transform:uppercase;margin:0 0 5px}
+.syn-annex .sa-heading{display:block;margin:0 0 12px;padding:0;border:0;color:var(--sa-ink);font:italic 700 21px/1.3 var(--special-font,Georgia,serif);text-transform:none;letter-spacing:0}
+.syn-annex .sa-section p{margin:0 0 12px}
+.syn-annex .sa-section p:last-child{margin-bottom:0}
+.syn-annex strong,.syn-annex b{color:var(--sa-ink);font-weight:700}
+.syn-annex .sa-card{padding:14px 16px;margin:12px 0;background:var(--sa-panel);border:1px solid var(--sa-line);border-left:2px solid var(--sa-purple);border-radius:3px}
+.syn-annex .sa-card p{margin:0 0 7px}.syn-annex .sa-card p:last-child{margin:0}
+.syn-annex .sa-card-title{display:block;color:var(--sa-gold);font:700 9px/1.5 var(--mono-font,monospace);letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px}
+.syn-annex .sa-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}
+.syn-annex .sa-step{background:var(--sa-panel);border:1px solid var(--sa-line);padding:13px 14px;min-width:0}
+.syn-annex .sa-step b{display:block;margin-bottom:4px;color:var(--sa-gold);font:700 10px/1.6 var(--mono-font,monospace);letter-spacing:.07em}
+.syn-annex .sa-step span{display:block;font-size:12px;line-height:1.65}
+.syn-annex .sa-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.syn-annex .sa-trait{border:1px solid var(--sa-line);background:var(--sa-panel);padding:12px 14px}
+.syn-annex .sa-trait strong{display:block;font-size:11px;margin-bottom:5px}
+.syn-annex .sa-trait span{display:block;font-size:11px;line-height:1.65}
+.syn-annex .sa-list{padding:0;margin:10px 0;list-style:none}
+.syn-annex .sa-list li{border-bottom:1px solid var(--sa-line);padding:8px 0 8px 18px;position:relative}
+.syn-annex .sa-list li:before{content:'◇';position:absolute;left:0;color:var(--sa-gold)}
+.syn-annex .sa-code{display:block;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;margin:12px 0;padding:14px;border:1px solid var(--sa-line);background:var(--sa-inset);font:11px/1.85 var(--mono-font,monospace);color:var(--sa-gold);user-select:all}
+.syn-annex .sa-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:17px 24px;background:var(--sa-panel);border-top:1px solid var(--sa-line)}
+.syn-annex .sa-foot em{font:italic 16px/1.5 var(--special-font,Georgia,serif);color:var(--sa-ink)}
+.syn-annex .sa-foot small{font:9px/1.5 var(--mono-font,monospace);letter-spacing:.06em;color:var(--sa-gold)}
+[data-color-scheme="light"] .syn-annex{--sa-gold:#835a39}
+@media(max-width:650px){.syn-annex .sa-hero{padding:24px 20px}.syn-annex .sa-body{padding:0 20px 20px}.syn-annex .sa-top,.syn-annex .sa-foot{padding:12px 18px}.syn-annex .sa-section{grid-template-columns:35px minmax(0,1fr);gap:10px;padding:19px 0}.syn-annex .sa-index{font-size:23px}.syn-annex .sa-heading{font-size:19px}.syn-annex .sa-duo,.syn-annex .sa-steps{grid-template-columns:1fr}}
+@media(max-width:420px){.syn-annex .sa-state{display:none}.syn-annex .sa-hero{padding:19px 14px}.syn-annex .sa-body{padding:0 14px 16px}.syn-annex .sa-section{grid-template-columns:1fr;gap:4px}.syn-annex .sa-index{font-size:17px}}
