@@ -165,3 +165,135 @@
 .nx-e__checks label{display:flex;align-items:center;gap:10px;cursor:pointer}
 .nx-e--admin .nx-c__notice{margin-top:26px}
 @media(max-width:720px){.nx-e__adminhead{padding:24px 17px 21px}.nx-e__adminbody{padding:22px 17px}}
+
+
+/* NEXUS CITOYEN — correction de largeur dans les sujets Forumactif.
+   A AJOUTER TOUT A LA FIN de nexus-echos.css sur GitHub.
+   Cette correction est limitée au terminal citoyen. */
+
+/* Les adaptations doivent dépendre de la largeur du message,
+   pas de celle de l'écran entier. */
+#nx-echos-citizen.nx-c {
+  container-type: inline-size;
+  min-width: 0;
+  max-width: 100%;
+}
+
+#nx-echos-citizen .nx-c__workspace,
+#nx-echos-citizen .nx-c__content,
+#nx-echos-citizen .nx-c__tiles,
+#nx-echos-citizen .nx-c__tile {
+  min-width: 0;
+}
+
+@container (max-width: 980px) {
+  #nx-echos-citizen .nx-c__layout {
+    grid-template-columns: 172px minmax(0, 1fr);
+  }
+  #nx-echos-citizen .nx-c__sidebar { padding: 20px 10px 16px; }
+  #nx-echos-citizen .nx-c__heading { padding: 24px 21px; }
+  #nx-echos-citizen .nx-c__content { padding: 21px; }
+  #nx-echos-citizen .nx-c__hero { padding: 24px; }
+  #nx-echos-citizen .nx-c__orbit { right: -120px; opacity: .5; }
+  #nx-echos-citizen .nx-c__tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  #nx-echos-citizen .nx-c__tile {
+    min-height: 145px;
+    padding: 15px;
+  }
+  #nx-echos-citizen .nx-c__tile:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    min-height: 110px;
+  }
+  #nx-echos-citizen .nx-c__sectionhead { flex-wrap: wrap; }
+}
+
+@container (max-width: 650px) {
+  #nx-echos-citizen .nx-c__layout {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  #nx-echos-citizen .nx-c__sidebar {
+    padding: 15px;
+    border-right: 0;
+    border-bottom: 1px solid var(--nx-c-line);
+  }
+  #nx-echos-citizen .nx-c__brand {
+    padding: 0 0 12px;
+    border-bottom: 0;
+  }
+  #nx-echos-citizen .nx-c__brand strong { font-size: 28px; }
+  #nx-echos-citizen .nx-c__brand-kicker,
+  #nx-echos-citizen .nx-c__brand-sub,
+  #nx-echos-citizen .nx-c__nav-label,
+  #nx-echos-citizen .nx-c__sidebar-foot { display: none; }
+  #nx-echos-citizen .nx-c__tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 5px;
+  }
+  #nx-echos-citizen .nx-c__tab {
+    flex: 1 1 145px;
+    width: auto;
+    padding: 9px;
+    font-size: 11px;
+    white-space: normal;
+  }
+  #nx-echos-citizen .nx-c__heading { padding: 19px 16px; }
+  #nx-echos-citizen .nx-c__header-symbol { display: none; }
+  #nx-echos-citizen .nx-c__content { padding: 17px 15px; }
+  #nx-echos-citizen .nx-c__hero { min-height: 230px; padding: 21px; }
+  #nx-echos-citizen .nx-c__form-grid { grid-template-columns: minmax(0, 1fr); }
+  #nx-echos-citizen .nx-c__footer { padding: 12px 15px; }
+}
+
+@container (max-width: 420px) {
+  #nx-echos-citizen .nx-c__tiles { grid-template-columns: minmax(0, 1fr); }
+  #nx-echos-citizen .nx-c__tile:last-child:nth-child(odd) { grid-column: auto; }
+  #nx-echos-citizen .nx-c__hero h3 { font-size: 27px; }
+  #nx-echos-citizen .nx-c__orbit { opacity: .22; }
+  #nx-echos-citizen .nx-c__topline-right { display: none; }
+}
+
+
+/* NEXUS // Dialogue guidé V1.1 — styles propres au terminal citoyen */
+#nx-echos-citizen .nx-dialogue{max-width:100%;min-width:0}
+#nx-echos-citizen .nx-dialogue__intro{padding:0 0 18px;border-bottom:1px solid var(--nx-c-line)}
+#nx-echos-citizen .nx-dialogue__intro h3{font-size:clamp(23px,3.2vw,34px);line-height:1.15;letter-spacing:-.9px;margin:12px 0 9px;color:var(--nx-c-text)}
+#nx-echos-citizen .nx-dialogue__intro p{font-size:12px;line-height:1.8;color:var(--nx-c-subtext);max-width:670px}
+#nx-echos-citizen .nx-dialogue__toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:16px 0 14px}
+#nx-echos-citizen .nx-dialogue__status{display:flex;align-items:center;gap:7px;font-size:9px;color:var(--nx-c-subtext);letter-spacing:1.1px;font-weight:800}
+#nx-echos-citizen .nx-dialogue__statuslight{width:7px;height:7px;background:var(--nx-c-accent);display:inline-block;border-radius:50%;flex:none}
+#nx-echos-citizen .nx-dialogue__actions{display:flex;gap:6px;flex-wrap:wrap}
+#nx-echos-citizen .nx-dialogue__control{border:1px solid var(--nx-c-line);background:var(--nx-c-surface);color:var(--nx-c-text);font-size:11px;padding:7px 11px;line-height:1.5;border-radius:3px;white-space:nowrap}
+#nx-echos-citizen .nx-dialogue__control:hover:not(:disabled){border-color:var(--nx-c-accent)}
+#nx-echos-citizen .nx-dialogue__control:disabled{opacity:.4;cursor:not-allowed}
+#nx-echos-citizen .nx-dialogue__feed{display:flex;flex-direction:column;gap:12px;max-height:470px;min-height:170px;overflow:auto;padding:15px 13px;overscroll-behavior:contain;border:1px solid var(--nx-c-line);background:var(--nx-c-sidebar);scroll-behavior:smooth}
+#nx-echos-citizen .nx-dialogue__bubble{width:fit-content;max-width:94%;min-width:0;padding:12px 14px;border-radius:7px;border:1px solid var(--nx-c-line);background:var(--nx-c-surface);overflow-wrap:anywhere;align-self:flex-start}
+#nx-echos-citizen .nx-dialogue__bubble--member{align-self:flex-end;background:var(--nx-c-accent-faint);border-color:var(--nx-c-accent);max-width:87%}
+#nx-echos-citizen .nx-dialogue__who{display:block;margin-bottom:7px;color:var(--nx-c-accent);font-size:9px;font-weight:800;letter-spacing:1.2px}
+#nx-echos-citizen .nx-dialogue__bubble--member .nx-dialogue__who{color:var(--nx-c-text)}
+#nx-echos-citizen .nx-dialogue__body{white-space:pre-wrap;font-size:12px;line-height:1.8;color:var(--nx-c-text)}
+#nx-echos-citizen .nx-dialogue__sources{margin-top:10px;padding-top:9px;border-top:1px solid var(--nx-c-line);display:flex;flex-wrap:wrap;gap:6px}
+#nx-echos-citizen .nx-dialogue__source{display:inline-flex;font-size:10px;line-height:1.3;border:1px solid var(--nx-c-line);padding:7px 9px;color:var(--nx-c-text);background:var(--nx-c-sidebar);border-radius:3px}
+#nx-echos-citizen .nx-dialogue__source:hover{border-color:var(--nx-c-accent)}
+#nx-echos-citizen .nx-dialogue__responses{margin-top:17px}
+#nx-echos-citizen .nx-dialogue__responses-title{font-size:9px;font-weight:800;letter-spacing:1.6px;color:var(--nx-c-subtext);margin-bottom:10px}
+#nx-echos-citizen .nx-dialogue__choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#nx-echos-citizen .nx-dialogue__choice{display:flex;align-items:center;gap:9px;min-width:0;width:100%;padding:13px 12px;border:1px solid var(--nx-c-line);color:var(--nx-c-text);background:var(--nx-c-surface);text-align:left;font-size:12px;line-height:1.4;border-radius:3px;overflow-wrap:anywhere}
+#nx-echos-citizen .nx-dialogue__choice::before{content:'›';color:var(--nx-c-accent);font-weight:900;font-size:17px;line-height:1;flex:none}
+#nx-echos-citizen .nx-dialogue__choice:hover:not(:disabled){background:var(--nx-c-accent-faint);border-color:var(--nx-c-accent)}
+#nx-echos-citizen .nx-dialogue__choice:disabled{opacity:.6;cursor:not-allowed}
+#nx-echos-citizen .nx-dialogue__notice{margin-top:18px;font-size:10px;line-height:1.75;padding:11px 13px;color:var(--nx-c-subtext);background:var(--nx-c-surface);border-left:2px solid var(--nx-c-accent)}
+#nx-echos-citizen .nx-dialogue__notice strong{color:var(--nx-c-text)}
+#nx-echos-citizen .nx-dialogue__bottom{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-top:25px;padding-top:18px;border-top:1px solid var(--nx-c-line)}
+#nx-echos-citizen .nx-dialogue__bottom>div{flex:1 1 225px}
+#nx-echos-citizen .nx-dialogue__bottom-kicker{display:block;color:var(--nx-c-accent);letter-spacing:1.2px;font-size:9px;font-weight:800;margin-bottom:6px}
+#nx-echos-citizen .nx-dialogue__bottom strong{font-size:14px}
+#nx-echos-citizen .nx-dialogue__bottom p{color:var(--nx-c-subtext);font-size:11px;margin-top:4px;line-height:1.6}
+@container (max-width:760px){#nx-echos-citizen .nx-dialogue__choices{grid-template-columns:1fr}#nx-echos-citizen .nx-dialogue__feed{max-height:415px}}
+@container (max-width:420px){#nx-echos-citizen .nx-dialogue__toolbar{align-items:flex-start}#nx-echos-citizen .nx-dialogue__control{padding:7px 9px}#nx-echos-citizen .nx-dialogue__feed{padding:10px 8px;max-height:375px}#nx-echos-citizen .nx-dialogue__bubble{max-width:100%;padding:10px 11px}}
+@media (prefers-reduced-motion: reduce){#nx-echos-citizen .nx-dialogue__feed{scroll-behavior:auto}}
