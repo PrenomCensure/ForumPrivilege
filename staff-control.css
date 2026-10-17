@@ -130,3 +130,163 @@
 .nx-staff-control .nx-grid > a.nx-card:nth-of-type(even) {
   border-top-color: var(--nx-gold);
 }
+
+
+/* ============================================================
+   V3 — NEXUS / STAFF CONTROL : quatre dossiers (01 a 04)
+   Consolidation : V2 du CONTROL ROOM conservée ci-dessus.
+   Aucune modification des JS ou des templates Forumactif.
+   ============================================================ */
+.nx-staff-directory { max-width: 900px; }
+.nx-staff-directory .nx-d-hero::after { content:"01"; }
+.nx-staff-directory.nx-staff-dossier-02 .nx-d-hero::after { content:"02"; }
+.nx-staff-directory.nx-staff-dossier-03 .nx-d-hero::after { content:"03"; }
+.nx-staff-directory.nx-staff-dossier-04 .nx-d-hero::after { content:"04"; }
+.nx-staff-directory .nx-hero-description { max-width: 760px; }
+.nx-staff-directory .nx-d-nav {
+  display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;
+  border-bottom:1px solid var(--nx-line); padding:0 0 12px;
+}
+.nx-staff-directory .nx-d-navlink {
+  min-width:0; display:inline-flex; align-items:center; gap:7px;
+  background:var(--nx-card); border:1px solid var(--nx-line);
+  border-radius:4px; padding:7px 9px; color:var(--nx-body) !important;
+  font:700 9px/1.4 var(--mono-font,'Space Mono',monospace);
+  text-transform:uppercase; letter-spacing:.025em;
+}
+.nx-staff-directory .nx-d-navlink b { color:var(--nx-gold); font-weight:700; }
+.nx-staff-directory .nx-d-navlink:hover { border-color:var(--nx-violet); color:var(--nx-ink) !important; }
+.nx-staff-directory .nx-d-navlink.is-active { border-color:var(--nx-violet); background:var(--nx-wash); color:var(--nx-ink) !important; }
+.nx-staff-directory .nx-d-tiles { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
+.nx-staff-directory .nx-d-tiles-three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.nx-staff-directory .nx-d-tile {
+  display:flex;flex-direction:column; gap:8px; min-width:0;
+  padding:16px; background:var(--nx-card); border:1px solid var(--nx-line);
+  border-left:3px solid var(--nx-violet);border-radius:5px;
+}
+.nx-staff-directory .nx-d-tile:nth-of-type(even) { border-left-color:var(--nx-gold); }
+.nx-staff-directory .nx-d-tile-title {
+  color:var(--nx-ink);font:700 16px/1.35 var(--special-font,Georgia,serif);
+}
+.nx-staff-directory .nx-d-tile p { color:var(--nx-body);font-size:12px;line-height:1.6; }
+.nx-staff-directory .nx-d-tile-tag { margin-top:auto;align-self:flex-start;
+  background:var(--nx-bg);border:1px solid var(--nx-line);border-radius:3px;
+  padding:4px 7px;color:var(--nx-gold);font:700 9px/1.4 var(--mono-font,monospace);
+  text-transform:uppercase;letter-spacing:.07em;
+}
+.nx-staff-directory .nx-d-checks { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
+.nx-staff-directory .nx-d-check { display:flex;gap:10px; min-width:0;
+  padding:12px 14px; background:var(--nx-card);border:1px solid var(--nx-line);border-radius:4px;
+}
+.nx-staff-directory .nx-d-check-symbol { color:var(--nx-violet);font:24px/1 var(--special-font,Georgia,serif);flex-shrink:0; }
+.nx-staff-directory .nx-d-check strong { display:block;color:var(--nx-ink);font-size:12px;line-height:1.5; }
+.nx-staff-directory .nx-d-check p { margin-top:4px;color:var(--nx-body);font-size:11px;line-height:1.6; }
+.nx-staff-directory .nx-d-path { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px; }
+.nx-staff-directory .nx-d-pathitem { min-width:0;padding:13px 12px;background:var(--nx-card);
+  border:1px solid var(--nx-line);border-top:2px solid var(--nx-violet);border-radius:4px;
+}
+.nx-staff-directory .nx-d-pathitem:nth-of-type(even) { border-top-color:var(--nx-gold); }
+.nx-staff-directory .nx-d-pathitem strong { display:block;margin-top:6px;color:var(--nx-ink);font-size:11px; }
+.nx-staff-directory .nx-d-pathitem p {margin-top:5px;font-size:11px;line-height:1.55;color:var(--nx-body);}
+.nx-staff-directory .nx-d-guide {border:1px solid var(--nx-line);background:var(--nx-card);border-radius:5px;padding:15px;}
+.nx-staff-directory .nx-d-guide-head {display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:13px;}
+.nx-staff-directory .nx-d-guide-head h3 {font:700 16px/1.35 var(--special-font,Georgia,serif);color:var(--nx-ink);}
+.nx-staff-directory .nx-d-signal {font:700 9px/1.35 var(--mono-font,monospace);letter-spacing:.06em;color:var(--nx-gold);}
+.nx-staff-directory .nx-d-guide-lines {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
+.nx-staff-directory .nx-d-guide-lines > div {min-width:0;background:var(--nx-bg);border:1px solid var(--nx-line);border-radius:3px;padding:10px;}
+.nx-staff-directory .nx-d-guide-lines span {display:block;font:700 10px/1.4 var(--mono-font,monospace);color:var(--nx-gold);letter-spacing:.03em;text-transform:uppercase;}
+.nx-staff-directory .nx-d-guide-lines em {display:block;margin-top:4px;font:normal 11px/1.5 var(--font,Arial,sans-serif);color:var(--nx-body);}
+.nx-staff-directory .nx-d-guide-tail {margin-top:12px!important;font-size:11px;color:var(--nx-body);opacity:.8;}
+.nx-staff-directory .nx-d-callout {margin-top:13px;padding:13px 15px;background:var(--nx-wash);border:1px solid var(--nx-line);border-left:3px solid var(--nx-gold);border-radius:4px;}
+.nx-staff-directory .nx-d-callout strong {display:block;margin-top:5px;color:var(--nx-ink);font-size:12px;}
+.nx-staff-directory .nx-d-callout p {margin-top:4px;font-size:11px;line-height:1.6;color:var(--nx-body);}
+.nx-staff-directory .nx-footer a {color:var(--nx-ink)!important;}
+@media(max-width:700px){
+  .nx-staff-directory .nx-d-path {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .nx-staff-directory .nx-d-tiles-three {grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:520px){
+  .nx-staff-directory .nx-d-tiles, .nx-staff-directory .nx-d-checks,
+  .nx-staff-directory .nx-d-guide-lines {grid-template-columns:1fr;}
+  .nx-staff-directory .nx-d-navlink {flex:1 1 auto;justify-content:center;}
+}
+
+
+/* ============================================================
+   V3 — NEXUS / STAFF CONTROL : quatre dossiers (01 a 04)
+   Consolidation : V2 du CONTROL ROOM conservée ci-dessus.
+   Aucune modification des JS ou des templates Forumactif.
+   ============================================================ */
+.nx-staff-directory { max-width: 900px; }
+.nx-staff-directory .nx-d-hero::after { content:"01"; }
+.nx-staff-directory.nx-staff-dossier-02 .nx-d-hero::after { content:"02"; }
+.nx-staff-directory.nx-staff-dossier-03 .nx-d-hero::after { content:"03"; }
+.nx-staff-directory.nx-staff-dossier-04 .nx-d-hero::after { content:"04"; }
+.nx-staff-directory .nx-hero-description { max-width: 760px; }
+.nx-staff-directory .nx-d-nav {
+  display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;
+  border-bottom:1px solid var(--nx-line); padding:0 0 12px;
+}
+.nx-staff-directory .nx-d-navlink {
+  min-width:0; display:inline-flex; align-items:center; gap:7px;
+  background:var(--nx-card); border:1px solid var(--nx-line);
+  border-radius:4px; padding:7px 9px; color:var(--nx-body) !important;
+  font:700 9px/1.4 var(--mono-font,'Space Mono',monospace);
+  text-transform:uppercase; letter-spacing:.025em;
+}
+.nx-staff-directory .nx-d-navlink b { color:var(--nx-gold); font-weight:700; }
+.nx-staff-directory .nx-d-navlink:hover { border-color:var(--nx-violet); color:var(--nx-ink) !important; }
+.nx-staff-directory .nx-d-navlink.is-active { border-color:var(--nx-violet); background:var(--nx-wash); color:var(--nx-ink) !important; }
+.nx-staff-directory .nx-d-tiles { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
+.nx-staff-directory .nx-d-tiles-three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.nx-staff-directory .nx-d-tile {
+  display:flex;flex-direction:column; gap:8px; min-width:0;
+  padding:16px; background:var(--nx-card); border:1px solid var(--nx-line);
+  border-left:3px solid var(--nx-violet);border-radius:5px;
+}
+.nx-staff-directory .nx-d-tile:nth-of-type(even) { border-left-color:var(--nx-gold); }
+.nx-staff-directory .nx-d-tile-title {
+  color:var(--nx-ink);font:700 16px/1.35 var(--special-font,Georgia,serif);
+}
+.nx-staff-directory .nx-d-tile p { color:var(--nx-body);font-size:12px;line-height:1.6; }
+.nx-staff-directory .nx-d-tile-tag { margin-top:auto;align-self:flex-start;
+  background:var(--nx-bg);border:1px solid var(--nx-line);border-radius:3px;
+  padding:4px 7px;color:var(--nx-gold);font:700 9px/1.4 var(--mono-font,monospace);
+  text-transform:uppercase;letter-spacing:.07em;
+}
+.nx-staff-directory .nx-d-checks { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
+.nx-staff-directory .nx-d-check { display:flex;gap:10px; min-width:0;
+  padding:12px 14px; background:var(--nx-card);border:1px solid var(--nx-line);border-radius:4px;
+}
+.nx-staff-directory .nx-d-check-symbol { color:var(--nx-violet);font:24px/1 var(--special-font,Georgia,serif);flex-shrink:0; }
+.nx-staff-directory .nx-d-check strong { display:block;color:var(--nx-ink);font-size:12px;line-height:1.5; }
+.nx-staff-directory .nx-d-check p { margin-top:4px;color:var(--nx-body);font-size:11px;line-height:1.6; }
+.nx-staff-directory .nx-d-path { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px; }
+.nx-staff-directory .nx-d-pathitem { min-width:0;padding:13px 12px;background:var(--nx-card);
+  border:1px solid var(--nx-line);border-top:2px solid var(--nx-violet);border-radius:4px;
+}
+.nx-staff-directory .nx-d-pathitem:nth-of-type(even) { border-top-color:var(--nx-gold); }
+.nx-staff-directory .nx-d-pathitem strong { display:block;margin-top:6px;color:var(--nx-ink);font-size:11px; }
+.nx-staff-directory .nx-d-pathitem p {margin-top:5px;font-size:11px;line-height:1.55;color:var(--nx-body);}
+.nx-staff-directory .nx-d-guide {border:1px solid var(--nx-line);background:var(--nx-card);border-radius:5px;padding:15px;}
+.nx-staff-directory .nx-d-guide-head {display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:13px;}
+.nx-staff-directory .nx-d-guide-head h3 {font:700 16px/1.35 var(--special-font,Georgia,serif);color:var(--nx-ink);}
+.nx-staff-directory .nx-d-signal {font:700 9px/1.35 var(--mono-font,monospace);letter-spacing:.06em;color:var(--nx-gold);}
+.nx-staff-directory .nx-d-guide-lines {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
+.nx-staff-directory .nx-d-guide-lines > div {min-width:0;background:var(--nx-bg);border:1px solid var(--nx-line);border-radius:3px;padding:10px;}
+.nx-staff-directory .nx-d-guide-lines span {display:block;font:700 10px/1.4 var(--mono-font,monospace);color:var(--nx-gold);letter-spacing:.03em;text-transform:uppercase;}
+.nx-staff-directory .nx-d-guide-lines em {display:block;margin-top:4px;font:normal 11px/1.5 var(--font,Arial,sans-serif);color:var(--nx-body);}
+.nx-staff-directory .nx-d-guide-tail {margin-top:12px!important;font-size:11px;color:var(--nx-body);opacity:.8;}
+.nx-staff-directory .nx-d-callout {margin-top:13px;padding:13px 15px;background:var(--nx-wash);border:1px solid var(--nx-line);border-left:3px solid var(--nx-gold);border-radius:4px;}
+.nx-staff-directory .nx-d-callout strong {display:block;margin-top:5px;color:var(--nx-ink);font-size:12px;}
+.nx-staff-directory .nx-d-callout p {margin-top:4px;font-size:11px;line-height:1.6;color:var(--nx-body);}
+.nx-staff-directory .nx-footer a {color:var(--nx-ink)!important;}
+@media(max-width:700px){
+  .nx-staff-directory .nx-d-path {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .nx-staff-directory .nx-d-tiles-three {grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:520px){
+  .nx-staff-directory .nx-d-tiles, .nx-staff-directory .nx-d-checks,
+  .nx-staff-directory .nx-d-guide-lines {grid-template-columns:1fr;}
+  .nx-staff-directory .nx-d-navlink {flex:1 1 auto;justify-content:center;}
+}
