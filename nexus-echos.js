@@ -39,14 +39,30 @@
     if (target) { target.textContent = msg; target.hidden = false; }
     if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
   }
+  // Les interfaces sont volontairement des DIV : un formulaire imbrique dans
+  // l'editeur Forumactif peut empecher l'envoi du message (champs required).
+  function namedFields(container) {
+    var found = {};
+    container.querySelectorAll('[name]').forEach(function (element) {
+      if (!Object.prototype.hasOwnProperty.call(found, element.name)) found[element.name] = element;
+    });
+    return found;
+  }
+  function clearFields(container) {
+    container.querySelectorAll('input,select,textarea').forEach(function (element) {
+      if (element.type === 'checkbox' || element.type === 'radio') element.checked = false;
+      else if (element.tagName === 'SELECT') element.selectedIndex = 0;
+      else element.value = '';
+    });
+  }
   function resetErrors(form, dest) {
     if (dest) { dest.textContent = ''; dest.hidden = true; }
     form.querySelectorAll('[aria-invalid]').forEach(function (el) { el.removeAttribute('aria-invalid'); });
   }
   function requiredFields(form, names, dest) {
     for (var i = 0; i < names.length; i++) {
-      var f = form.elements[names[i]];
-      if (!clean(f.value)) { error(f, 'Merci de remplir les champs obligatoires.', dest); return false; }
+      var f = namedFields(form)[names[i]];
+      if (!f || !clean(f.value)) { error(f, 'Merci de remplir les champs obligatoires.', dest); return false; }
     }
     return true;
   }
@@ -118,15 +134,18 @@
     var copy = citizen.querySelector('#nx-e-copy');
     if (form && result && output) {
       attachFieldReset(form);
-      form.addEventListener('reset', function () {
-        result.hidden = true; output.value = ''; resetErrors(form, err); if (feedback) feedback.textContent = '';
+      var citizenClear = form.querySelector('[data-nx-clear]');
+      var citizenPrepare = form.querySelector('[data-nx-prepare]');
+      if (citizenClear) citizenClear.addEventListener('click', function () {
+        clearFields(form); result.hidden = true; output.value = ''; resetErrors(form, err);
+        if (feedback) feedback.textContent = '';
       });
-      form.addEventListener('submit', function (event) {
-        event.preventDefault(); resetErrors(form, err);
+      if (citizenPrepare) citizenPrepare.addEventListener('click', function () {
+        resetErrors(form, err);
         if (!requiredFields(form, ['categorie','auteur','titre','resume'], err)) return;
-        if (!validRpURL(form.elements.rp, err)) return;
-        if (!form.elements.accord.checked) { error(form.elements.accord, 'Veuillez confirmer les conditions de participation.', err); return; }
-        var v = form.elements;
+        var v = namedFields(form);
+        if (!validRpURL(v.rp, err)) return;
+        if (!v.accord.checked) { error(v.accord, 'Veuillez confirmer les conditions de participation.', err); return; }
         output.value = [
           '[b]ÉCHOS DE NEW YORK // CONTRIBUTION[/b]',
           '[b]Nature :[/b] ' + bb(v.categorie.value),
@@ -158,14 +177,17 @@
     var acopy = admin.querySelector('#nx-e-admin-copy');
     if (aform && aresult && aoutput) {
       attachFieldReset(aform);
-      aform.addEventListener('reset', function () {
-        aresult.hidden = true; aoutput.value = ''; resetErrors(aform, aerr); if (afeedback) afeedback.textContent = '';
+      var adminClear = aform.querySelector('[data-nx-clear]');
+      var adminPrepare = aform.querySelector('[data-nx-prepare]');
+      if (adminClear) adminClear.addEventListener('click', function () {
+        clearFields(aform); aresult.hidden = true; aoutput.value = ''; resetErrors(aform, aerr);
+        if (afeedback) afeedback.textContent = '';
       });
-      aform.addEventListener('submit', function (event) {
-        event.preventDefault(); resetErrors(aform, aerr);
+      if (adminPrepare) adminPrepare.addEventListener('click', function () {
+        resetErrors(aform, aerr);
         if (!requiredFields(aform, ['idee'], aerr)) return;
-        if (!validRpURL(aform.elements.source, aerr)) return;
-        var v = aform.elements;
+        var v = namedFields(aform);
+        if (!validRpURL(v.source, aerr)) return;
         var idee = bb(v.idee.value).replace(/\n+/g, ' ');
         var lieu = bb(v.lieu.value) || 'un secteur de New York';
         var intro = '';
