@@ -1,5 +1,5 @@
 /* =============================================================
-   PRIVILEGE — NEXUS / STAFF CONTROL — V1
+   PRIVILEGE — NEXUS / STAFF CONTROL — V2
    Feuille autonome. Ne cible que .nx-staff-control.
    Aucune modification des profils, de Messenger ou des forums publics.
    ============================================================= */
@@ -74,7 +74,7 @@
   transition: border-color .2s ease, transform .2s ease, background .2s ease;
 }
 .nx-staff-control .nx-card:hover { transform: translateY(-2px); border-color: var(--nx-violet); background: var(--nx-bg); }
-.nx-staff-control .nx-card:nth-child(even) { border-top-color: var(--nx-gold); }
+.nx-staff-control .nx-card:nth-of-type(even) { border-top-color: var(--nx-gold); }
 .nx-staff-control .nx-card-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
 .nx-staff-control .nx-card-code { font-size: 9px; font-weight: 700; letter-spacing: .09em; color: var(--nx-gold); }
 .nx-staff-control .nx-card-arrow { display: grid; place-items: center; border: 1px solid var(--nx-line); border-radius: 50%; width: 24px; height: 24px; color: var(--nx-ink); font: 18px/1 Georgia,serif; }
@@ -111,4 +111,22 @@
   .nx-staff-control .nx-card { min-height: 150px; }
   .nx-staff-control .nx-section-head { align-items: flex-start; }
   .nx-staff-control .nx-section-note { display: none; }
+}
+
+/* =============================================================
+   V2 — Corrections Forumactif (HTML des messages).
+   Certains retours à la ligne deviennent des <br> dans le message :
+   dans une grille CSS, ils se placent comme des enfants visibles et
+   décalent les cartes vers la deuxième colonne.
+   Aucun <br> n'est nécessaire à l'intérieur du tableau de bord.
+   ============================================================= */
+.nx-staff-control br {
+  display: none !important;
+}
+/* Ne plus compter les éventuels <br> parmi les cartes. */
+.nx-staff-control .nx-grid > a.nx-card:nth-of-type(odd) {
+  border-top-color: var(--nx-violet);
+}
+.nx-staff-control .nx-grid > a.nx-card:nth-of-type(even) {
+  border-top-color: var(--nx-gold);
 }
