@@ -1,0 +1,227 @@
+/* ============================================================
+   PRIVILÈGE · NEXUS / ACTIONS TEXTE — V1
+   Petits libellés sans fond, compatibles thème clair / sombre.
+   Surcharge CSS uniquement ; n'altère ni JS ni templates.
+   Dépend des noms d'images ModernBB visibles dans le panneau Forumactif.
+   Tout bouton dont l'image n'est PAS reconnue reste intact.
+   ============================================================ */
+
+:root {
+  --nx-action-main: var(--accentClr, #6b4a96);
+  --nx-action-ink: var(--textColor, #2b2838);
+  --nx-action-muted: #756d80;
+  --nx-action-danger: #a44d65;
+}
+
+[data-color-scheme="dark"] {
+  --nx-action-main: var(--accentClr, #e6c898);
+  --nx-action-ink: var(--textColor, #c9c8d2);
+  --nx-action-muted: #9a99a6;
+  --nx-action-danger: #df95a2;
+}
+
+/* Les images reconnaissables sont converties en actions texte.
+   :has() est pris en charge par les navigateurs modernes.
+   IMPORTANT : toujours cibler les enfants directs pour ne pas créer
+   un texte doublé à la fois sur le conteneur ET sur le lien. */
+:is(a,span,button):has(> img:is(
+  [src*="button_topic_new"],
+  [src*="button_topic_reply"],
+  [src*="button_topic_locked"],
+  [src*="icon_post_quo"],
+  [src*="icon_post_edi"],
+  [src*="icon_post_del"],
+  [src*="icon_post_inf"],
+  [src*="icon_post_rep"],
+  [src*="icon_post_pm"],
+  [src*="icon_post_pro"],
+  [src*="icon_multiquote"],
+  [src*="icon_thanks"]
+)) {
+  position: relative;
+  display: inline-flex !important;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  min-height: 24px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 2px 5px !important;
+  margin: 0 4px 0 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: var(--nx-action-color, var(--nx-action-ink)) !important;
+  font: 700 11px/1.4 var(--mono-font, 'Space Mono', monospace) !important;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color .15s ease;
+}
+
+/* On masque seulement l'illustration. L'élément <img> reste dans
+   le DOM pour les scripts Forumactif et son texte alternatif. */
+:is(a,span,button) > img:is(
+  [src*="button_topic_new"],
+  [src*="button_topic_reply"],
+  [src*="button_topic_locked"],
+  [src*="icon_post_quo"],
+  [src*="icon_post_edi"],
+  [src*="icon_post_del"],
+  [src*="icon_post_inf"],
+  [src*="icon_post_rep"],
+  [src*="icon_post_pm"],
+  [src*="icon_post_pro"],
+  [src*="icon_multiquote"],
+  [src*="icon_thanks"]
+) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Le libellé est affiché par CSS, à partir du type d'image. */
+:is(a,span,button):has(> img:is(
+  [src*="button_topic_new"],[src*="button_topic_reply"],[src*="button_topic_locked"],
+  [src*="icon_post_quo"],[src*="icon_post_edi"],[src*="icon_post_del"],
+  [src*="icon_post_inf"],[src*="icon_post_rep"],[src*="icon_post_pm"],
+  [src*="icon_post_pro"],[src*="icon_multiquote"],[src*="icon_thanks"]
+))::after {
+  content: var(--nx-action-label, '');
+  display: inline-block;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+
+/* Actions principales : accent violet en clair / doré en sombre. */
+:is(a,span,button):has(> img[src*="button_topic_new"]) {
+  --nx-action-label: '＋ NOUVEAU';
+  --nx-action-color: var(--nx-action-main);
+}
+:is(a,span,button):has(> img[src*="button_topic_reply"]) {
+  --nx-action-label: '↗ RÉPONDRE';
+  --nx-action-color: var(--nx-action-main);
+}
+
+/* Commandes secondaires, sobres et sans pictogramme. */
+:is(a,span,button):has(> img[src*="icon_post_quo"]) { --nx-action-label:'CITER'; }
+:is(a,span,button):has(> img[src*="icon_post_edi"]) { --nx-action-label:'ÉDITER'; }
+:is(a,span,button):has(> img[src*="icon_post_inf"]) { --nx-action-label:'IP'; }
+:is(a,span,button):has(> img[src*="icon_post_rep"]) { --nx-action-label:'SIGNALER'; }
+:is(a,span,button):has(> img[src*="icon_post_pm"]) { --nx-action-label:'MP'; }
+:is(a,span,button):has(> img[src*="icon_post_pro"]) { --nx-action-label:'PROFIL'; }
+:is(a,span,button):has(> img[src*="icon_multiquote"]) { --nx-action-label:'MULTI-CITER'; }
+:is(a,span,button):has(> img[src*="icon_thanks"]) { --nx-action-label:'MERCI'; }
+
+/* État multicitations : reflet rosé si le thème utilise "_on". */
+:is(a,span,button):has(> img[src*="icon_multiquote_on"]) {
+  --nx-action-color: var(--nx-action-main);
+}
+
+/* États bloqués, désactivés ou sensibles. */
+:is(a,span,button):has(> img[src*="button_topic_locked"]) {
+  --nx-action-label:'VERROUILLÉ';
+  --nx-action-color:var(--nx-action-muted);
+  cursor: default;
+}
+:is(a,span,button):has(> img[src*="icon_post_del"]) {
+  --nx-action-label:'SUPPRIMER';
+  --nx-action-color:var(--nx-action-danger);
+}
+:is(a,span,button):has(> img[src*="icon_thanks_off"]) {
+  --nx-action-label:'REMERCIÉ';
+  --nx-action-color:var(--nx-action-muted);
+}
+
+/* Cas Forumactif : le bouton verrouillé peut être directement dans
+   un conteneur .buttons, sans lien cliquable. */
+.buttons:has(> img[src*="button_topic_locked"]) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 2px 5px !important;
+  font: 700 11px/1.4 var(--mono-font,monospace);
+  color: var(--nx-action-muted);
+}
+.buttons:has(> img[src*="button_topic_locked"]) > img {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  clip-path: inset(50%);
+}
+.buttons:has(> img[src*="button_topic_locked"])::after { content: 'VERROUILLÉ'; }
+
+/* Certains thèmes donnent une plaque grise au conteneur .buttons.
+   On la retire UNIQUEMENT quand elle contient un bouton sujet connu. */
+.buttons:has(img:is(
+  [src*="button_topic_new"],[src*="button_topic_reply"],[src*="button_topic_locked"]
+)) {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Survol : seulement une fine ligne et la couleur du thème. */
+a:has(> img:is(
+  [src*="button_topic_new"],[src*="button_topic_reply"],[src*="icon_post_quo"],
+  [src*="icon_post_edi"],[src*="icon_post_del"],[src*="icon_post_inf"],
+  [src*="icon_post_rep"],[src*="icon_post_pm"],[src*="icon_post_pro"],
+  [src*="icon_multiquote"],[src*="icon_thanks"]
+)):hover {
+  color: var(--nx-action-main) !important;
+}
+a:has(> img:is(
+  [src*="button_topic_new"],[src*="button_topic_reply"],[src*="icon_post_quo"],
+  [src*="icon_post_edi"],[src*="icon_post_del"],[src*="icon_post_inf"],
+  [src*="icon_post_rep"],[src*="icon_post_pm"],[src*="icon_post_pro"],
+  [src*="icon_multiquote"],[src*="icon_thanks"]
+)):hover::after {
+  border-color: currentColor;
+}
+a:has(> img[src*="icon_post_del"]):hover { color: var(--nx-action-danger) !important; }
+
+/* Navigation au clavier : focus perceptible dans les deux thèmes. */
+a:has(> img:is(
+  [src*="button_topic_new"],[src*="button_topic_reply"],[src*="icon_post_quo"],
+  [src*="icon_post_edi"],[src*="icon_post_del"],[src*="icon_post_inf"],
+  [src*="icon_post_rep"],[src*="icon_post_pm"],[src*="icon_post_pro"],
+  [src*="icon_multiquote"],[src*="icon_thanks"]
+)):focus-visible {
+  outline: 1px solid var(--nx-action-main) !important;
+  outline-offset: 3px;
+}
+
+/* Sur mobile, pas d'énormes boutons : retour à la ligne possible. */
+@media (max-width: 680px) {
+  :is(a,span,button):has(> img:is(
+    [src*="button_topic_new"],[src*="button_topic_reply"],
+    [src*="icon_post_quo"],[src*="icon_post_edi"],[src*="icon_post_del"],
+    [src*="icon_post_inf"],[src*="icon_post_rep"],[src*="icon_post_pm"],
+    [src*="icon_post_pro"],[src*="icon_multiquote"],[src*="icon_thanks"]
+  )) {
+    font-size: 10px !important;
+    padding: 3px 4px !important;
+    margin-right: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(a,span,button):has(> img[src*="button_topic_new"]),
+  :is(a,span,button):has(> img[src*="icon_post_quo"]) {
+    transition: none;
+  }
+}
