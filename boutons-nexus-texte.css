@@ -331,3 +331,9 @@ a:has(> img:is(
   }
   .post_row .like_button { margin-left: 0 !important; }
 }
+
+/* TEST TEMPORAIRE — À RETIRER APRÈS VÉRIFICATION */
+#fa_right {
+  outline: 4px solid #ff00ff !important;
+}
+
