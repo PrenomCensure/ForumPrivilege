@@ -1,0 +1,290 @@
+/* ============================================================
+   PRIVILÈGE · NEXUS / ACCOUNT MANAGER — SWITCHEROO
+   SURCOUCHE VISUELLE UNIQUEMENT · 18.10.2026
+   Compatible variables globales PRIVILÈGE, modes clair/sombre.
+   Ne modifie ni le comportement de Switcheroo ni les templates.
+   Charger APRÈS la feuille CSS globale.
+   ============================================================ */
+
+/* Bloc de comptes dans la barre latérale du forum */
+.switcheroo {
+  margin-top: 52px;
+  color: var(--textColor);
+  font-family: var(--mono-font, monospace);
+}
+
+.switcheroo::before {
+  content: "COMPTES";
+  display: block;
+  margin: 0 0 13px;
+  color: var(--accentClr);
+  text-align: center;
+  font: 700 7px/1.4 var(--mono-font, monospace);
+  letter-spacing: .06em;
+}
+
+.switcheroo__squircles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.switcheroo__squircle {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  background: var(--neutrallight);
+  border: 1px solid var(--neutralDarker);
+  border-radius: 9px;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+  transition: border-color .22s ease, box-shadow .22s ease,
+              border-radius .22s ease, transform .22s ease,
+              outline-color .22s ease;
+}
+
+.switcheroo__avatar,
+.switcheroo__avatar img {
+  border-radius: 8px;
+}
+
+.switcheroo__avatar { overflow: hidden; }
+
+.switcheroo__avatar img {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: filter .22s ease, border-radius .22s ease;
+}
+
+.switcheroo__squircle:hover,
+.switcheroo__squircle:focus-within {
+  transform: translateY(-1px);
+  border-color: var(--color4);
+  outline-color: var(--color1);
+  border-radius: 9px;
+  box-shadow: 0 3px 12px rgba(106, 70, 160, .18);
+}
+
+.switcheroo__squircle:hover .switcheroo__avatar img,
+.switcheroo__squircle:focus-within .switcheroo__avatar img {
+  border-radius: 8px;
+  filter: saturate(1.08);
+}
+
+/* Le compte actuellement utilisé : anneau doré + voyant discret. */
+.switcheroo__squircle.active,
+.switcheroo__squircle.active:hover,
+.switcheroo__squircle.active:focus-within {
+  outline: 2px solid var(--color2);
+  outline-offset: 2px;
+  border: 1px solid var(--color2);
+  border-radius: 9px;
+  box-shadow: 0 0 0 1px var(--neutral), 0 3px 11px rgba(0, 0, 0, .14);
+  cursor: default;
+  transform: none;
+}
+
+.switcheroo__squircle.active img,
+.switcheroo__squircle.active:hover img { outline: none; border-radius: 8px; }
+
+.switcheroo__squircle.active::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 2px solid var(--neutral);
+  background: var(--color2);
+  pointer-events: none;
+}
+
+/* Bouton « ajouter un compte » : différencié des avatars. */
+.switcheroo__squircle--button {
+  color: var(--accentClr);
+  background: var(--color5);
+  border: 1px dashed var(--color1);
+  box-shadow: none;
+}
+.switcheroo__squircle--button i { font-size: 18px; }
+.switcheroo__squircle--button:hover,
+.switcheroo__squircle--button:focus-within {
+  color: var(--textColorAccent);
+  background: var(--neutralDark);
+  border-color: var(--color2);
+}
+
+/* Retirer un compte reste une action distincte, visible au survol. */
+.switcheroo__delete {
+  width: 17px;
+  height: 17px;
+  top: -8px;
+  right: -8px;
+  background: var(--color4);
+  color: #1d1b26;
+  border: 1px solid var(--neutral);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .16);
+}
+.switcheroo__squircle:focus-within .switcheroo__delete {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Infobulles des comptes : lecture facilitée, survol et clavier. */
+.switcheroo__popper {
+  left: 155%;
+  top: 50%;
+  z-index: 1100;
+  width: max-content;
+  max-width: min(230px, calc(100vw - 84px));
+  white-space: normal;
+  overflow-wrap: anywhere;
+  padding: 8px 11px;
+  background: var(--neutrallight);
+  color: var(--textColorAccent);
+  border: 1px solid var(--neutralDarker);
+  border-left: 2px solid var(--color2);
+  border-radius: var(--rayon-m, 4px);
+  box-shadow: var(--shadowBox);
+  font: 700 10px/1.5 var(--mono-font, monospace);
+  letter-spacing: .025em;
+  transform: translateY(-50%) translateX(-4px);
+  transition: opacity .16s ease, transform .16s ease;
+}
+.switcheroo__popper::before {
+  left: -6px;
+  width: 10px;
+  height: 10px;
+  background: var(--neutrallight);
+  border-left: 1px solid var(--neutralDarker);
+  border-bottom: 1px solid var(--neutralDarker);
+  border-radius: 1px;
+}
+.switcheroo__squircle:hover .switcheroo__popper,
+.switcheroo__squircle:focus-within .switcheroo__popper {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Fenêtre de connexion Switcheroo, sans modifier ouverture/fermeture. */
+.monomer-overlay {
+  z-index: 2999;
+  background: rgba(10, 9, 16, .72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.monomer-modal {
+  z-index: 3000;
+  box-sizing: border-box;
+  width: min(430px, calc(100vw - 28px));
+  max-width: 430px;
+  max-height: calc(100dvh - 36px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 29px 28px 27px;
+  background: var(--neutrallight);
+  color: var(--textColor);
+  border: 1px solid var(--neutralDarker);
+  border-top: 3px solid var(--color1);
+  border-bottom: 3px solid var(--color4);
+  border-radius: var(--rayon-l, 6px);
+  box-shadow: 0 22px 80px rgba(0, 0, 0, .35);
+}
+.monomer-modal::before {
+  content: "NEXUS / GESTION DES COMPTES";
+  display: block;
+  margin: 0 30px 20px 0;
+  color: var(--accentClr);
+  font: 700 10px/1.6 var(--mono-font, monospace);
+  letter-spacing: .10em;
+}
+
+.monomer-modal .switcheroo__form-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 7px;
+  margin: 0 0 16px;
+}
+.monomer-modal .switcheroo__form-label {
+  margin: 0;
+  color: var(--textColor);
+  font: 700 10px/1.6 var(--mono-font, monospace);
+  letter-spacing: .07em;
+}
+.monomer-modal .switcheroo__form-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 41px;
+  padding: 10px 12px !important;
+  color: var(--textColorAccent);
+  background: var(--neutral);
+  border: 1px solid var(--neutralDarker);
+  border-radius: var(--rayon-m, 4px);
+  font: 400 13px/1.6 var(--font, Arial, sans-serif);
+  cursor: text;
+}
+.monomer-modal .switcheroo__form-input:focus-visible {
+  outline: 2px solid var(--color1);
+  outline-offset: 2px;
+  border-color: var(--color1);
+}
+.monomer-modal .switcheroo__form-button {
+  width: 100%;
+  min-height: 42px;
+  align-self: stretch;
+  margin-top: 7px;
+  padding: 11px 14px !important;
+  color: #1d1b26;
+  background: var(--gradient-accent);
+  border: 1px solid var(--color2);
+  border-radius: var(--rayon-m, 4px);
+  box-shadow: none;
+  text-align: center;
+  font: 700 11px/1.5 var(--mono-font, monospace);
+  letter-spacing: .07em;
+  transition: filter .18s ease;
+}
+.monomer-modal .switcheroo__form-button:hover { background: var(--gradient-accent); filter: brightness(1.06); }
+.monomer-modal .switcheroo__form-button:focus-visible { outline: 2px solid var(--color1); outline-offset: 3px; }
+.monomer-modal .monomer-close {
+  top: 12px;
+  right: 12px;
+  width: 27px;
+  height: 27px;
+  padding: 0;
+  color: var(--textColorAccent);
+  background: var(--neutralDark);
+  border: 1px solid var(--neutralDarker);
+  border-radius: var(--rayon-m, 4px);
+  line-height: 25px;
+}
+.monomer-modal .monomer-close:hover {
+  color: var(--accentClr);
+  background: var(--neutral);
+  border-color: var(--color1);
+}
+.monomer-modal .monomer-close:focus-visible { outline: 2px solid var(--color1); outline-offset: 2px; }
+
+@media (max-width: 540px) {
+  .switcheroo { margin-top: 35px; }
+  .switcheroo__squircles { gap: 10px; }
+  .monomer-modal { padding: 23px 17px 21px; }
+  .monomer-modal::before { font-size: 9px; letter-spacing: .04em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switcheroo__squircle,
+  .switcheroo__avatar img,
+  .switcheroo__popper,
+  .monomer-modal .switcheroo__form-button {
+    transition: none;
+  }
+}
