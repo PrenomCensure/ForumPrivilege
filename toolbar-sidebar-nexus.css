@@ -1,340 +1,134 @@
-/* ========================================================================
-   PRIVILÈGE / NEXUS — TOOLBAR & SIDEBAR — V1 (18.10.2026)
-   Surcouche VISUELLE pour la toolbar Forumactif, ses deux menus et la sidebar.
-   Installer APRÈS la feuille globale et APRÈS switcheroo-nexus.css.
-   Aucun script, aucune suppression de règles existantes.
-   Ne modifie pas l'ouverture des menus, les événements, ni les comptes.
-   ======================================================================== */
+/* ===================================================================
+   PRIVILÈGE / NEXUS — TOOLBAR & SIDEBAR : CORRECTIF COMPACT V2
+   À AJOUTER TOUT À LA FIN DE toolbar-sidebar-nexus.css sur GitHub.
+   Ne remplace pas le fichier, ne modifie ni Switcheroo ni Wombat.
+   =================================================================== */
 
-/* --- A. Barre supérieure Forumactif : texture discrète, bord fin. --- */
-#fa_toolbar {
-  background: var(--neutral, #18181c);
-  color: var(--textColor, #c9c8d2);
-  border-bottom: 1px solid var(--neutralDarker, #2c2c35);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
-  font-family: var(--font, 'Open Sans', sans-serif);
-}
+/* Barre de connexion plus fine : elle laisse davantage de place au forum. */
 #fa_toolbar #fa_right {
-  background: var(--neutrallight);
-  border: 1px solid var(--neutralDarker);
-  border-radius: var(--rayon-m, 4px);
-  height: 40px;
-  padding: 4px 6px;
-  gap: 3px;
-  box-shadow: inset 0 1px 0 var(--color5);
+  height: 34px;
+  min-height: 34px;
+  margin-top: 4px;
+  padding: 2px 4px;
+  gap: 1px;
 }
 #fa_toolbar #fa_right #fa_welcome,
 #fa_toolbar #fa_right #fa_notifications,
 #fa_toolbar #fa_right a.rightHeaderLink[href*="/login"],
 #fa_toolbar #fa_right a.rightHeaderLink[href*="/register"] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 29px;
-  padding: 5px 9px;
-  color: var(--textColorAccent);
-  font: 700 12px/1.45 var(--mono-font, monospace);
-  letter-spacing: .01em;
-  text-decoration: none;
-  border: 1px solid transparent;
-  border-radius: var(--rayon-s, 3px);
-  background: transparent;
-  transition: color .18s ease, background .18s ease, border-color .18s ease;
+  min-height: 26px;
+  padding: 3px 6px;
+  font-size: 10px;
 }
-#fa_toolbar #fa_right #fa_welcome:hover,
-#fa_toolbar #fa_right #fa_notifications:hover,
-#fa_toolbar #fa_right a.rightHeaderLink[href*="/login"]:hover,
-#fa_toolbar #fa_right a.rightHeaderLink[href*="/register"]:hover {
-  color: var(--accentClr);
-  border-color: var(--neutralDarker);
-  background: var(--neutralDark);
-}
-#fa_toolbar #fa_right.welcome #fa_menu #fa_welcome,
-#fa_toolbar #fa_right.notification #fa_notifications {
-  color: var(--accentClr);
-  background: var(--neutralDark);
-  border: 1px solid var(--neutralDarker);
-  border-bottom-color: var(--color2);
-  border-radius: var(--rayon-s, 3px);
-}
-#fa_toolbar #fa_right #fa_welcome:focus-visible,
-#fa_toolbar #fa_right #fa_notifications:focus-visible,
-#fa_toolbar #fa_right a:focus-visible {
-  outline: 2px solid var(--accentClr);
-  outline-offset: 2px;
-}
-
-/* Portrait de la personne connectée dans la toolbar, pas dans Switcheroo. */
 #fa_toolbar #fa_right .fa_avatar {
+  width: 32px;
+  height: 32px;
+  left: -39px;
   top: 0;
-  left: -47px;
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--color2);
-  border-radius: var(--rayon-m, 4px);
-  background: var(--neutral);
-  box-shadow: 0 0 0 2px var(--neutral);
-  overflow: hidden;
 }
 #fa_toolbar #fa_right .fa_avatar img {
-  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 0;
 }
 
-/* --- B. Panneaux déroulants : géométrie commune, sans JS. --- */
+/* Menus ancrés en haut à droite, plus étroits et moins hauts. */
 #fa_toolbar #fa_right ul#fa_menulist,
 #fa_toolbar #fa_right ul#notif_list {
-  box-sizing: border-box;
-  position: absolute;
-  top: 45px;
+  top: 39px;
   right: 0;
   left: auto !important;
-  margin: 0;
-  padding: 10px;
-  max-width: calc(100vw - 16px);
-  max-height: calc(100dvh - 66px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  color: var(--textColor);
-  background: var(--neutrallight);
-  border: 1px solid var(--neutralDarker);
-  border-top: 3px solid var(--color2);
-  border-bottom: 2px solid var(--color4);
-  border-radius: var(--rayon-l, 6px);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, .23);
-  z-index: 1200;
-}
-#fa_toolbar #fa_right ul#fa_menulist { width: 430px; }
-#fa_toolbar #fa_right ul#notif_list { width: 420px; }
-
-/* Conserver les comportements d'affichage natifs de Forumactif :
-   ne pas définir display:block / flex pour les menus fermés. */
-
-/* --- C. Carte du profil dans le menu « Bienvenue ». --- */
-#fa_toolbar #fa_right #fa_menulist #fa_usermenu {
   box-sizing: border-box;
+  padding: 7px;
+  max-width: calc(100vw - 18px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  box-shadow: 0 9px 26px rgba(0,0,0,.19);
+}
+#fa_toolbar #fa_right ul#fa_menulist {
+  width: 316px;
+  max-height: min(310px, calc(100dvh - 78px));
+}
+#fa_toolbar #fa_right ul#notif_list {
+  width: 324px;
+  max-height: min(285px, calc(100dvh - 78px));
+}
+
+/* Carte de compte réduite, avec les liens toujours à côté. */
+#fa_toolbar #fa_right #fa_menulist #fa_usermenu {
   float: left;
-  width: 153px;
-  min-height: 305px;
-  margin: 0 13px 0 0;
-  padding: 13px 11px 15px;
-  text-align: center;
-  background: var(--neutral);
-  border: 1px solid var(--neutralDarker);
-  border-radius: var(--rayon-m, 4px);
+  width: 100px;
+  min-height: 225px;
+  margin: 0 8px 0 0;
+  padding: 8px 5px;
+  font-size: 10px;
+  line-height: 1.5;
 }
 #fa_toolbar #fa_right #fa_menulist #fa_usermenu img {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 126px;
-  height: 126px;
-  margin: 0 auto 11px;
-  object-fit: cover;
-  border: 1px solid var(--neutralDarker);
-  border-bottom: 2px solid var(--color2);
-  border-radius: var(--rayon-s, 3px);
-}
-#fa_toolbar #fa_right #fa_usermenu a,
-#fa_toolbar #fa_right #fa_usermenu strong {
-  color: var(--textColorAccent);
-}
-#fa_toolbar #fa_right #fa_usermenu a:hover { color: var(--accentClr); }
-#fa_toolbar #fa_right #fa_usermenu {
-  font: 400 11px/1.65 var(--font, sans-serif);
-  overflow-wrap: anywhere;
+  max-width: 76px;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 8px;
 }
 #fa_toolbar #fa_right #fa_menulist li {
-  margin: 2px 0;
-  padding: 0;
-  font: 600 12px/1.45 var(--font, sans-serif);
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.3;
 }
 #fa_toolbar #fa_right #fa_menulist li > a {
-  display: block;
-  padding: 8px 9px;
-  color: var(--textColorAccent);
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: var(--rayon-s, 3px);
-  text-decoration: none;
-  transition: background .18s ease, color .18s ease, border-color .18s ease;
-}
-#fa_toolbar #fa_right #fa_menulist li > a:hover,
-#fa_toolbar #fa_right #fa_menulist li > a:focus-visible {
-  color: var(--accentClr);
-  background: var(--neutralDark);
-  border-left-color: var(--color2);
-}
-#fa_toolbar #fa_right .fa_separator {
-  border-bottom: 1px solid var(--neutralDarker);
-  opacity: .6;
+  padding: 5px 6px;
+  line-height: 1.4;
 }
 
-/* --- D. Centre des notifications : lisibilité + zones cliquables. --- */
-#fa_toolbar #fa_right #notif_list { padding: 6px 10px 10px; }
+/* Notifications plus serrées, sans sacrifier les boutons de suppression. */
+#fa_toolbar #fa_right #notif_list { padding: 5px 7px 7px; }
 #fa_toolbar #fa_right #notif_list li {
-  position: relative;
-  margin: 0;
-  padding: 11px 29px 11px 10px;
-  color: var(--textColor);
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--neutralDarker);
-  font: 400 12px/1.65 var(--font, sans-serif);
-  overflow-wrap: anywhere;
-}
-#fa_toolbar #fa_right #notif_list li.unread {
-  background: var(--color5);
-  border-left: 2px solid var(--color2);
-  font-weight: 600;
-}
-#fa_toolbar #fa_right #notif_list li a {
-  color: var(--textColorAccent);
-  text-decoration: none;
-}
-#fa_toolbar #fa_right #notif_list li a:hover { color: var(--accentClr); }
-#fa_toolbar #fa_right #notif_list li a.delete {
-  position: absolute;
-  top: 10px;
-  right: 4px;
-  display: grid;
-  place-items: center;
-  width: 23px;
-  height: 23px;
-  padding: 0;
-  background: var(--neutral);
-  border: 1px solid var(--neutralDarker);
-  border-radius: var(--rayon-s, 3px);
-}
-#fa_toolbar #fa_right #notif_list li a.delete::before {
-  content: "×";
-  color: var(--color4);
-  font: 700 18px/1 var(--font, sans-serif);
-}
-#fa_toolbar #fa_right #notif_list li a.delete:hover {
-  background: var(--neutralDark);
-  border-color: var(--color4);
-}
-#fa_toolbar #fa_right #notif_list li.see_all {
-  order: -1;                  /* Garde le comportement flex inversé déjà en place. */
-  margin: 8px 0 0;
-  padding: 0;
-  background: none;
-  border: 0;
-}
-#fa_toolbar #fa_right #notif_list li.see_all a {
-  display: block;
-  padding: 11px 12px;
-  color: var(--textColorAccent);
-  background: var(--neutralDark);
-  border: 1px solid var(--neutralDarker);
-  border-left: 2px solid var(--color2);
-  border-radius: var(--rayon-s, 3px);
-  text-align: center;
-  font: 700 10px/1.5 var(--mono-font, monospace);
-  letter-spacing: .02em;
-}
-#fa_toolbar #fa_right #notif_list li.see_all a:hover {
-  color: var(--accentClr);
-  border-color: var(--color2);
-}
-#fa_toolbar #fa_right #live_notif .fa_notification {
-  color: var(--textColorAccent);
-  background: var(--neutrallight);
-  border: 1px solid var(--neutralDarker);
-  border-left: 2px solid var(--color2);
-  border-radius: var(--rayon-m, 4px);
-  box-shadow: var(--shadowBox);
-}
-
-/* --- E. Barre latérale : cadre discret autour de Switcheroo déjà stylé. --- */
-.sidebar {
-  box-sizing: border-box;
-  background: var(--neutral);
-  border-right: 1px solid var(--neutralDarker);
-  box-shadow: 5px 0 24px rgba(0,0,0,.07);
-  padding: 15px 10px;
-}
-/* Garde la largeur existante de la sidebar et les marges Switcheroo. */
-.sidebar_bottom {
-  gap: 9px;
-}
-.sidebar_bottom > a {
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
-  min-height: 41px;
-  padding: 7px 8px;
-  color: var(--textColorAccent);
-  background: var(--neutrallight);
-  border: 1px solid var(--neutralDarker);
-  border-radius: var(--rayon-m, 4px);
-  transition: color .18s ease, background .18s ease, border-color .18s ease;
-}
-.sidebar_bottom > a:hover,
-.sidebar_bottom > a:focus-visible {
-  color: var(--accentClr);
-  background: var(--neutralDark);
-  border-color: var(--color2);
-}
-.sidebar_bottom > a:focus-visible { outline: 2px solid var(--accentClr); outline-offset: 2px; }
-
-/* --- F. Écrans étroits : les menus tiennent dans la fenêtre. --- */
-@media (max-width: 540px) {
-  #fa_toolbar #fa_right { margin-right: 4px; padding: 4px; }
-  #fa_toolbar #fa_right #fa_welcome,
-  #fa_toolbar #fa_right #fa_notifications { padding: 5px 6px; font-size: 10px; }
-  #fa_toolbar #fa_right ul#fa_menulist,
-  #fa_toolbar #fa_right ul#notif_list {
-    max-width: calc(100vw - 32px);
-    max-height: calc(100dvh - 64px);
-    padding: 8px;
-  }
-  #fa_toolbar #fa_right #fa_menulist #fa_usermenu {
-    width: 123px;
-    min-height: 283px;
-    margin-right: 9px;
-    padding: 10px 7px;
-  }
-  #fa_toolbar #fa_right #fa_menulist #fa_usermenu img { height: 102px; max-width: 102px; }
-  #fa_toolbar #fa_right #fa_menulist li > a { padding: 7px 6px; }
-  #fa_toolbar #fa_right #notif_list li { padding: 9px 28px 9px 8px; }
-}
-@media (max-width: 340px) {
-  #fa_toolbar #fa_right #fa_menulist #fa_usermenu {
-    float: none;
-    width: auto;
-    min-height: 0;
-    margin: 0 0 8px;
-  }
-  #fa_toolbar #fa_right #fa_menulist #fa_usermenu img { width: 62px; height: 62px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  #fa_toolbar #fa_right #fa_welcome,
-  #fa_toolbar #fa_right #fa_notifications,
-  #fa_toolbar #fa_right #fa_menulist li > a,
-  .sidebar_bottom > a { transition: none; }
-}
-
-
-/* PRIVILÈGE — Toolbar : notifications plus compactes (V2)
-   Conserve le comportement natif des menus et leur ordre d'affichage. */
-#fa_toolbar #fa_right ul#notif_list {
-  width: 330px;
-  max-width: calc(100vw - 24px);
-  /* Garder la hauteur native et ne pas masquer les notifications récentes. */
-  max-height: calc(100dvh - 66px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-}
-#fa_toolbar #fa_right #notif_list li {
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding: 7px 27px 7px 7px;
   font-size: 11px;
   line-height: 1.45;
+}
+#fa_toolbar #fa_right #notif_list li a.delete {
+  top: 7px;
+  right: 3px;
+  width: 22px;
+  height: 22px;
+}
+#fa_toolbar #fa_right #notif_list li.see_all { margin: 5px 0 0; padding: 0; }
+#fa_toolbar #fa_right #notif_list li.see_all a { padding: 8px 9px; font-size: 9px; }
+
+/* Sidebar : on garde les portraits Switcheroo inchangés. */
+.sidebar { padding: 12px 8px; }
+.sidebar_bottom { width: 39px; gap: 7px; }
+.sidebar_bottom > a { min-height: 35px; padding: 5px 6px; }
+
+@media (max-width: 540px) {
+  #fa_toolbar #fa_right { margin-right: 2px; padding: 2px 3px; }
+  #fa_toolbar #fa_right #fa_welcome,
+  #fa_toolbar #fa_right #fa_notifications { padding: 3px 5px; font-size: 10px; }
+  #fa_toolbar #fa_right ul#fa_menulist { width: min(300px, calc(100vw - 18px)); }
+  #fa_toolbar #fa_right ul#notif_list { width: min(310px, calc(100vw - 18px)); }
+  #fa_toolbar #fa_right #fa_menulist #fa_usermenu {
+    width: 92px;
+    min-height: 225px;
+    margin-right: 7px;
+    padding: 7px 4px;
+  }
+  #fa_toolbar #fa_right #fa_menulist #fa_usermenu img {
+    width: 70px;
+    height: 70px;
+  }
+}
+@media (max-width: 340px) {
+  /* Le bloc compte reste petit, les liens utilisent l'espace libre. */
+  #fa_toolbar #fa_right #fa_menulist #fa_usermenu {
+    float: left;
+    width: 85px;
+    min-height: 230px;
+    margin: 0 6px 0 0;
+  }
+  #fa_toolbar #fa_right #fa_menulist #fa_usermenu img {
+    width: 62px;
+    height: 62px;
+  }
+  #fa_toolbar #fa_right #fa_menulist li > a { padding: 4px; }
 }
