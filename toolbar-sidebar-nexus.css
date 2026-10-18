@@ -318,3 +318,23 @@
   #fa_toolbar #fa_right #fa_menulist li > a,
   .sidebar_bottom > a { transition: none; }
 }
+
+
+/* PRIVILÈGE — Toolbar : notifications plus compactes (V2)
+   Conserve le comportement natif des menus et leur ordre d'affichage. */
+#fa_toolbar #fa_right ul#notif_list {
+  width: 330px;
+  max-width: calc(100vw - 24px);
+  /* Garder la hauteur native et ne pas masquer les notifications récentes. */
+  max-height: calc(100dvh - 66px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+#fa_toolbar #fa_right #notif_list li {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-size: 11px;
+  line-height: 1.45;
+}
