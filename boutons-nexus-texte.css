@@ -225,3 +225,109 @@ a:has(> img:is(
     transition: none;
   }
 }
+
+/* =============================================================
+   PRIVILÈGE / NEXUS — boutons des messages, ajustement V2
+   Cible les vrais liens texte du thème dans .profile-icons.
+   Ne modifie pas les actions, les scripts ou les boutons ailleurs.
+   À AJOUTER TOUT À LA FIN de boutons-nexus-texte.css.
+   ============================================================= */
+
+/* Le thème propose déjà des libellés textuels pour les actions
+   des messages. On les organise plutôt que de recréer des images. */
+.post_row .post_details ul.profile-icons {
+  display: flex !important;
+  flex: 0 1 auto !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-end;
+  gap: 4px 13px !important;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+.post_row .post_details ul.profile-icons > li {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+.post_row .post_details ul.profile-icons > li > :is(a, button, span) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  padding: 2px 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--textColor, #2b2838) !important;
+  font: 600 11px/1.45 var(--mono-font, 'Space Mono', monospace) !important;
+  letter-spacing: .015em !important;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+.post_row .post_details ul.profile-icons > li > a:hover,
+.post_row .post_details ul.profile-icons > li > button:hover {
+  color: var(--accentClr, #6b4a96) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.post_row .post_details ul.profile-icons > li > :is(a, button):focus-visible {
+  outline: 1px solid var(--accentClr, #6b4a96) !important;
+  outline-offset: 3px;
+}
+
+/* « J'aime » est un bouton Forumactif distinct de profile-icons. */
+.post_row .post_details .like_button,
+.post_row .like_button {
+  float: none !important;
+  flex: 0 0 auto !important;
+  margin: 0 0 0 12px !important;
+  padding: 0 !important;
+  color: var(--accentClr, #6b4a96) !important;
+  font: 600 11px/1.45 var(--mono-font, 'Space Mono', monospace) !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.post_row .like_button :is(a, button, .rep-button) {
+  min-height: 25px;
+  padding: 2px 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--accentClr, #6b4a96) !important;
+  font: inherit !important;
+  text-transform: inherit;
+  cursor: pointer;
+}
+.post_row .like_button :is(a, button, .rep-button):hover {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+/* On conserve les boutons compacts tout en autorisant un retour
+   à la ligne lorsque l'espace diminue. */
+@media (max-width: 680px) {
+  .post_row .post_details {
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 4px;
+  }
+  .post_row .post_details .post_date {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  .post_row .post_details ul.profile-icons {
+    justify-content: flex-start;
+    gap: 2px 11px !important;
+  }
+  .post_row .like_button { margin-left: 0 !important; }
+}
