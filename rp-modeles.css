@@ -104,3 +104,89 @@
   .priv-rp-post.priv-rp--transmission .prp-text { padding: 13px 12px 2px; }
   .priv-rp-post.priv-rp--transmission .prp-bottom { padding: 9px 12px; }
 }
+/* ================================================================
+   PRIVILÈGE / NEXUS — COMPLÉMENT IMAGES v1.1
+   À COLLER À LA FIN du CSS rp-modeles.css existant sur GitHub.
+   N'écrase pas les modèles sans images et ne concerne que .priv-rp-post.
+   IMG : taille fixe dans un cadre + object-fit: cover = recadrage auto.
+   ================================================================ */
+
+/* Base commune : les images remplissent leur cadre, sans déformation. */
+.priv-rp-post :is(.prp-portrait, .prp-square, .prp-banner) {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--color5, #211e27);
+}
+.priv-rp-post :is(.prp-portrait, .prp-square, .prp-banner) > img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* 01 BIS — TRACES : miniature ronde à droite du titre. */
+.priv-rp-post.priv-rp--traces-img .prp-head--portrait {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 76px;
+  align-items: center;
+  gap: 14px;
+}
+.priv-rp-post.priv-rp--traces-img .prp-heading { min-width: 0; }
+.priv-rp-post.priv-rp--traces-img .prp-portrait {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 2px solid var(--prp-accent);
+  box-shadow: 0 0 0 3px var(--prp-surface, transparent);
+}
+.priv-rp-post.priv-rp--traces-img .prp-portrait > img { border-radius: 50%; }
+
+/* 02 BIS — MARGES : portrait carré discret à gauche. */
+.priv-rp-post.priv-rp--marges-img .prp-head--square {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+}
+.priv-rp-post.priv-rp--marges-img .prp-heading { min-width: 0; }
+.priv-rp-post.priv-rp--marges-img .prp-square {
+  width: 96px;
+  height: 96px;
+  border-radius: 4px;
+  border: 1px solid var(--prp-line);
+  box-shadow: 3px 3px 0 var(--prp-secondary);
+}
+.priv-rp-post.priv-rp--marges-img .prp-quote { margin-top: 10px; }
+
+/* 03 BIS — TRANSMISSION : photo panoramique recadrée au-dessus de l'en-tête. */
+.priv-rp-post.priv-rp--transmission-img .prp-banner {
+  width: 100%;
+  height: clamp(138px, 23vw, 188px);
+  border-bottom: 1px solid var(--prp-line);
+}
+.priv-rp-post.priv-rp--transmission-img .prp-banner > img {
+  object-position: center center;
+}
+
+/* Lecture confortable sur petits écrans. */
+@media (max-width: 620px) {
+  .priv-rp-post.priv-rp--traces-img .prp-head--portrait {
+    grid-template-columns: minmax(0, 1fr) 62px;
+    gap: 10px;
+  }
+  .priv-rp-post.priv-rp--traces-img .prp-portrait { width: 62px; height: 62px; }
+  .priv-rp-post.priv-rp--marges-img .prp-head--square {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .priv-rp-post.priv-rp--marges-img .prp-square { width: 72px; height: 72px; }
+  .priv-rp-post.priv-rp--transmission-img .prp-banner { height: 138px; }
+}
