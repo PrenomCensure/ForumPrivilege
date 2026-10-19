@@ -1,0 +1,98 @@
+/* ======================================================================
+   PRIVILÈGE / NEXUS — SIGNATURES DES MEMBRES — v1.0
+   3 variantes : Diamant / Éclipse / Rémanence
+   Toutes les classes sont préfixées priv-sig et ps- : aucun conflit avec
+   signa1.css, signa2.css, annexes, code RP, profils ou éditeur.
+   ====================================================================== */
+.priv-sig, .priv-sig * { box-sizing: border-box; }
+.priv-sig {
+  --ps-accent: var(--accentClr, #d7bd93);
+  --ps-violet: var(--color1, #a17dc4);
+  --ps-rose: var(--color4, #cc94aa);
+  --ps-text: var(--textColor, #e3dee7);
+  --ps-subtext: var(--textColorAccent, var(--textColor, #d8cbd8));
+  --ps-border: var(--neutralDarker, #4b4656);
+  --ps-bg: var(--color5, transparent);
+  display: block;
+  position: relative;
+  width: min(100%, 440px);
+  max-width: 100%;
+  margin: 9px auto 11px;
+  color: var(--ps-text);
+  font: 400 13px/1.55 var(--font, Arial, sans-serif);
+  overflow-wrap: anywhere;
+}
+.priv-sig img { display: block !important; width: 100% !important; height: 100% !important; max-width: none !important; max-height: none !important; margin: 0 !important; border: 0 !important; object-fit: cover; object-position: center; }
+.priv-sig .ps-eyebrow { font: 700 9px/1.5 var(--mono-font, monospace); letter-spacing: .13em; text-transform: uppercase; color: var(--ps-accent); }
+.priv-sig .ps-name { font: italic 600 19px/1.22 var(--special-font, Georgia, serif); color: var(--ps-subtext); }
+.priv-sig .ps-quote { margin-top: 5px; font: italic 400 14px/1.35 var(--special-font, Georgia, serif); color: var(--ps-text); }
+.priv-sig .ps-small { font: 500 9px/1.5 var(--mono-font, monospace); text-transform: uppercase; letter-spacing: .10em; opacity: .7; }
+.priv-sig .ps-info { min-width: 0; }
+/* A — DIAMANT / hommage à signa1.css : recadrage dans un vrai losange. */
+.priv-sig--diamant {
+  display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 15px;
+  align-items: center; min-height: 112px; padding: 8px 8px 11px 10px;
+  border-bottom: 1px solid var(--ps-border);
+}
+.priv-sig--diamant .ps-gem { position: relative; width: 92px; height: 92px; flex: none; }
+.priv-sig--diamant .ps-gem::before {
+  content: ''; position: absolute; inset: 8px; transform: rotate(45deg);
+  border: 1px solid var(--ps-rose); opacity: .7;
+}
+.priv-sig--diamant .ps-gem img {
+  position: absolute; inset: 10px; width: calc(100% - 20px) !important;
+  height: calc(100% - 20px) !important;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.priv-sig--diamant .ps-name { margin-top: 2px; }
+.priv-sig--diamant .ps-small { margin-top: 5px; }
+/* B — ÉCLIPSE / hommage à signa2.css : double orbite, sobre et circulaire. */
+.priv-sig--eclipse {
+  display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 17px;
+  align-items: center; min-height: 112px; padding: 12px 17px;
+  border-left: 2px solid var(--ps-violet);
+  background: var(--ps-bg); border-radius: 0 5px 5px 0;
+}
+.priv-sig--eclipse .ps-orbit {
+  width: 80px; height: 80px; padding: 6px; border-radius: 50%;
+  border: 3px double var(--ps-border); background: transparent;
+}
+.priv-sig--eclipse .ps-orbit img {
+  border-radius: 50%; outline: 1px solid var(--ps-rose); outline-offset: 2px;
+}
+.priv-sig--eclipse .ps-quote { margin-top: 3px; }
+.priv-sig--eclipse .ps-small { margin-top: 5px; }
+/* C — RÉMANENCE / une image rectangulaire, même hauteur contenue. */
+.priv-sig--remanence {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr);
+  align-items: stretch; min-height: 105px;
+  background: var(--ps-bg); border: 1px solid var(--ps-border);
+  border-radius: 5px; overflow: hidden;
+}
+.priv-sig--remanence .ps-landscape {
+  position: relative; width: 100%; height: 100%; min-height: 105px;
+  overflow: hidden; background: var(--ps-border);
+}
+.priv-sig--remanence .ps-landscape img { position: absolute; inset: 0; }
+.priv-sig--remanence .ps-landscape::after {
+  content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+  width: 3px; background: linear-gradient(var(--ps-violet), var(--ps-rose));
+  pointer-events: none;
+}
+.priv-sig--remanence .ps-info { padding: 12px 14px 10px; }
+.priv-sig--remanence .ps-name { margin-top: 4px; font-size: 18px; }
+.priv-sig--remanence .ps-quote { font-size: 13px; }
+/* Préférence d'accessibilité : aucune animation imposée. */
+@media (max-width: 430px) {
+  .priv-sig { width: 100%; }
+  .priv-sig--diamant { grid-template-columns: 74px minmax(0,1fr); gap: 13px; min-height: 96px; padding: 6px 4px 10px; }
+  .priv-sig--diamant .ps-gem { width: 72px; height: 72px; }
+  .priv-sig--eclipse { grid-template-columns: 65px minmax(0,1fr); gap: 13px; padding: 10px; min-height: 90px; }
+  .priv-sig--eclipse .ps-orbit { width: 64px; height: 64px; padding: 5px; }
+  .priv-sig--remanence { grid-template-columns: 112px minmax(0,1fr); min-height: 94px; }
+  .priv-sig--remanence .ps-landscape { min-height: 94px; }
+  .priv-sig--remanence .ps-info { padding: 9px 10px; }
+  .priv-sig .ps-name { font-size: 17px; }
+  .priv-sig .ps-quote { font-size: 12px; line-height: 1.35; }
+  .priv-sig .ps-eyebrow, .priv-sig .ps-small { font-size: 8px; letter-spacing: .075em; }
+}
