@@ -1,0 +1,106 @@
+/* ================================================================
+   PRIVILEGE / NEXUS — MODELES DE REPONSES RP v1.0
+   Fichier autonome a heberger sur GitHub : rp-modeles.css
+   Classes limitees a .priv-rp-post : n'altere ni profils, ni annexes,
+   ni balises personnalisees, ni l'editeur SCEditor.
+   Variables dark / light reprises du forum.
+   ================================================================ */
+.priv-rp-post,
+.priv-rp-post * { box-sizing: border-box; }
+.priv-rp-post {
+  --prp-accent: var(--accentClr, #c8a7cb);
+  --prp-secondary: var(--color1, #9770ba);
+  --prp-rose: var(--color4, #d09baa);
+  --prp-text: var(--textColor, inherit);
+  --prp-title: var(--textColorAccent, inherit);
+  --prp-line: var(--neutralDarker, #55505e);
+  --prp-surface: var(--neutrallight, transparent);
+  width: 100%; max-width: 760px; margin: 9px auto 16px;
+  color: var(--prp-text);
+  font-family: var(--special-font, Georgia, serif);
+  font-size: 15px; font-weight: 400; line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+.priv-rp-post .prp-meta {
+  font-family: var(--mono-font, monospace);
+  font-size: 10px; font-weight: 700; letter-spacing: .13em;
+  text-transform: uppercase; line-height: 1.6;
+  color: var(--prp-accent);
+}
+.priv-rp-post .prp-title {
+  margin: 4px 0 0;
+  font-family: var(--special-font, Georgia, serif);
+  font-size: clamp(22px, 3vw, 27px); line-height: 1.25;
+  font-weight: 700; font-style: italic; letter-spacing: .005em;
+  color: var(--prp-title);
+}
+.priv-rp-post .prp-byline {
+  font-family: var(--mono-font, monospace); font-size: 10px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--prp-text); opacity: .7;
+}
+.priv-rp-post .prp-text { padding-top: 15px; }
+.priv-rp-post .prp-text p { margin: 0 0 14px; line-height: inherit; }
+.priv-rp-post .prp-text p:last-child { margin-bottom: 0; }
+.priv-rp-post .prp-bottom {
+  margin-top: 18px; padding-top: 7px;
+  border-top: 1px solid var(--prp-line);
+  font-family: var(--mono-font, monospace); font-size: 9px;
+  letter-spacing: .13em; text-transform: uppercase;
+  color: var(--prp-accent);
+}
+/* 01. TRACES — la forme la plus sobre pour les RP longs */
+.priv-rp-post.priv-rp--traces { padding: 8px 2px 6px; }
+.priv-rp-post.priv-rp--traces .prp-head {
+  padding: 0 0 12px; border-bottom: 1px solid var(--prp-line);
+}
+.priv-rp-post.priv-rp--traces .prp-head .prp-title { font-size: clamp(19px, 2.8vw, 24px); }
+.priv-rp-post.priv-rp--traces .prp-bottom {
+  text-align: right; border-top: 0; opacity: .75;
+}
+/* 02. MARGES — esprit editorial des annexes, sans leur encombrement */
+.priv-rp-post.priv-rp--marges {
+  padding: 18px 21px 17px;
+  border-left: 2px solid var(--prp-secondary);
+  background: var(--prp-surface);
+  border-radius: 0 var(--rayon-m, 4px) var(--rayon-m, 4px) 0;
+}
+.priv-rp-post.priv-rp--marges .prp-byline { display: block; margin-top: 6px; }
+.priv-rp-post.priv-rp--marges .prp-text { padding-top: 19px; }
+.priv-rp-post.priv-rp--marges .prp-quote {
+  margin: 14px 0 0; padding: 0;
+  font-family: var(--special-font, Georgia, serif);
+  font-size: 16px; line-height: 1.5; font-style: italic;
+  color: var(--prp-title);
+}
+/* 03. TRANSMISSION — technique mais legere, sans tableau ni fausse UI */
+.priv-rp-post.priv-rp--transmission {
+  border: 1px solid var(--prp-line);
+  border-radius: var(--rayon-m, 4px);
+  overflow: hidden;
+}
+.priv-rp-post.priv-rp--transmission .prp-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px 20px; flex-wrap: wrap;
+  padding: 11px 17px;
+  background: var(--prp-surface);
+  border-bottom: 1px solid var(--prp-line);
+  border-left: 3px solid var(--prp-rose);
+}
+.priv-rp-post.priv-rp--transmission .prp-head .prp-title {
+  font-size: clamp(19px, 2.8vw, 23px);
+}
+.priv-rp-post.priv-rp--transmission .prp-text { padding: 18px 18px 4px; }
+.priv-rp-post.priv-rp--transmission .prp-bottom {
+  padding: 9px 17px 11px; margin: 2px 0 0;
+  background: var(--prp-surface);
+  border-top: 1px solid var(--prp-line);
+}
+/* Ne modifie pas les balises RP existantes : <dial>, <pens>, <cap>, etc. */
+@media (max-width: 620px) {
+  .priv-rp-post { font-size: 15px; line-height: 1.75; }
+  .priv-rp-post.priv-rp--marges { padding: 13px 13px 14px; }
+  .priv-rp-post.priv-rp--transmission .prp-head { padding: 10px 12px; }
+  .priv-rp-post.priv-rp--transmission .prp-text { padding: 13px 12px 2px; }
+  .priv-rp-post.priv-rp--transmission .prp-bottom { padding: 9px 12px; }
+}
