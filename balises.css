@@ -159,7 +159,7 @@ sep::before { content: "· · ·"; }
 }
 .priv-rp-separateur::before { content: '· · ·'; }
 
-* =======================================================================
+/* =======================================================================
  PRIVILÈGE / NEXUS — AJOUT À LA FIN DU FICHIER GITHUB "balises"
  Version 2 — typographie des messages, lettrine et styles de texte
  NE PAS supprimer les anciens styles ; cet ajout affine les styles existants.
