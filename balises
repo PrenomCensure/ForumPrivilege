@@ -96,3 +96,67 @@ sep {
     opacity: .6;
 }
 sep::before { content: "· · ·"; }
+/* =====================================================================
+   PRIVILÈGE — BALISES RP / VERSION HTML PROTÉGÉ FORUMACTIF
+   À AJOUTER à la FIN de ta feuille GitHub "balises".
+   Conserve les anciennes règles dial/pens/etc. pour les vieux messages.
+   Ces nouvelles classes emploient uniquement span/div standards.
+   ===================================================================== */
+
+.priv-rp-dialogue { color: var(--accentClr); font-family: var(--special-font); font-weight: 600; }
+.priv-rp-dialogue::before { content: '« '; }
+.priv-rp-dialogue::after { content: ' »'; }
+
+.priv-rp-pensee { font-style: italic; opacity: .75; }
+
+.priv-rp-lieu {
+  display: block; margin: 18px 0; padding: 7px 0; text-align: center;
+  font-family: var(--mono-font); font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; border-top: 1px solid var(--neutralDarker);
+  border-bottom: 1px solid var(--neutralDarker);
+}
+
+.priv-rp-hrp {
+  display: block; margin: 12px 0; padding: 8px 12px;
+  font-family: var(--mono-font); font-size: 11px;
+  border: 1px dashed var(--neutralDarker); border-radius: var(--rayon-m);
+  opacity: .8;
+}
+.priv-rp-hrp::before { content: 'HRP · '; font-weight: 700; }
+
+.priv-rp-surl {
+  text-decoration: underline; text-decoration-color: var(--color2);
+  text-decoration-thickness: 2px; text-underline-offset: 3px;
+}
+
+.priv-rp-lettrine { display: block; }
+.priv-rp-lettrine::first-letter {
+  float: left; padding: 4px 8px 0 0;
+  font-family: var(--special-font); font-size: 3.4em;
+  font-weight: 700; line-height: .85; color: var(--accentClr);
+}
+
+.priv-rp-citation {
+  display: block; margin: 14px 0; padding: 10px 20px;
+  text-align: center; font-style: italic; background: var(--color5);
+  border-top: 3px solid var(--color1); border-bottom: 3px solid var(--color4);
+  border-radius: var(--rayon-l);
+}
+
+.priv-rp-sms, .priv-rp-sms-envoye {
+  display: block; width: fit-content; max-width: 70%; margin: 6px 0;
+  padding: 8px 14px; font-size: 13px;
+  background: var(--neutralDark); border-radius: 16px 16px 16px 4px;
+}
+.priv-rp-sms-envoye {
+  margin-left: auto; background: var(--color5); border: var(--border);
+  border-radius: 16px 16px 4px 16px;
+}
+
+.priv-rp-separateur {
+  display: block; margin: 18px 0; text-align: center;
+  letter-spacing: .6em; opacity: .6;
+}
+.priv-rp-separateur::before { content: '· · ·'; }
+
+
