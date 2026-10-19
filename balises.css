@@ -389,3 +389,46 @@ sep::before { content: "· · ·"; }
   background: none;
   -webkit-text-fill-color: currentColor;
 }
+/* ===================================================================
+   PRIVILÈGE / NEXUS — CORRECTIF TYPOGRAPHIE RP + LETTRINE
+   À AJOUTER À LA TOUTE FIN du CSS « balises » sur GitHub.
+   Ne remplace pas les autres règles et ne demande aucun JavaScript.
+   Test à effectuer sur un message normal, puis en clair et en sombre.
+   =================================================================== */
+
+/* Corps des messages : même famille littéraire que les titres d'annexes.
+   Les interfaces spéciales (Instagram, annexes, etc.) conservent leurs
+   propres réglages locaux de police lorsqu'elles en définissent un. */
+:is(.postbody .content, .post_message, .post-content, .entry-content) {
+  font-family: var(--special-font, Georgia, serif);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0;
+}
+
+/* Lettrine : moins grande, mieux intégrée au début du paragraphe.
+   À UTILISER : <cap>Au commencement de votre récit...</cap>
+   (et non <cap>A</cap>u commencement...) */
+:is(.postbody .content, .post_message, .post-content, .entry-content) cap {
+  display: block;
+  min-height: 0;
+  line-height: inherit;
+}
+:is(.postbody .content, .post_message, .post-content, .entry-content) cap::first-letter {
+  float: left;
+  margin: .15em .11em 0 0;
+  padding: 0;
+  font-family: var(--special-font, Georgia, serif);
+  font-size: 2.2em;
+  font-weight: 700;
+  line-height: .88;
+  color: var(--accentClr);
+}
+
+/* Sur petit écran, garde la lettrine discrète. */
+@media (max-width: 620px) {
+  :is(.postbody .content, .post_message, .post-content, .entry-content) cap::first-letter {
+    font-size: 2em;
+  }
+}
