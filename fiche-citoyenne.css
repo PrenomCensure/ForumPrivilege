@@ -59,3 +59,35 @@
 .priv-citizen .pc-credits-title{display:block;margin-bottom:5px;color:var(--accentClr,#c6abd0);font:700 9px/1.5 var(--mono-font,monospace);letter-spacing:.09em;text-transform:uppercase}
 .priv-citizen .pc-credits-text{font:11px/1.8 var(--font,Arial,sans-serif);color:var(--textColor,#c9c8d2);overflow-wrap:anywhere}
 .priv-citizen .pc-credits-text a{color:var(--accentClr,#c6abd0);text-decoration:underline;text-underline-offset:2px}
+
+
+/* PRIVILÈGE — CRÉDITS FICHE CITOYENNE V5 */
+
+.priv-citizen .pc-credits {
+  margin-top: 22px;
+  padding: 12px 13px;
+  background: var(--neutral, #19191d);
+  border: 1px solid var(--neutralDarker, #36323b);
+  border-radius: 3px;
+}
+
+.priv-citizen .pc-credits-title {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--accentClr, #c6abd0);
+  font: 700 9px/1.5 var(--mono-font, monospace);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.priv-citizen .pc-credits-text {
+  font: 11px/1.8 var(--font, Arial, sans-serif);
+  color: var(--textColor, #c9c8d2);
+  overflow-wrap: anywhere;
+}
+
+.priv-citizen .pc-credits-text a {
+  color: var(--accentClr, #c6abd0);
+  text-decoration: underline;
+}
+
