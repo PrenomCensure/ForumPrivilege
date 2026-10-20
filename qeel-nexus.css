@@ -60,3 +60,41 @@
 .pr-qeel .pq-raw{display:none!important}
 @media(max-width:790px){.pr-qeel .pq-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-qeel .pq-card:last-child{grid-column:1/-1;min-height:110px}.pr-qeel #last_connected{max-height:55px}}
 @media(max-width:530px){.pr-qeel{padding:10px}.pr-qeel .pq-grid{grid-template-columns:1fr;gap:7px}.pr-qeel .pq-card{min-height:unset}.pr-qeel .pq-card:last-child{grid-column:auto}.pr-qeel .pq-topmeta{display:none}.pr-qeel .pq-title{font-size:19px}.pr-qeel .pq-foot{align-items:flex-start;flex-wrap:wrap;gap:4px}}
+/* =========================================================
+   PRIVILÈGE / NEXUS — QEEL : ESPACEMENT DES CONNECTÉS
+   À AJOUTER TOUT À LA FIN DU CSS QEEL EXISTANT.
+   Conserve les couleurs des groupes et la grille du QEEL.
+   ========================================================= */
+
+/* La liste est lisible même avec plusieurs lignes. */
+.pr-qeel #online_users {
+  line-height: 2.1;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Espacement de chaque pseudo cliquable, y compris lorsqu'il
+   est entouré d'un span coloré injecté par Forumactif. */
+.pr-qeel #online_users a {
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 1px 7px 4px 3px;
+  padding: 1px 7px;
+  border: 1px solid var(--pq-line);
+  border-radius: 3px;
+  background: var(--pq-bg);
+  font-weight: 600;
+  line-height: 1.7;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.pr-qeel #online_users a:hover,
+.pr-qeel #online_users a:focus-visible {
+  border-color: var(--pq-accent);
+  background: var(--pq-deep);
+}
+
+/* Par défaut, les noms de moteurs qui seraient du texte brut
+   gardent une teinte neutre : leur balisage doit être inspecté
+   pour pouvoir leur appliquer un style distinct. */
