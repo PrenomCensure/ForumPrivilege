@@ -1,292 +1,236 @@
-/****** ------------------------------------------------------------------------------
- ****** BALISES DE MESSAGE (à écrire dans les messages, ex. <dial>Bonjour</dial>) ******/
+/* ===================================================================
+   PRIVILÈGE / NEXUS — BALISES & COULEURS UNIFIÉES — V3
+   Remplace intégralement balises.css sur GitHub.
+   Contient les usages encore nécessaires de couleursfonts.css.
+   Ensuite seulement, retirer le <link> de couleursfonts.css du header.
+   Aucun JavaScript, aucune nouvelle police importée.
+   Variables héritées des thèmes clair / sombre du forum.
+   =================================================================== */
 
-/* Dialogue : couleur d'accent, serif, guillemets automatiques */
-dial { color: var(--accentClr); font-family: var(--special-font); font-weight: 600; }
-dial::before { content: "« "; }
-dial::after  { content: " »"; }
+/* 01 — Couleurs des personnages (noms historiques conservés). */
 
-/* Pensée : italique atténué */
-pens { font-style: italic; opacity: .75; }
+/* Couleurs nominatives historiques — conservées sans changement. */
+/* JI */
+daemon{color:#CD5C5C} nana{color:#68a2a5} zeph{color:#A66969}
+ryu{color:#B89D76} yukio{color:#395d75} zhao{color:darkorchid}
+kael{color:#b89d75} stormi{color:#61b5e2} nono{color:rosybrown}
+kai{color:#69a7cc} akio{color:#6f8aae} ariel{color:#F4D03F}
+haku{color:#4F24D4} rain{color:#207FBD} sin{color:#A00258}
+solar{color:#797499} rya{color:#E67E22} pearl{color:#82a4d0}
+aoi{color:#DEE806} vesper{color:#da627d} baby{color:#3880b6}
+jiho{color:#598392} ruby{color:#0faac2}
+/* WHINY */
+fonya{color:#64B2AD} val{color:#F393B4} eve{color:#A44664}
+bambi{color:#497EA4} mal{color:#7C152B} eme{color:#508F78}
+lulu{color:#F0AD47} saya{color:#8375A4} luc{color:#8D7BA4}
+daph{color:#7BA490} nunu{color:#D87B18} phos{color:#41784E}
+urd{color:#115f79} nyx{color:#880d07} aglie{color:#8ac0d2}
+fan{color:#894f78} queen{color:#5ea486} cobalt{color:#0047AB}
+bibi{color:#E89541}
+/* CJN */
+dash{color:#ff9966} rome{color:#339966} naos{color:var(--neutralDark,#27232e)}
+soa{color:#6666ff} zoro{color:#A90300} med{color:#806886}
+cole{color:#B5B0DD}
+/* ZOZO */
+rhys{color:#E0AA42} hell{color:#A335A0} sya{color:#2A8BEA}
+liv{color:#5BACA6} sky{color:#7688A6} nil{color:#45CAF1}
+miyu{color:#E05099} kyros{color:#D13F40} sawan{color:#D4782A}
+hazel{color:#45BB93}
+/* BAMBOU */
+leora{color:#B783C4} milo{color:#ff9966} nerian{color:#666699}
+petra{color:#cc6633} aedhan{color:#5aa560} silver{color:#cc0033}
+asher{color:#88777b}
 
-/* Lieu / heure : en-tête de scène centré entre deux filets */
-lieu {
-    display: block;
-    margin: 18px 0;
-    padding: 7px 0;
-    text-align: center;
-    font-family: var(--mono-font);
-    font-size: 11px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    border-top: 1px solid var(--neutralDarker);
-    border-bottom: 1px solid var(--neutralDarker);
-}
-
-/* Hors RP : petite boîte pointillée */
-hrp {
-    display: block;
-    margin: 12px 0;
-    padding: 8px 12px;
-    font-family: var(--mono-font);
-    font-size: 11px;
-    border: 1px dashed var(--neutralDarker);
-    border-radius: var(--rayon-m);
-    opacity: .8;
-}
-hrp::before { content: "HRP · "; font-weight: 700; }
-
-/* Surlignage : soulignement doré */
-surl {
-    text-decoration: underline;
-    text-decoration-color: var(--color2);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
-}
-
-/* Lettrine : grande première lettre du paragraphe */
-cap { display: block; }
-cap::first-letter {
-    float: left;
-    padding: 4px 8px 0 0;
-    font-family: var(--special-font);
-    font-size: 3.4em;
-    font-weight: 700;
-    line-height: .85;
-    color: var(--accentClr);
-}
-
-/* Citation / épigraphe : liserés violet et rose, comme les cartes du forum */
-cit {
-    display: block;
-    margin: 14px 0;
-    padding: 10px 20px;
-    text-align: center;
-    font-style: italic;
-    background: var(--color5);
-    border-top: 3px solid var(--color1);
-    border-bottom: 3px solid var(--color4);
-    border-radius: var(--rayon-l);
-}
-
-/* SMS : sms = reçu (gauche), sms2 = envoyé (droite) */
-sms, sms2 {
-    display: block;
-    width: fit-content;
-    max-width: 70%;
-    margin: 6px 0;
-    padding: 8px 14px;
-    font-size: 13px;
-    background: var(--neutralDark);
-    border-radius: 16px 16px 16px 4px;
-}
-sms2 {
-    margin-left: auto;
-    background: var(--color5);
-    border: var(--border);
-    border-radius: 16px 16px 4px 16px;
-}
-
-/* Séparateur de scène */
-sep {
-    display: block;
-    margin: 18px 0;
-    text-align: center;
-    letter-spacing: .6em;
-    opacity: .6;
-}
-sep::before { content: "· · ·"; }
-/* =====================================================================
-   PRIVILÈGE — BALISES RP / VERSION HTML PROTÉGÉ FORUMACTIF
-   À AJOUTER à la FIN de ta feuille GitHub "balises".
-   Conserve les anciennes règles dial/pens/etc. pour les vieux messages.
-   Ces nouvelles classes emploient uniquement span/div standards.
-   ===================================================================== */
-
-.priv-rp-dialogue { color: var(--accentClr); font-family: var(--special-font); font-weight: 600; }
-.priv-rp-dialogue::before { content: '« '; }
-.priv-rp-dialogue::after { content: ' »'; }
-
-.priv-rp-pensee { font-style: italic; opacity: .75; }
-
-.priv-rp-lieu {
-  display: block; margin: 18px 0; padding: 7px 0; text-align: center;
-  font-family: var(--mono-font); font-size: 11px; letter-spacing: .12em;
-  text-transform: uppercase; border-top: 1px solid var(--neutralDarker);
-  border-bottom: 1px solid var(--neutralDarker);
-}
-
-.priv-rp-hrp {
-  display: block; margin: 12px 0; padding: 8px 12px;
-  font-family: var(--mono-font); font-size: 11px;
-  border: 1px dashed var(--neutralDarker); border-radius: var(--rayon-m);
-  opacity: .8;
-}
-.priv-rp-hrp::before { content: 'HRP · '; font-weight: 700; }
-
-.priv-rp-surl {
-  text-decoration: underline; text-decoration-color: var(--color2);
-  text-decoration-thickness: 2px; text-underline-offset: 3px;
-}
-
-.priv-rp-lettrine { display: block; }
-.priv-rp-lettrine::first-letter {
-  float: left; padding: 4px 8px 0 0;
-  font-family: var(--special-font); font-size: 3.4em;
-  font-weight: 700; line-height: .85; color: var(--accentClr);
-}
-
-.priv-rp-citation {
-  display: block; margin: 14px 0; padding: 10px 20px;
-  text-align: center; font-style: italic; background: var(--color5);
-  border-top: 3px solid var(--color1); border-bottom: 3px solid var(--color4);
-  border-radius: var(--rayon-l);
-}
-
-.priv-rp-sms, .priv-rp-sms-envoye {
-  display: block; width: fit-content; max-width: 70%; margin: 6px 0;
-  padding: 8px 14px; font-size: 13px;
-  background: var(--neutralDark); border-radius: 16px 16px 16px 4px;
-}
-.priv-rp-sms-envoye {
-  margin-left: auto; background: var(--color5); border: var(--border);
-  border-radius: 16px 16px 4px 16px;
-}
-
-.priv-rp-separateur {
-  display: block; margin: 18px 0; text-align: center;
-  letter-spacing: .6em; opacity: .6;
-}
-.priv-rp-separateur::before { content: '· · ·'; }
-
-/* =======================================================================
- PRIVILÈGE / NEXUS — AJOUT À LA FIN DU FICHIER GITHUB "balises"
- Version 2 — typographie des messages, lettrine et styles de texte
- NE PAS supprimer les anciens styles ; cet ajout affine les styles existants.
- IMPORTANT : les balises b1 / i1 / t1, etc. existent déjà dans
- couleursfonts.css. Les règles ci-dessous les adaptent à PRIVILÈGE.
- ======================================================================= */
-
-/* Texte des messages : typographie des annexes, avec une taille confortable.
-   Les encarts codés (annexes, Instagram, fiches...) gardent leur propre CSS. */
-.post_message, .postbody .content, .post-content, .entry-content {
-  font-family: var(--font, Arial, sans-serif);
+/* 02 — Typographie générale des messages RP : règle antérieure conservée. */
+:is(.post_message, .postbody .content, .post-content, .entry-content) {
+  font-family: var(--special-font, Georgia, serif);
   font-size: 15px;
+  font-weight: 400;
   line-height: 1.85;
+  letter-spacing: 0;
   color: var(--textColor, inherit);
 }
 
-/* LETTRINE CORRIGÉE : la balise <cap> doit contenir tout le début du texte,
-   par exemple <cap>Bienvenue à New York. La pluie...</cap>.
-   Elle ne doit pas contenir seulement la lettre B. */
-:is(.post_message, .postbody .content, .post-content, .entry-content) cap,
-:is(.post_message, .postbody .content, .post-content, .entry-content) .priv-rp-lettrine {
-  display: block;
-  line-height: 1.85;
-  min-height: 2.4em;
+/* 03 — Balises narratives ; versions HTML et classes compatibles Forumactif. */
+:is(dial, .priv-rp-dialogue) {
+  color: var(--accentClr, #cda6c3);
+  font-family: var(--special-font, Georgia, serif);
+  font-weight: 600;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) cap::first-letter,
-:is(.post_message, .postbody .content, .post-content, .entry-content) .priv-rp-lettrine::first-letter {
+:is(dial, .priv-rp-dialogue)::before { content: '« '; }
+:is(dial, .priv-rp-dialogue)::after { content: ' »'; }
+
+:is(pens, .priv-rp-pensee) { font-style: italic; opacity: .75; }
+
+:is(lieu, .priv-rp-lieu) {
+  display: block;
+  margin: 18px 0;
+  padding: 7px 0;
+  text-align: center;
+  font: 11px/1.7 var(--mono-font, monospace);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--neutralDarker, #403844);
+  border-bottom: 1px solid var(--neutralDarker, #403844);
+}
+
+:is(hrp, .priv-rp-hrp) {
+  display: block;
+  margin: 12px 0;
+  padding: 8px 12px;
+  font: 11px/1.6 var(--mono-font, monospace);
+  border: 1px dashed var(--neutralDarker, #403844);
+  border-radius: var(--rayon-m, 6px);
+  opacity: .8;
+}
+:is(hrp, .priv-rp-hrp)::before { content: 'HRP · '; font-weight: 700; }
+
+:is(surl, .priv-rp-surl) {
+  text-decoration: underline;
+  text-decoration-color: var(--color2, #dec096);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+:is(cap, .priv-rp-lettrine) {
+  display: block;
+  min-height: 0;
+  line-height: inherit;
+}
+:is(cap, .priv-rp-lettrine)::first-letter {
   float: left;
-  margin: .10em .15em 0 0;
+  margin: .15em .11em 0 0;
   padding: 0;
   font-family: var(--special-font, Georgia, serif);
-  font-size: 2.55em;
+  font-size: 2.2em;
   font-weight: 700;
-  line-height: .83;
+  line-height: .88;
   color: var(--accentClr, #cda6c3);
 }
 
-/* TABLE DE COULEURS : 1 = accent ; 2 = violet ; 3 = rose ; 4 = dégradé.
-   Ces couleurs utilisent les variables dark/light déjà présentes. */
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(b1,bb1,i1,ba1) { color: var(--accentClr, #cda6c3); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(b2,bb2,i2,ba2) { color: var(--color1, #a68bc5); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(b3,bb3,i3,ba3) { color: var(--color4, #d798b5); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(b4,bb4,i4,ba4) {
-  color: var(--accentClr, #cda6c3);
-  background: linear-gradient(105deg, var(--color1, #a68bc5), var(--color4, #d798b5));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+:is(cit, .priv-rp-citation) {
+  display: block;
+  margin: 14px 0;
+  padding: 10px 20px;
+  text-align: center;
+  font-style: italic;
+  background: var(--color5, rgba(180,140,190,.11));
+  border-top: 3px solid var(--color1, #a68bc5);
+  border-bottom: 3px solid var(--color4, #d798b5);
+  border-radius: var(--rayon-l, 8px);
 }
 
-/* Gras, capitales, cursive littéraire. */
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(b1,b2,b3,b4,bb1,bb2,bb3,bb4) { font-weight: 700; }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(bb1,bb2,bb3,bb4) {
+:is(sms, sms2, .priv-rp-sms, .priv-rp-sms-envoye) {
+  display: block;
+  width: fit-content;
+  max-width: 70%;
+  margin: 6px 0;
+  padding: 8px 14px;
+  font-size: 13px;
+  background: var(--neutralDark, #27232e);
+  border-radius: 16px 16px 16px 4px;
+}
+:is(sms2, .priv-rp-sms-envoye) {
+  margin-left: auto;
+  background: var(--color5, rgba(180,140,190,.11));
+  border: var(--border, 1px solid var(--neutralDarker, #403844));
+  border-radius: 16px 16px 4px 16px;
+}
+
+:is(sep, .priv-rp-separateur) {
+  display: block;
+  margin: 18px 0;
+  text-align: center;
+  letter-spacing: .6em;
+  opacity: .6;
+}
+:is(sep, .priv-rp-separateur)::before { content: '· · ·'; }
+
+/* 04 — Couleurs / enrichissements b, bb, i, ba (les 4 variantes). */
+:is(b1, bb1, i1, ba1) { color: var(--accentClr, #cda6c3); }
+:is(b2, bb2, i2, ba2) { color: var(--color1, #a68bc5); }
+:is(b3, bb3, i3, ba3) { color: var(--color4, #d798b5); }
+:is(b4, bb4, i4, ba4) { color: var(--accentClr, #cda6c3); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  :is(b4, bb4, i4, ba4) {
+    background-image: linear-gradient(105deg, var(--color1, #a68bc5), var(--color4, #d798b5));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+:is(b1,b2,b3,b4,bb1,bb2,bb3,bb4) { font-weight: 700; }
+:is(bb1,bb2,bb3,bb4) {
   text-transform: uppercase;
   letter-spacing: .08em;
   font-size: .88em;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(i1,i2,i3,i4,ba1,ba2,ba3,ba4) {
+:is(i1,i2,i3,i4,ba1,ba2,ba3,ba4) {
   font-family: var(--special-font, Georgia, serif);
   font-size: 1.12em;
   letter-spacing: .015em;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(i1,i2,i3,i4) { font-style: italic; }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(ba1,ba2,ba3,ba4) { font-weight: 500; }
+:is(i1,i2,i3,i4) { font-style: italic; }
+:is(ba1,ba2,ba3,ba4) { font-weight: 500; }
 
-/* Petites mentions discrètes et étiquettes. */
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(min1,min2,min3,min4) {
+/* 05 — Mentions, badges, texte biffé, contenu sensible. */
+:is(min1,min2,min3,min4) {
   display: inline-block;
   padding: 2px 6px;
-  border-radius: 3px;
-  font-family: var(--mono-font, monospace);
-  font-size: .72em;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: .06em;
-  color: var(--textColorAccent, inherit);
-  background: var(--color5, transparent);
   border: 1px solid var(--neutralDarker, #403844);
+  border-radius: 3px;
+  background: var(--color5, transparent);
+  color: var(--textColorAccent, inherit);
+  font: normal .72em/1.5 var(--mono-font, monospace);
+  letter-spacing: .06em;
   vertical-align: .06em;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(bg1,bg2,bg3,bg4) {
+:is(bg1,bg2,bg3,bg4) {
   display: inline-block;
   padding: 4px 8px;
+  border: 1px solid var(--neutralDarker, #403844);
   border-radius: 3px;
+  background: var(--color5, transparent);
+  color: var(--textColorAccent, inherit);
   font: 700 10px/1.3 var(--mono-font, monospace);
   letter-spacing: .10em;
   text-transform: uppercase;
-  color: var(--textColorAccent, inherit);
-  background: var(--color5, transparent);
-  border: 1px solid var(--neutralDarker, #403844);
   vertical-align: middle;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(min1,bg1) { border-left: 2px solid var(--accentClr, #cda6c3); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(min2,bg2) { border-left: 2px solid var(--color1, #a68bc5); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(min3,bg3) { border-left: 2px solid var(--color4, #d798b5); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(min4,bg4) { border-left: 2px solid var(--color2, #dec096); }
+:is(min1,bg1) { border-left: 2px solid var(--accentClr, #cda6c3); }
+:is(min2,bg2) { border-left: 2px solid var(--color1, #a68bc5); }
+:is(min3,bg3) { border-left: 2px solid var(--color4, #d798b5); }
+:is(min4,bg4) { border-left: 2px solid var(--color2, #dec096); }
 
-/* Texte biffé, texte espacé et contenu sensible. */
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(bar1,bar2,bar3,bar4) {
-  text-decoration-line: line-through;
-  text-decoration-thickness: 2px;
-}
-:is(.post_message, .postbody .content, .post-content, .entry-content) bar1 { text-decoration-color: var(--accentClr, #cda6c3); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) bar2 { text-decoration-color: var(--color1, #a68bc5); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) bar3 { text-decoration-color: var(--color4, #d798b5); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) bar4 { text-decoration-color: var(--color2, #dec096); }
-:is(.post_message, .postbody .content, .post-content, .entry-content) ls {
+:is(bar1,bar2,bar3,bar4) { text-decoration-line: line-through; text-decoration-thickness: 2px; }
+bar1 { text-decoration-color: var(--accentClr, #cda6c3); }
+bar2 { text-decoration-color: var(--color1, #a68bc5); }
+bar3 { text-decoration-color: var(--color4, #d798b5); }
+bar4 { text-decoration-color: var(--color2, #dec096); }
+
+ls {
   display: block;
   margin: 12px 0;
-  text-align: center;
   font-family: var(--special-font, Georgia, serif);
   font-size: 1.12em;
   letter-spacing: .20em;
+  text-align: center;
   overflow-wrap: anywhere;
   color: var(--textColorAccent, inherit);
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) cw {
-  filter: blur(4px);
-  transition: filter .2s ease;
-  cursor: help;
-}
-:is(.post_message, .postbody .content, .post-content, .entry-content) cw:hover,
-:is(.post_message, .postbody .content, .post-content, .entry-content) cw:active,
-:is(.post_message, .postbody .content, .post-content, .entry-content) cw:focus-within { filter: none; }
+cw { filter: blur(4px); transition: filter .2s ease; cursor: help; }
+:is(cw:hover,cw:active,cw:focus-within) { filter: none; }
 
-/* Titres : ne pas réutiliser les grands titres d'annexe dans le corps des RP. */
-:is(.post_message, .postbody .content, .post-content, .entry-content) :is(t1,t2,t3,t4,st1,st2,st3) {
+/* Le vieux couleursfonts.css modifiait tous les <u> du site.
+   Conserver le soulignement double UNIQUEMENT dans les contenus RP. */
+:is(.post_message, .postbody .content, .post-content, .entry-content) u {
+  text-decoration: none;
+  border-bottom: 3px double var(--color1, #a68bc5);
+  letter-spacing: .04em;
+}
+
+/* 06 — Titres RP NEXUS. Aucun fond découpé + texte transparent sur t2. */
+:is(t1,t2,t3,t4,st1,st2,st3) {
   display: block;
   width: auto;
   max-width: 100%;
@@ -295,19 +239,20 @@ sep::before { content: "· · ·"; }
   padding: 0;
   line-height: 1.4;
   background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
   -webkit-text-fill-color: currentColor;
   border-radius: 0;
   text-wrap: balance;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) t1 {
+t1 {
   font: italic 700 clamp(22px,3vw,29px)/1.3 var(--special-font, Georgia, serif);
-  color: var(--textColorAccent, inherit);
+  color: var(--textColorAccent, #fff);
   text-align: center;
   text-transform: none;
   letter-spacing: .01em;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) t1::before,
-:is(.post_message, .postbody .content, .post-content, .entry-content) t1::after {
+:is(t1::before, t1::after) {
   content: '';
   display: block;
   width: 58px;
@@ -315,40 +260,40 @@ sep::before { content: "· · ·"; }
   margin: 7px auto;
   background: var(--accentClr, #cda6c3);
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) t2 {
+t2 {
   font: 700 12px/1.5 var(--mono-font, monospace);
   color: var(--accentClr, #cda6c3);
+  -webkit-text-fill-color: var(--accentClr, #cda6c3);
+  background: none;
+  background-image: none;
   letter-spacing: .14em;
   text-align: left;
   text-transform: uppercase;
   border-bottom: 1px solid var(--neutralDarker, #403844);
   padding-bottom: 7px;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) t3 {
+t3 {
   font: italic 600 25px/1.35 var(--special-font, Georgia, serif);
-  color: var(--textColorAccent, inherit);
+  color: var(--textColorAccent, #fff);
   letter-spacing: .01em;
   text-align: center;
   text-transform: none;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) t4 {
+t4 {
   font: 600 17px/1.35 var(--special-font, Georgia, serif);
-  color: var(--textColorAccent, inherit);
+  color: var(--textColorAccent, #fff);
   text-align: left;
   text-transform: none;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) t4::before {
+t4::before {
   content: '✦';
   display: inline-block;
-  margin: 0 9px 0 0;
-  padding: 0;
-  font: 14px/1 serif;
+  margin-right: 9px;
   color: var(--accentClr, #cda6c3);
-  background: none;
-  -webkit-text-fill-color: currentColor;
+  font: 14px/1 serif;
   vertical-align: middle;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) st1 {
+st1 {
   font: 700 11px/1.5 var(--mono-font, monospace);
   color: var(--accentClr, #cda6c3);
   text-transform: uppercase;
@@ -356,79 +301,37 @@ sep::before { content: "· · ·"; }
   padding-bottom: 5px;
   border-bottom: 1px solid var(--neutralDarker, #403844);
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) st2 {
+st2 {
   font: 700 12px/1.5 var(--mono-font, monospace);
-  color: var(--textColorAccent, inherit);
+  color: var(--textColorAccent, #fff);
   letter-spacing: .09em;
   text-transform: uppercase;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) st2::before {
+st2::before {
   content: '';
   display: inline-block;
   position: static;
-  bottom: auto;
   width: 28px;
   height: 1px;
   margin-right: 10px;
   vertical-align: middle;
   background: var(--accentClr, #cda6c3);
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) st3 {
+st3 {
   font: italic 600 18px/1.4 var(--special-font, Georgia, serif);
-  color: var(--textColorAccent, inherit);
+  color: var(--textColorAccent, #fff);
   text-transform: none;
   text-align: left;
 }
-:is(.post_message, .postbody .content, .post-content, .entry-content) st3::before {
+st3::before {
   content: '—';
   display: inline-block;
-  margin: 0 9px 0 0;
-  padding: 0;
-  font: inherit;
+  margin-right: 9px;
   color: var(--accentClr, #cda6c3);
-  background: none;
-  -webkit-text-fill-color: currentColor;
 }
-/* ===================================================================
-   PRIVILÈGE / NEXUS — CORRECTIF TYPOGRAPHIE RP + LETTRINE
-   À AJOUTER À LA TOUTE FIN du CSS « balises » sur GitHub.
-   Ne remplace pas les autres règles et ne demande aucun JavaScript.
-   Test à effectuer sur un message normal, puis en clair et en sombre.
-   =================================================================== */
-
-/* Corps des messages : même famille littéraire que les titres d'annexes.
-   Les interfaces spéciales (Instagram, annexes, etc.) conservent leurs
-   propres réglages locaux de police lorsqu'elles en définissent un. */
-:is(.postbody .content, .post_message, .post-content, .entry-content) {
-  font-family: var(--special-font, Georgia, serif);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.85;
-  letter-spacing: 0;
-}
-
-/* Lettrine : moins grande, mieux intégrée au début du paragraphe.
-   À UTILISER : <cap>Au commencement de votre récit...</cap>
-   (et non <cap>A</cap>u commencement...) */
-:is(.postbody .content, .post_message, .post-content, .entry-content) cap {
-  display: block;
-  min-height: 0;
-  line-height: inherit;
-}
-:is(.postbody .content, .post_message, .post-content, .entry-content) cap::first-letter {
-  float: left;
-  margin: .15em .11em 0 0;
-  padding: 0;
-  font-family: var(--special-font, Georgia, serif);
-  font-size: 2.2em;
-  font-weight: 700;
-  line-height: .88;
-  color: var(--accentClr);
-}
-
-/* Sur petit écran, garde la lettrine discrète. */
 @media (max-width: 620px) {
-  :is(.postbody .content, .post_message, .post-content, .entry-content) cap::first-letter {
-    font-size: 2em;
-  }
+  :is(cap, .priv-rp-lettrine)::first-letter { font-size: 2em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  cw { transition: none; }
 }
