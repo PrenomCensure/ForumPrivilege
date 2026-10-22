@@ -1,0 +1,92 @@
+/* =====================================================================
+   PRIVILÈGE — NEXUS / PROFILE SETTINGS — V1
+   À héberger sur GitHub : ForumPrivilege / profil-edition.css
+   Chargement uniquement depuis le template profile_add_body.
+   Tous les styles sont isolés dans .priv-profile-edit / .priv-profile-nav.
+   Aucun JavaScript supplémentaire. Aucune variable Forumactif modifiée.
+   ===================================================================== */
+
+/* Onglets Forumactif, conservés et harmonisés */
+.priv-profile-nav{width:100%;max-width:1060px;margin:12px auto 10px;box-sizing:border-box}
+.priv-profile-nav,.priv-profile-nav *{box-sizing:border-box}
+.priv-profile-nav :is(ul,.tabs ul){display:flex;flex-wrap:wrap;gap:7px;list-style:none;margin:0;padding:0}
+.priv-profile-nav li{list-style:none;margin:0}
+.priv-profile-nav a{display:inline-flex;align-items:center;min-height:33px;padding:8px 13px!important;border:1px solid var(--neutralDarker,#39333e)!important;border-radius:3px;background:var(--neutrallight,#222028);color:var(--textColor,#cfcbd7)!important;font:700 10px/1.4 var(--mono-font,monospace);letter-spacing:.035em;text-decoration:none!important;text-transform:uppercase;transition:border-color .15s ease,background .15s ease}
+.priv-profile-nav a:hover,.priv-profile-nav :is(.activetab,.active,.selected) a,.priv-profile-nav a[aria-current="page"]{color:var(--textColorAccent,#faf5fb)!important;border-color:var(--accentClr,#c5a8d3)!important;background:var(--neutral,#19181e)}
+
+/* Conteneur / bandeau */
+.priv-profile-edit{--ppe-border:var(--neutralDarker,#39333e);--ppe-bg:var(--neutrallight,#211f27);--ppe-inner:var(--neutral,#19181e);--ppe-ink:var(--textColorAccent,#f2eff3);--ppe-copy:var(--textColor,#c9c4d1);--ppe-accent:var(--accentClr,#c9a8ca);box-sizing:border-box;width:100%;max-width:1060px;margin:16px auto 30px;color:var(--ppe-copy);font:13px/1.75 var(--font,Arial,sans-serif);overflow-wrap:anywhere}
+.priv-profile-edit,.priv-profile-edit *{box-sizing:border-box}
+.priv-profile-edit #cp-main.ucp-main{float:none;width:100%;min-width:0;margin:0;padding:0}
+.priv-profile-edit .ppe-banner{overflow:hidden;background:var(--ppe-bg);border:1px solid var(--ppe-border);border-radius:6px 6px 0 0}
+.priv-profile-edit .ppe-topline{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 19px;border-bottom:1px solid var(--ppe-border);background:var(--ppe-inner);color:var(--ppe-accent);font:700 9px/1.55 var(--mono-font,monospace);letter-spacing:.12em;text-transform:uppercase}
+.priv-profile-edit .ppe-topline span:last-child{color:var(--ppe-copy);opacity:.75}
+.priv-profile-edit .ppe-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 23px 23px;position:relative;isolation:isolate}
+.priv-profile-edit .ppe-heading:before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 90% 15%,rgba(190,139,190,.13),transparent 37%);pointer-events:none}
+.priv-profile-edit .ppe-eyebrow{display:block;color:var(--ppe-accent);font:700 9px/1.4 var(--mono-font,monospace);letter-spacing:.14em;text-transform:uppercase}
+.priv-profile-edit .ppe-title{margin:7px 0 6px;color:var(--ppe-ink);font:italic 700 clamp(23px,3vw,30px)/1.25 var(--special-font,Georgia,serif)}
+.priv-profile-edit .ppe-description{max-width:650px;margin:0;color:var(--ppe-copy);font:12px/1.7 var(--font,Arial,sans-serif)}
+.priv-profile-edit .ppe-sigil{display:grid;place-items:center;flex:none;width:66px;height:66px;border:1px solid var(--ppe-accent);border-radius:50%;color:var(--ppe-accent);opacity:.7;font:italic 700 31px/1 var(--special-font,Georgia,serif);transform:rotate(-10deg)}
+.priv-profile-edit #ucp{margin:0;padding:18px 20px 21px;border:1px solid var(--ppe-border);border-top:0;border-radius:0 0 6px 6px;background:var(--ppe-bg);counter-reset:ppe-section}
+
+/* Titres et panneaux. Le titre des champs de contact est devenu
+   'Références citoyennes' dans le template (pas en CSS). */
+.priv-profile-edit #ucp>.page-title{display:flex;align-items:center;gap:10px;margin:17px 0 12px;padding:0;background:none;border:none;border-radius:0;color:var(--ppe-accent);font:700 11px/1.5 var(--mono-font,monospace);letter-spacing:.09em;text-align:left;text-transform:uppercase;text-shadow:none}
+.priv-profile-edit #ucp>.page-title:before{counter-increment:ppe-section;content:counter(ppe-section,decimal-leading-zero) ' /';white-space:nowrap;color:var(--ppe-accent);opacity:.85}
+.priv-profile-edit #ucp>.page-title:after{content:'';height:1px;flex:1;min-width:15px;background:var(--ppe-border)}
+.priv-profile-edit #ucp>.page-title:first-child{margin-top:0}
+.priv-profile-edit #ucp>.panel{display:block;width:100%;height:auto;margin:0 0 18px;padding:15px 17px;background:var(--ppe-inner);border:1px solid var(--ppe-border);border-radius:4px;color:var(--ppe-copy);box-shadow:none;overflow:visible}
+.priv-profile-edit #ucp>.panel>p{margin:0 0 14px;font-size:12px;line-height:1.7}
+.priv-profile-edit #ucp>.panel>.ppe-panel-note{padding:10px 12px;margin:0 0 12px;border-left:2px solid var(--ppe-accent);border-radius:2px;background:var(--ppe-bg);font-size:11px;line-height:1.75;color:var(--ppe-copy)}
+.priv-profile-edit #ucp .panel fieldset{min-width:0;margin:0;padding:0;border:0;background:none}
+.priv-profile-edit #ucp .panel fieldset dl{display:grid;grid-template-columns:minmax(0,205px) minmax(0,1fr);gap:12px;align-items:center;float:none!important;clear:both;width:100%!important;min-height:47px;margin:0!important;padding:10px 1px!important;border-bottom:1px solid var(--ppe-border)}
+.priv-profile-edit #ucp .panel fieldset dl:last-child{border-bottom:0}
+.priv-profile-edit #ucp .panel fieldset dt,.priv-profile-edit #ucp .panel fieldset dd{min-width:0;width:auto!important;max-width:none!important;height:auto;float:none!important;clear:none!important;margin:0!important;padding:0!important;line-height:1.65;box-shadow:none}
+.priv-profile-edit #ucp .panel fieldset dt{font:700 10px/1.65 var(--mono-font,monospace);letter-spacing:.035em;color:var(--ppe-accent)}
+.priv-profile-edit #ucp .panel fieldset dt label{font:inherit;color:inherit}
+.priv-profile-edit #ucp .panel fieldset dd{color:var(--ppe-ink);font-size:12px}
+.priv-profile-edit #ucp .panel fieldset dd strong{color:var(--ppe-ink);font-weight:700}
+.priv-profile-edit #ucp .panel .italic,.priv-profile-edit #ucp .panel fieldset dd span.italic{display:inline-block;margin-top:5px;color:var(--ppe-copy);font-size:11px;line-height:1.6;font-style:italic;opacity:.78}
+.priv-profile-edit #ucp .panel fieldset dd br{line-height:1.2}
+
+/* Champs de saisie, sans altérer leurs attributs ou leur nom Forumactif */
+.priv-profile-edit #ucp :is(input[type="text"],input[type="email"],input[type="password"],input[type="url"],input[type="number"],textarea,select){max-width:100%;min-height:34px;padding:7px 10px;background:var(--ppe-bg);border:1px solid var(--ppe-border);border-radius:3px;color:var(--ppe-ink);font:12px/1.55 var(--font,Arial,sans-serif);box-shadow:none;vertical-align:middle}
+.priv-profile-edit #ucp :is(input[type="text"],input[type="email"],input[type="password"],input[type="url"],textarea){width:min(100%,570px)}
+.priv-profile-edit #ucp textarea{min-height:92px;resize:vertical}
+.priv-profile-edit #ucp select{width:auto}
+.priv-profile-edit #ucp :is(input,textarea,select):focus-visible{outline:2px solid var(--ppe-accent);outline-offset:2px;border-color:var(--ppe-accent)}
+.priv-profile-edit #ucp :is(input[type="checkbox"],input[type="radio"]){accent-color:var(--ppe-accent);width:14px;height:14px;vertical-align:-2px;margin:0 6px 0 0}
+.priv-profile-edit #ucp :is(input[type="file"]){max-width:100%;color:var(--ppe-copy);font-size:12px}
+.priv-profile-edit #ucp :is(input[type="file"]::file-selector-button){padding:7px 10px;margin-right:9px;border:1px solid var(--ppe-border);border-radius:3px;background:var(--ppe-bg);color:var(--ppe-ink);font:700 10px var(--mono-font,monospace);cursor:pointer}
+.priv-profile-edit #ucp .profil_preferences dd label{display:inline-flex;align-items:center;gap:3px;margin:3px 12px 3px 0;font-size:11px;color:var(--ppe-copy);vertical-align:middle;white-space:normal}
+
+/* Badges, lien d'export RGPD, boutons natifs */
+.priv-profile-edit #ucp #list_awards{max-width:100%;overflow-x:auto}
+.priv-profile-edit #ucp input[type="hidden"]{display:none}
+.priv-profile-edit #ucp a{color:var(--ppe-accent);text-decoration:none;text-underline-offset:3px}
+.priv-profile-edit #ucp a:hover{text-decoration:underline}
+.priv-profile-edit #ucp :is(input.button1,input.button2,a.button1,button){display:inline-block;max-width:100%;min-height:34px;padding:9px 15px;border:1px solid var(--ppe-border);border-radius:3px;background:var(--ppe-bg);color:var(--ppe-ink);font:700 10px/1.5 var(--mono-font,monospace);letter-spacing:.065em;text-transform:uppercase;text-decoration:none;cursor:pointer;box-shadow:none}
+.priv-profile-edit #ucp :is(input.button1,input.button2,a.button1,button):hover{border-color:var(--ppe-accent);color:var(--ppe-accent)}
+.priv-profile-edit #ucp input.button1[type="submit"][name="submit"]{background:var(--ppe-accent);border-color:var(--ppe-accent);color:var(--ppe-inner)}
+.priv-profile-edit #ucp>fieldset.submit-buttons{margin:17px 0 0;padding:17px 0 0;border:0;border-top:1px solid var(--ppe-border);background:none;text-align:center}
+.priv-profile-edit #ucp>fieldset.submit-buttons center{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.priv-profile-edit #ucp>fieldset.submit-buttons :is(.button1,.button2){min-width:135px}
+.priv-profile-edit #ucp .profil_editavatar dd img{max-width:min(180px,100%);height:auto;display:inline-block;margin-bottom:8px;border:1px solid var(--ppe-border);border-radius:3px}
+
+@media(max-width:700px){
+  .priv-profile-edit #ucp{padding:15px 12px}
+  .priv-profile-edit #ucp>.panel{padding:13px 12px}
+  .priv-profile-edit #ucp .panel fieldset dl{grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:8px}
+  .priv-profile-edit .ppe-heading{padding:17px 15px}
+  .priv-profile-edit .ppe-topline{padding:9px 13px}
+}
+@media(max-width:530px){
+  .priv-profile-edit .ppe-topline{font-size:8px;letter-spacing:.06em}
+  .priv-profile-edit .ppe-topline span:last-child{display:none}
+  .priv-profile-edit .ppe-sigil{display:none}
+  .priv-profile-edit #ucp .panel fieldset dl{grid-template-columns:1fr;gap:4px;align-items:start}
+  .priv-profile-edit #ucp>.page-title{font-size:10px;letter-spacing:.06em}
+  .priv-profile-edit #ucp :is(input[type="text"],input[type="email"],input[type="password"],input[type="url"],textarea){width:100%}
+  .priv-profile-edit #ucp>fieldset.submit-buttons :is(.button1,.button2){min-width:0;flex:1}
+}
+@media(prefers-reduced-motion:reduce){.priv-profile-nav a{transition:none}}
