@@ -307,3 +307,17 @@ st3::before {
 @media (prefers-reduced-motion: reduce) {
   cw { transition: none; }
 }
+/* PRIVILÈGE — POLICE DES POSTS / STYLE CHATGPT
+   À coller tout à la fin de balises.css sur GitHub.
+   Modifie uniquement la police du conteneur des messages.
+   Les styles explicites des balises RP, annexes et fiches restent prioritaires
+   sur leurs propres éléments. */
+
+:is(.post_message, .postbody .content, .post-content, .entry-content) {
+  font-family: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+
