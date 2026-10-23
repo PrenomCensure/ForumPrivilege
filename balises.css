@@ -11,42 +11,14 @@
 
 /* Couleurs nominatives historiques — conservées sans changement. */
 /* JI */
-daemon{color:#CD5C5C} nana{color:#68a2a5} zeph{color:#A66969}
-ryu{color:#B89D76} yukio{color:#395d75} zhao{color:darkorchid}
-kael{color:#b89d75} stormi{color:#61b5e2} nono{color:rosybrown}
-kai{color:#69a7cc} akio{color:#6f8aae} ariel{color:#F4D03F}
-haku{color:#4F24D4} rain{color:#207FBD} sin{color:#A00258}
-solar{color:#797499} rya{color:#E67E22} pearl{color:#82a4d0}
-aoi{color:#DEE806} vesper{color:#da627d} baby{color:#3880b6}
-jiho{color:#598392} ruby{color:#0faac2}
-/* WHINY */
-fonya{color:#64B2AD} val{color:#F393B4} eve{color:#A44664}
-bambi{color:#497EA4} mal{color:#7C152B} eme{color:#508F78}
-lulu{color:#F0AD47} saya{color:#8375A4} luc{color:#8D7BA4}
-daph{color:#7BA490} nunu{color:#D87B18} phos{color:#41784E}
-urd{color:#115f79} nyx{color:#880d07} aglie{color:#8ac0d2}
-fan{color:#894f78} queen{color:#5ea486} cobalt{color:#0047AB}
-bibi{color:#E89541}
-/* CJN */
-dash{color:#ff9966} rome{color:#339966} naos{color:var(--neutralDark,#27232e)}
-soa{color:#6666ff} zoro{color:#A90300} med{color:#806886}
-cole{color:#B5B0DD}
-/* ZOZO */
-rhys{color:#E0AA42} hell{color:#A335A0} sya{color:#2A8BEA}
-liv{color:#5BACA6} sky{color:#7688A6} nil{color:#45CAF1}
-miyu{color:#E05099} kyros{color:#D13F40} sawan{color:#D4782A}
-hazel{color:#45BB93}
-/* BAMBOU */
-leora{color:#B783C4} milo{color:#ff9966} nerian{color:#666699}
-petra{color:#cc6633} aedhan{color:#5aa560} silver{color:#cc0033}
-asher{color:#88777b}
+sujin{color:#CD5C5C} venus{color:#68a2a5} 
 
 /* 02 — Typographie générale des messages RP : règle antérieure conservée. */
 :is(.post_message, .postbody .content, .post-content, .entry-content) {
-  font-family: var(--special-font, Georgia, serif);
+  font-family: "Trebuchet MS", Aptos, Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
-  line-height: 1.85;
+  line-height: 1.8;
   letter-spacing: 0;
   color: var(--textColor, inherit);
 }
