@@ -1,0 +1,38 @@
+/* PRIVILEGE / GUIDE PRATIQUE 2046 — CSS autonome, à ajouter à la feuille CSS du forum */
+.priv-guide .pg-tabs{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0 18px;padding:0;border:0}
+.priv-guide .pg-tabs a{display:inline-flex;align-items:center;min-height:34px;padding:7px 12px;border:1px solid color-mix(in srgb,var(--accentClr,#c4a48e) 38%,transparent);border-radius:4px;background:color-mix(in srgb,var(--accentClr,#c4a48e) 6%,transparent);color:inherit!important;text-decoration:none!important;font-size:12px;font-weight:650;line-height:1.3;transition:background .2s,border-color .2s}
+.priv-guide .pg-tabs a:hover,.priv-guide .pg-tabs a:focus-visible{border-color:var(--accentClr,#c4a48e);background:color-mix(in srgb,var(--accentClr,#c4a48e) 17%,transparent);outline-offset:2px}
+.priv-guide .pg-panels>.pg-panel{display:none;scroll-margin-top:22px;animation:pgAppear .18s ease-out}
+.priv-guide .pg-panels>.pg-panel:first-child{display:block}
+.priv-guide .pg-panels:has(.pg-panel:target)>.pg-panel:first-child:not(:target){display:none}
+.priv-guide .pg-panels>.pg-panel:target{display:block}
+.priv-guide:not(:has(.pg-panel:target)) .pg-tabs a[href="#pg-2046-achats"],
+.priv-guide:has(#pg-2046-achats:target) .pg-tabs a[href="#pg-2046-achats"],
+.priv-guide:has(#pg-2046-administration:target) .pg-tabs a[href="#pg-2046-administration"],
+.priv-guide:has(#pg-2046-sante:target) .pg-tabs a[href="#pg-2046-sante"],
+.priv-guide:has(#pg-2046-education:target) .pg-tabs a[href="#pg-2046-education"],
+.priv-guide:has(#pg-2046-travail:target) .pg-tabs a[href="#pg-2046-travail"],
+.priv-guide:has(#pg-2046-logement:target) .pg-tabs a[href="#pg-2046-logement"],
+.priv-guide:has(#pg-2046-mobilite:target) .pg-tabs a[href="#pg-2046-mobilite"],
+.priv-guide:has(#pg-2046-securite:target) .pg-tabs a[href="#pg-2046-securite"],
+.priv-guide:has(#pg-2046-liens:target) .pg-tabs a[href="#pg-2046-liens"]{background:color-mix(in srgb,var(--accentClr,#c4a48e) 23%,transparent);border-color:var(--accentClr,#c4a48e)}
+.priv-guide .pg-section-header{display:flex;align-items:baseline;gap:12px;margin:7px 0 16px}
+.priv-guide .pg-num{color:var(--accentClr,#c4a48e);font-size:11px;font-weight:700;white-space:nowrap;letter-spacing:.1em}
+.priv-guide .pg-section-header .priv-h3{margin:0 0 4px}
+.priv-guide .pg-motto{font-family:var(--special-font,Georgia),serif;color:var(--accentClr,#c4a48e);font-style:italic;font-size:13px}
+.priv-guide .pg-scroll{width:100%;max-width:100%;overflow-x:auto;margin:0 0 13px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;border-radius:5px}
+.priv-guide .pg-table{border-collapse:collapse;table-layout:fixed;width:100%;min-width:590px;margin:0;font-size:13px;line-height:1.55}
+.priv-guide .pg-table th,.priv-guide .pg-table td{padding:11px 12px;text-align:left;vertical-align:top;border:1px solid color-mix(in srgb,var(--accentClr,#c4a48e) 24%,transparent);overflow-wrap:break-word}
+.priv-guide .pg-table thead th{background:color-mix(in srgb,var(--accentClr,#c4a48e) 17%,transparent);font-size:11px;letter-spacing:.055em;text-transform:uppercase}
+.priv-guide .pg-table th:first-child{width:22%}
+.priv-guide .pg-table th:nth-child(2),.priv-guide .pg-table th:nth-child(3){width:39%}
+.priv-guide .pg-table tbody th{font-weight:700;background:color-mix(in srgb,var(--accentClr,#c4a48e) 7%,transparent)}
+.priv-guide .pg-table tbody td{background:color-mix(in srgb,var(--accentClr,#c4a48e) 2%,transparent)}
+.priv-guide .pg-nuance{font-size:12px;line-height:1.55;margin:10px 0 15px}
+.priv-guide .pg-nuance>strong{font-weight:700;color:var(--accentClr,#c4a48e)}
+.priv-guide .pg-nuance .priv-liste{margin:7px 0;padding-left:20px}
+.priv-guide .pg-nuance .priv-liste li{margin:3px 0}
+.priv-guide .pg-panel>.priv-note{margin:12px 0 0}
+@keyframes pgAppear{from{opacity:.55;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.priv-guide .pg-tabs{gap:5px}.priv-guide .pg-tabs a{font-size:11px;min-height:32px;padding:6px 9px}.priv-guide .pg-table{font-size:12px;min-width:530px}.priv-guide .pg-table th,.priv-guide .pg-table td{padding:9px 10px}}
+@media(prefers-reduced-motion:reduce){.priv-guide .pg-panel{animation:none!important}.priv-guide .pg-tabs a{transition:none}}
