@@ -1,6 +1,6 @@
 /*
- * PRIVILÈGE — NEXUS V3 / Terminal citoyen + Échos de New York
- * Version de travail 2026-10-29
+ * PRIVILÈGE — NEXUS V3.1 / Terminal citoyen + Échos de New York
+ * Version de travail 2026-10-31 — annexe 10 intégrée
  * AUCUN appel réseau, stockage, accès aux données de compte ou publication automatique.
  * Assistant guidé hors-jeu : réponses scénarisées, liens publics et brouillons locaux.
  * Installation : remplacer la référence au script nexus-v2-terminal.js APRÈS test.
@@ -26,6 +26,7 @@
   var URLS = {
     ville: ORIGIN + '/t26-01-new-york-2046',
     link: ORIGIN + '/t28-03-le-link-citoyen',
+    guide: ORIGIN + '/t110-10-guide-pratique-2046',
     societe: ORIGIN + '/t29-04-la-societe-en-2046',
     augmentations: ORIGIN + '/t31-06-les-augmentations',
     organisations: ORIGIN + '/t33-08-les-organisations',
@@ -91,8 +92,8 @@
   var N = {};
   add(N,'home','NEXUS — Terminal citoyen',
     'Bienvenue sur PRIVILÈGE. Ce terminal est une assistance HORS-JEU : il aide à comprendre New York en 2046 et à imaginer un personnage.\n\nLes réponses sont écrites à l’avance. NEXUS ne lit ni votre fiche, ni vos RP, ni vos données personnelles. Aucun choix ne constitue une validation du staff.',
-    [opt('Créer un personnage','create'),opt('Le Link et la déconnexion','link'),opt('Vivre à New York','everyday'),opt('Groupes et organisations','affiliations'),opt('Histoire et institutions','history'),opt('Trouver une idée de RP','ideas')],
-    [src('Index des annexes','annexes'),src('Annonces du staff','annonces')], 'accueil bienvenue aide début interface');
+    [opt('Créer un personnage','create'),opt('Le Link et la déconnexion','link'),opt('Annexe 10 · Guide pratique','guide'),opt('Vivre à New York','everyday'),opt('Groupes et organisations','affiliations'),opt('Histoire et institutions','history'),opt('Trouver une idée de RP','ideas')],
+    [src('Index des annexes','annexes'),src('Guide pratique · Annexe 10','guide'),src('Annonces du staff','annonces')], 'accueil bienvenue aide début interface');
 
   add(N,'create','Construire un personnage',
     'Un personnage crédible n’a pas besoin de contrôler la ville. Choisissez ce qu’il désire, ce qu’il risque de perdre, ce qui l’attache à New York et ce que la société attend de lui.\n\nVous pouvez bâtir une ébauche guidée, consulter les règles ou simplement explorer le monde.',
@@ -109,8 +110,8 @@
 
   add(N,'link','Qu’est-ce que le Link Citoyen ?',
     'Le Link est une interface neuronale associée à un discret module sous-cutané. Il facilite l’assistance cognitive, les expériences sensorielles, certaines applications somatiques encadrées et les interactions avec les systèmes connectés.\n\nIl peut aider à payer, valider un trajet, ouvrir un accès autorisé ou communiquer. Il ne lit pas librement les pensées et ne contrôle pas tous les appareils. Son implantation est facultative.',
-    [opt('Quand est-il implanté ?','implantation'),opt('Se déconnecter temporairement','offline'),opt('Vivre sans Link','no_link'),opt('Quatre domaines fonctionnels','functions'),opt('Confidentialité','privacy'),opt('Retour aux technologies','technology')],
-    [src('Annexe 03 · Link Citoyen','link')], 'link citoyen implant neural payer ouvrir porte transport obligation');
+    [opt('Quand est-il implanté ?','implantation'),opt('Se déconnecter temporairement','offline'),opt('Vivre sans Link','no_link'),opt('Le Link dans la vie courante','guide'),opt('Quatre domaines fonctionnels','functions'),opt('Confidentialité','privacy'),opt('Retour aux technologies','technology')],
+    [src('Annexe 03 · Link Citoyen','link'),src('Annexe 10 · Guide pratique','guide')], 'link citoyen implant neural payer ouvrir porte transport obligation');
   add(N,'implantation','Pose, réparation et retrait du Link',
     'L’implantation ordinaire est autorisée à la majorité. Une implantation plus précoce n’est admise qu’en cas de nécessité médicale, dans un cadre réglementé.\n\nLe Link peut subir des pannes, nécessiter un entretien ou un remplacement de composant. Son retrait définitif est légal, mais demande une prise en charge médicale, avec ses contraintes et risques. Les données déjà transmises à des tiers ne disparaissent pas automatiquement.',
     [opt('Et si mon Link tombe en panne ?','pannes'),opt('Déconnexion temporaire','offline'),opt('Vivre sans implant','no_link'),opt('Retour au Link','link')],
@@ -118,11 +119,11 @@
   add(N,'offline','Puis-je couper mon Link ?',
     'Oui. Une déconnexion RÉSEAU temporaire est possible. Certaines fonctions locales restent accessibles ; les services qui exigent une vérification en temps réel peuvent cesser de fonctionner.\n\nDes informations conservées localement peuvent être synchronisées plus tard. Attention : les caméras, terminaux et services extérieurs peuvent enregistrer leurs propres traces. Être hors ligne ne rend pas invisible.',
     [opt('Différence avec un retrait','implantation'),opt('Protection des données','privacy'),opt('Conséquences au quotidien','no_link'),opt('Retour au Link','link')],
-    [src('Annexe 03','link')], 'wifi avion hors ligne deconnexion sync synchronisation différée upload');
+    [src('Annexe 03','link'),src('Annexe 10 · Guide pratique','guide')], 'wifi avion hors ligne deconnexion sync synchronisation différée upload');
   add(N,'functions','Les quatre fonctions du Link',
     '1. Assistance cognitive : traduction, navigation, informations contextualisées.\n2. Expérience sensorielle : immersion et flux émotionnels médiatisés.\n3. Applications somatiques : usages médicaux spécialisés, encadrés.\n4. Interaction environnementale : paiements, accès, transports et appareils compatibles.\n\nChaque fonction dépend de droits, de configurations et parfois d’une connexion active.',
     [opt('Blue Stream et Raw Heart','flux'),opt('Applications somatiques','somatique'),opt('Payer et circuler','paiement'),opt('Retour au Link','link')],
-    [src('Annexe 03','link')], 'cognitif sensoriel somatique payer portes interactif');
+    [src('Annexe 03','link'),src('Annexe 10 · Guide pratique','guide')], 'cognitif sensoriel somatique payer portes interactif');
   add(N,'flux','Blue Stream et Raw Heart',
     'Blue Stream propose des expériences émotionnelles filtrées ou éditées. Raw Heart privilégie des flux moins filtrés, potentiellement plus intenses et irréguliers.\n\nCe sont des expériences technologiques médiatisées, pas une télépathie, une preuve des émotions réelles d’autrui ou un transfert exact de souvenirs.',
     [opt('Link Poreux de Cordis','cordis'),opt('Vie intime et loisirs','leisure'),opt('Retour au Link','link')],
@@ -134,19 +135,19 @@
   add(N,'privacy','NEXUS connaît-elle mes pensées ?',
     'Non. Le Link ne donne pas automatiquement accès aux pensées, aux souvenirs ou à l’intégralité des données privées. Des protections, autorisations et procédures d’accès existent.\n\nDes permissions abusives, erreurs ou failles peuvent toutefois compromettre certaines informations. Inversement, la déconnexion ne garantit pas l’anonymat face aux capteurs et systèmes tiers.',
     [opt('Pirater un Link','hacking'),opt('Se déconnecter','offline'),opt('La surveillance de la ville','surveillance'),opt('Retour','technology')],
-    [src('Annexe 03','link'),src('Annexe 04','societe')], 'pensées vie privée données confidentialité surveillance secrets');
+    [src('Annexe 03','link'),src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'pensées vie privée données confidentialité surveillance secrets');
   add(N,'hacking','Que permet un piratage ?',
     'Des intrusions peuvent exploiter des failles, des permissions ou des dispositifs modifiés. Elles ne donnent pas accès à tous les souvenirs, à la conscience ou aux mouvements de quelqu’un, et elles ne permettent pas de commander NEXUS tout entière.\n\nLes intrusions importantes sont soumises à la cohérence technologique et à l’accord des partenaires de RP.',
     [opt('Link Blindé','forge'),opt('Interface Fantôme','archivarium_tech'),opt('Limites RP','limits'),opt('Retour','privacy')],
     [src('Annexe 03','link'),src('Annexe 06','augmentations')], 'hack pirater spyware intrusion données');
   add(N,'no_link','Peut-on vivre sans Link ?',
     'Oui. Refuser l’implant est légal et ne retire ni l’identité, ni les droits essentiels, ni l’accès à un compte bancaire ou aux appareils numériques externes.\n\nEn revanche, la société privilégie la connexion : démarches plus lentes, vérifications supplémentaires et possibilités réduites dans certains emplois ou services. C’est une discrimination technologique, pas un délit. Sans Link ne veut pas dire UNREGISTERED ou membre d’une faction.',
-    [opt('Paiements et déplacements','paiement'),opt('Administration','administration'),opt('Santé sans Link','health'),opt('Groupes et statuts','groups'),opt('Retour au Link','link')],
-    [src('Annexe 03','link'),src('Annexe 04','societe')], 'déconnecté refus pas de link légal discriminate exclusion inégalité');
+    [opt('Comparer les 9 situations du guide','guide'),opt('Paiements et déplacements','paiement'),opt('Administration','administration'),opt('Santé sans Link','health'),opt('Groupes et statuts','groups'),opt('Retour au Link','link')],
+    [src('Annexe 03','link'),src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'déconnecté refus pas de link légal discriminate exclusion inégalité');
   add(N,'pannes','Et si la connexion tombe ?',
     'Une panne peut empêcher l’accès à certains services connectés, sans interrompre toute la ville ni paralyser automatiquement les corps. Des alternatives subsistent : paiements externes, documents, accès manuels, équipements autonomes.\n\nCertaines personnes sont plus vulnérables que d’autres à ces interruptions. Les conséquences d’un incident collectif majeur doivent être validées par le staff.',
     [opt('Fréquence Zéro et ses actions','frequence'),opt('Enfants du Néant','enfants'),opt('Vivre sans Link','no_link'),opt('Idée de RP autour d’une panne','rp_panne')],
-    [src('Annexe 03','link'),src('Annexe 04','societe')], 'bug dysfonctionnement panne réseau black-out coupure');
+    [src('Annexe 03','link'),src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'bug dysfonctionnement panne réseau black-out coupure');
   add(N,'augments','Les augmentations : que peut-on jouer ?',
     'Trois catégories : dispositifs thérapeutiques, améliorations certifiées et modifications clandestines. Les augmentations restaurent, assistent ou améliorent des fonctions précises.\n\nIl n’existe pas de plafond numérique universel, mais les combinaisons doivent rester compatibles, entretenues et plausibles. Aucun dispositif ne confère invulnérabilité, télépathie ou perfection motrice absolue.',
     [opt('Les cinq limites','limits'),opt('Les trois Links modifiés','mods'),opt('Exemples concrets','aug_examples'),opt('Un androïde jouable ?','android'),opt('Retour aux technologies','technology')],
@@ -184,58 +185,101 @@
     [opt('L’Archivarium','archivarium'),opt('Enseignement par androïdes','education'),opt('Idée de RP avec un androïde','rp_android'),opt('Retour','technology')],
     [src('Annexe 06','augmentations'),src('Annexe 08','organisations')], 'robot conscience cybernétique personnage joueur');
 
+
+  /* ANNEXE 10 — Guide pratique officiel. Exemples indicatifs, non-obligations RP. */
+  add(N,'guide','Annexe 10 — Guide pratique 2046',
+    'Comment vit-on avec ou sans Link ? Ce guide officiel compare neuf situations de la vie new-yorkaise. Les droits essentiels demeurent, mais les délais, les coûts et l’accès aux équipements peuvent varier.\n\nCes exemples donnent des pistes de RP, pas des obligations qui s’appliquent à tous les habitants. Choisissez un domaine ou ouvrez le tableau complet dans la source ci-dessous.',
+    [opt('01 · Achats et argent','guide_money'),opt('02 · Démarches et citoyenneté','guide_admin'),opt('03 · Santé','guide_health'),opt('04 · Éducation','guide_education'),opt('05 · Travail et emploi','guide_work'),opt('06 · Logement et énergie','guide_housing'),opt('07 · Mobilité et transports','guide_transport'),opt('08 · Sécurité et justice','guide_justice'),opt('09 · Relations et loisirs','guide_social'),opt('Revenir au Link','link'),opt('Sommaire','home')],
+    [src('Annexe 10 · Tableau complet','guide'),src('Annexe 03 · Le Link Citoyen','link')], 'annexe 10 guide pratique quotidien lien link sans link comparatif tableau neuf onglets payer santé école transports logement démarches');
+  add(N,'guide_money','Guide pratique · Achats et argent',
+    'Avec un Link configuré, un achat ou une facture peut être validé par un service compatible. Sans Link, carte, appareil externe, virement ou espèces restent possibles selon le commerce.\n\nPour un prêt, un dossier classique peut demander davantage de justificatifs ; l’absence d’implant ne bloque pas automatiquement l’argent. Exemple RP : le lecteur de carte d’un commerce refuse une transaction pourtant légitime.',
+    [opt('Les transports','guide_transport'),opt('Les démarches','guide_admin'),opt('Toutes les rubriques','guide')],
+    [src('Annexe 10 · Achats et argent','guide')], 'courses argent payer factures carte espèces cash crédit prêt compte bancaire boutique commerce sans link');
+  add(N,'guide_admin','Guide pratique · Démarches et citoyenneté',
+    'Avec Link : authentification et dossiers préremplis lorsque les services sont compatibles. Sans Link : carte d’identité, portail externe, borne ou rendez-vous physique. Des guichets se raréfient dans certains quartiers.\n\nLes droits sont identiques, pas les délais. Exemple RP : une journée de travail perdue pour un document que le voisin a renouvelé en quelques secondes.',
+    [opt('Sécurité et justice','guide_justice'),opt('Travail','guide_work'),opt('Toutes les rubriques','guide')],
+    [src('Annexe 10 · Démarches et citoyenneté','guide')], 'identité papier formulaire renouveler document aides sociales déclaration adresse bureaucratie sans link');
+  add(N,'guide_health','Guide pratique · Santé',
+    'Avec Link et autorisations adaptées, un patient peut bénéficier de rappels, d’une orientation médicale et d’alertes via des dispositifs compatibles. Sans Link, rendez-vous par téléphone, bilans et examens médicaux restent possibles.\n\nLe diagnostic précoce et les soins essentiels n’exigent pas obligatoirement un Link ; les délais, le centre et les ressources créent des inégalités. Exemple RP : deux patientes, deux vitesses d’accès à un examen.',
+    [opt('Augmentations thérapeutiques','augments'),opt('Vie privée','privacy'),opt('Toutes les rubriques','guide')],
+    [src('Annexe 10 · Santé','guide'),src('Annexe 04 · Société','societe')], 'rendez vous médecin clinique urgent secours examens prévention diagnostic sans link sante');
+  add(N,'guide_education','Guide pratique · Éducation',
+    'Tuteurs IA, androïdes pédagogiques et cours personnalisés sont répandus ; des enseignants humains exercent toujours. Sans Link, supports physiques, cours collectifs et terminaux externes permettent d’apprendre.\n\nLes évaluations et la traduction varient selon les établissements, mais aucune interface ne télécharge une compétence dans un cerveau. Exemple RP : un androïde anime une classe, tandis qu’une enseignante humaine accompagne quelques élèves.',
+    [opt('Le travail','guide_work'),opt('Assistance cognitive','functions'),opt('Toutes les rubriques','guide')],
+    [src('Annexe 10 · Éducation','guide')], 'école scolarité étudiant examen diplôme langues traduction apprendre étude enseignement androide sans link');
+  add(N,'guide_work','Guide pratique · Travail et emploi',
+    'Le Link peut faciliter une candidature, la vérification de diplômes et l’usage d’outils professionnels compatibles. Sans Link, CV, attestations, compte bancaire et moyens de travail classiques existent toujours.\n\nLes employeurs peuvent favoriser les profils facilement vérifiables, mais un implant n’est ni obligatoire pour tous les métiers ni la preuve d’une compétence. Exemple RP : un recrutement retardé par un certificat manquant.',
+    [opt('Démarches administratives','guide_admin'),opt('Logement','guide_housing'),opt('Toutes les rubriques','guide')],
+    [src('Annexe 10 · Travail et emploi','guide')], 'emploi travail salaire banque entretien recrutement candidature certificat patron sans link');
+  add(N,'guide_housing','Guide pratique · Logement et énergie',
+    'Avec un Link compatible, certains logements ouvrent leurs portes et automatisent les paiements ou la consommation. Sans Link, clés, badges, codes, virements et compteurs classiques peuvent fonctionner.\n\nLes immeubles ne sont pas tous équipés pareil ; un impayé ne déclenche pas partout une coupure instantanée des services. Exemple RP : serrure dernier cri d’un côté, ascenseur vétuste de l’autre.',
+    [opt('Achats et argent','guide_money'),opt('Défaillance du réseau','pannes'),opt('Toutes les rubriques','guide')],
+    [src('Annexe 10 · Logement et énergie','guide')], 'loyer facture électricité chauffage logement maison appartement serrure badge impayé énergie sans link');
+  add(N,'guide_transport','Guide pratique · Mobilité et transports',
+    'Avec le Link, titres de transport et informations de trajet peuvent être intégrés aux accès compatibles. Sans Link, cartes, tickets, bornes et applications externes subsistent. Certains lecteurs physiques sont moins nombreux ou tombent en panne.\n\nLa certification de certaines voies dépend du véhicule, pas seulement de l’implant du conducteur. Exemple RP : un badge valide qu’un portique refuse trois fois.',
+    [opt('Payer un trajet','guide_money'),opt('Panne de réseau','pannes'),opt('Toutes les rubriques','guide')],
+    [src('Annexe 10 · Mobilité et transports','guide')], 'métro bus train ticket pass carte portique voiture conduire stationnement sans link');
+  add(N,'guide_justice','Guide pratique · Sécurité et justice',
+    'Avec Link, certaines identifications ou alertes peuvent être facilitées si les services sont activés. Sans Link, documents, témoins, enregistrements et autres preuves licites demeurent recevables dans les procédures adaptées.\n\nLa présomption d’innocence ne dépend pas du Link. NEXUS n’a pas accès sans limite aux données ou aux lieux. Exemple RP : reconstituer un trajet à partir d’un ticket et de témoins.',
+    [opt('Confidentialité','privacy'),opt('Démarches administratives','guide_admin'),opt('Toutes les rubriques','guide')],
+    [src('Annexe 10 · Sécurité et justice','guide')], 'justice police preuve innocence contrôle droits surveillance sécurité sans link');
+  add(N,'guide_social','Guide pratique · Relations et loisirs',
+    'SYN reste utilisable par certains appareils externes, même sans Link. Les messages peuvent passer par un téléphone ou un ordinateur ; les expériences immersives, notamment Blue Stream et Raw Heart, utilisent des interfaces compatibles.\n\nLe Link ne lit pas les pensées et le mode hors ligne ne fait pas disparaître les caméras ou traces tierces. Exemple RP : un rendez-vous organisé sur SYN, dans un café toujours connecté.',
+    [opt('Découvrir SYN','syn'),opt('Déconnexion réseau','offline'),opt('Toutes les rubriques','guide')],
+    [src('Annexe 10 · Relations et loisirs','guide'),src('Annexe 03 · Link Citoyen','link')], 'SYN rencontre couple amoureux message sms loisir jeu vidéo blue stream raw heart vie privée sans link');
+
   add(N,'everyday','La vie en 2046',
     'New York fonctionne. La technologie rend certains gestes presque invisibles, mais les écarts de moyens et d’accès demeurent. Le confort connecté n’est ni universel ni gratuit ; les alternatives existent, souvent plus lentes et moins visibles.\n\nDans quel domaine souhaitez-vous vous projeter ?',
-    [opt('Argent et transports','paiement'),opt('Santé et assurance','health'),opt('Éducation','education'),opt('Travail et logement','work'),opt('Relations et loisirs','leisure'),opt('Justice et démarches','administration')],
-    [src('Annexe 04 · Société','societe')], 'quotidien guide pratique vie ville');
+    [opt('Guide pratique · 9 domaines','guide'),opt('Argent et transports','paiement'),opt('Santé et assurance','health'),opt('Éducation','education'),opt('Travail et logement','work'),opt('Relations et loisirs','leisure'),opt('Justice et démarches','administration')],
+    [src('Annexe 04 · Société','societe'),src('Annexe 10 · Guide pratique','guide')], 'quotidien guide pratique vie ville');
   add(N,'paiement','Payer, circuler, entrer',
     'Avec un Link, un habitant peut valider un achat, un trajet ou un accès autorisé à partir d’une interface compatible. Sans Link, il peut utiliser un terminal, un badge, un titre de transport ou une vérification externe.\n\nLes accès manuels sont parfois moins nombreux ou moins fiables. Cela ne signifie pas que tous les non-porteurs doivent avoir un permis de circulation.',
     [opt('Prendre le métro sans Link','transport'),opt('Démarches administratives','administration'),opt('Retour au quotidien','everyday')],
-    [src('Annexe 03','link'),src('Annexe 04','societe')], 'carte crédit compte courses commerce metro portiques portes');
+    [src('Annexe 03','link'),src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'carte crédit compte courses commerce metro portiques portes');
   add(N,'transport','Se déplacer à New York',
     'Les cinq blocs restent reliés. Le Link facilite certains contrôles et paiements, mais les transports physiques et l’accès par d’autres moyens demeurent possibles.\n\nLes équipements, les dessertes et les temps d’attente varient. Une panne peut ralentir un trajet ; elle ne justifie pas d’inventer sans validation une fermeture générale du réseau.',
     [opt('Découvrir les cinq blocs','city'),opt('Pannes réseau','pannes'),opt('Retour au quotidien','everyday')],
-    [src('Annexe 01','ville'),src('Annexe 04','societe')], 'train bus métro mobilité quartiers déplacements');
+    [src('Annexe 01','ville'),src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'train bus métro mobilité quartiers déplacements');
   add(N,'administration','Démarches, droits et recours',
     'Les services connectés peuvent accélérer une demande, un renouvellement de document ou une authentification. Sans Link, des procédures externes existent, mais elles peuvent multiplier rendez-vous, pièces justificatives et délais.\n\nL’absence de Link reste légale et n’efface pas les droits essentiels. Un contrôle plus long ou une décision algorithmique contestable peut servir d’intrigue, sans renverser automatiquement la présomption d’innocence.',
     [opt('NEXUS et les institutions','institutions'),opt('Justice et surveillance','surveillance'),opt('Idée de RP administratif','rp_error'),opt('Retour au quotidien','everyday')],
-    [src('Annexe 03','link'),src('Annexe 04','societe')], 'discrimination dossier social identité mairie papier aides justice voter');
+    [src('Annexe 03','link'),src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'discrimination dossier social identité mairie papier aides justice voter');
   add(N,'health','La médecine en 2046',
     'Les diagnostics assistés et les outils prédictifs améliorent la prévention et la prise en charge. Les médecins humains demeurent essentiels. Les délais, équipements spécialisés et traitements avancés varient selon les ressources des patients.\n\nSans Link, une personne peut toujours se soigner et bénéficier d’examens ; elle peut toutefois perdre certaines facilités de coordination et d’automatisation.',
     [opt('Assurances et données','insurance'),opt('Augmentations thérapeutiques','augments'),opt('Retour au quotidien','everyday')],
-    [src('Annexe 04','societe'),src('Annexe 06','augmentations')], 'médecin hopital chirurgie handicap maladie clinique prévention urgence');
+    [src('Annexe 04','societe'),src('Annexe 06','augmentations'),src('Annexe 10 · Guide pratique','guide')], 'médecin hopital chirurgie handicap maladie clinique prévention urgence');
   add(N,'insurance','Et les assurances de santé ?',
     'Les données et évaluations peuvent intervenir dans l’accès à certains services et garanties, sous les règles de protection établies. Les écarts de ressources restent décisifs.\n\nUn « Score de Prévention » universel et obligatoire n’a pas été établi comme règle canonique. On ne doit pas affirmer qu’un système unique lit librement toutes les données médicales.',
     [opt('Vie privée','privacy'),opt('Santé','health'),opt('Retour au quotidien','everyday')],
-    [src('Annexe 04','societe')], 'score de prévention prime assurance données santé');
+    [src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'score de prévention prime assurance données santé');
   add(N,'education','École et formation',
     'Une grande part de l’enseignement est assurée ou encadrée par des IA pédagogiques et des androïdes. Les enseignants humains n’ont pas disparu : leurs rôles varient selon les établissements, les disciplines et les moyens disponibles.\n\nLe Link peut faciliter l’apprentissage ou la traduction, jamais transmettre instantanément une compétence. Les parcours restent inégaux.',
     [opt('Métiers humains','work'),opt('Link et apprentissage','functions'),opt('Retour au quotidien','everyday')],
-    [src('Annexe 04','societe')], 'prof école lycée université androïde élève diplome');
+    [src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'prof école lycée université androïde élève diplome');
   add(N,'work','Le travail en 2046',
     'L’automatisation a remplacé de nombreuses tâches, pas toute l’activité humaine. Artisans, soignants, enseignants, artistes, salariés, indépendants, personnels de sécurité et travailleurs précaires continuent d’exister.\n\nLes outils algorithmiques peuvent favoriser certains profils, et l’absence de Link peut limiter des opportunités, sans empêcher toute profession.',
     [opt('Inégalités sociales','inequality'),opt('Habiter New York','housing'),opt('Groupes de personnages','groups'),opt('Retour au quotidien','everyday')],
-    [src('Annexe 04','societe')], 'emploi carrière licenciement travail chômage salaire métier');
+    [src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'emploi carrière licenciement travail chômage salaire métier');
   add(N,'housing','Se loger en 2046',
     'Immeubles intelligents, résidences prestigieuses, appartements modestes, colocations et bâtiments vieillissants coexistent. Les critères automatisés d’accès au logement peuvent défavoriser certains dossiers.\n\nAucun des cinq blocs n’impose une classe sociale unique. Des coupures automatiques abusives peuvent nourrir une intrigue locale, mais elles ne sont pas une règle universelle de New York.',
     [opt('Cinq blocs de New York','city'),opt('Disparités sociales','inequality'),opt('Retour au quotidien','everyday')],
-    [src('Annexe 04','societe')], 'loyer propriétaire appartement domotique énergie logements');
+    [src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'loyer propriétaire appartement domotique énergie logements');
   add(N,'inequality','Qu’est-ce qui détermine ma place ?',
     'Les écarts de revenus, de formation, d’accès aux soins, de réseau social et de connexion peuvent peser sur les trajectoires. Les quatre groupes du forum ne sont pas des castes juridiques ; la mobilité sociale reste possible.\n\nPRIVILÈGE raconte notamment comment une société peut préserver des droits sur le papier tout en rendant leur exercice plus coûteux.',
     [opt('Choisir son groupe','groups'),opt('Vivre sans Link','no_link'),opt('Retour au quotidien','everyday')],
-    [src('Annexe 04','societe'),src('Groupes','groupes')], 'privilège caste inégalité discrimination classe sociale');
+    [src('Annexe 04','societe'),src('Groupes','groupes'),src('Annexe 10 · Guide pratique','guide')], 'privilège caste inégalité discrimination classe sociale');
   add(N,'leisure','Rencontres, loisirs et intimité',
     'La culture humaine coexiste avec la création assistée. Les expériences immersives, loisirs traditionnels, spectacles, jeux et rencontres restent multiples. SYN fait partie de la vie relationnelle connectée, mais les relations ne se limitent pas à une application.\n\nIl n’est pas nécessaire d’avoir un Link pour nouer des liens ou utiliser tout appareil numérique.',
     [opt('Découvrir SYN','syn'),opt('Flux émotionnels','flux'),opt('Idées de liens RP','rp_social'),opt('Retour au quotidien','everyday')],
-    [src('SYN','syn'),src('Annexe 04','societe')], 'amour tinder rendez-vous rencontre couple famille réseaux jeux');
+    [src('SYN','syn'),src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'amour tinder rendez-vous rencontre couple famille réseaux jeux');
   add(N,'syn','SYN — Rencontrer, choisir, hésiter',
     'SYN est une interface de rencontres et de mise en relation intégrée à l’univers de PRIVILÈGE. Son existence n’implique pas qu’une compatibilité calculée soit la vérité d’un sentiment ou qu’une rencontre soit imposée.\n\nLa relation appartient toujours aux personnages et à leurs partenaires de jeu.',
     [opt('Relations et loisirs','leisure'),opt('Créer des liens RP','rp_social'),opt('Sommaire','home')],
-    [src('Ouvrir SYN','syn')], 'syn application profil dating matching compatibilité');
+    [src('Ouvrir SYN','syn'),src('Annexe 10 · Guide pratique','guide')], 'syn application profil dating matching compatibilité');
   add(N,'surveillance','Surveillance et justice',
     'NEXUS n’est ni omnisciente ni un gouvernement autonome. Des systèmes de contrôle existent, mais leur accès aux données dépend des procédures et des infrastructures. Les institutions et les recours humains n’ont pas disparu.\n\nUn citoyen sans Link peut subir des contrôles et délais supplémentaires ; cela ne fait pas de lui un suspect automatique ou un individu dépourvu de droits.',
     [opt('Vie privée','privacy'),opt('D.R.A. et institutions','institutions'),opt('Démarches et recours','administration')],
-    [src('Annexe 03','link'),src('Annexe 04','societe')], 'police drone tribunal preuve judiciaire');
+    [src('Annexe 03','link'),src('Annexe 04','societe'),src('Annexe 10 · Guide pratique','guide')], 'police drone tribunal preuve judiciaire');
 
   add(N,'city','Cinq blocs, une métropole',
     'CROWN correspond à Manhattan, VOLT à Brooklyn, PULSE au Queens, RIFT au Bronx et VEIL à Staten Island.\n\nCes noms désignent des blocs administratifs et narratifs, pas des castes. Chaque bloc mêle différents milieux et modes de vie.',
@@ -395,7 +439,7 @@
   add(N,'build_link','Ébauche — 4/7 · Rapport au Link',
     'Son rapport au Link influence son quotidien, sans dicter son groupe ou ses convictions.',
     [opt('Link standard, connecté','build_values',{link:'Link standard, connecté'}),opt('Connexion intermittente','build_values',{link:'Connexion intermittente'}),opt('Aucun Link','build_values',{link:'Sans Link'}),opt('Link ou équipement modifié','build_values',{link:'Link ou équipement modifié (à préciser)'}),opt('À définir','build_values',{link:'À définir'})],
-    [src('Annexe 03','link')], 'implant choix');
+    [src('Annexe 03','link'),src('Annexe 10 · Guide pratique','guide')], 'implant choix');
   add(N,'build_values','Ébauche — 5/7 · Désir',
     'Quel désir pourrait mettre ce personnage en mouvement ?',
     [opt('Protéger une relation','build_conflit',{desir:'Protéger une relation'}),opt('Changer de place sociale','build_conflit',{desir:'Changer de place sociale'}),opt('Défendre une conviction','build_conflit',{desir:'Défendre une conviction'}),opt('Préserver son autonomie','build_conflit',{desir:'Préserver son autonomie'}),opt('Comprendre un événement passé','build_conflit',{desir:'Comprendre un événement passé'})],
@@ -508,7 +552,7 @@
         b.type='button';b.addEventListener('click',function(){visit(found.key,'Question : '+found.title);});
         searchResults.appendChild(b);
       });
-      if(!matches.length)searchResults.appendChild(txt('div','nx-dialogue__searchnone','Aucune réponse correspondante. Essayez « Link », « santé », « groupes », « 2028 » ou consultez les annexes.'));
+      if(!matches.length)searchResults.appendChild(txt('div','nx-dialogue__searchnone','Aucune réponse correspondante. Essayez « payer sans Link », « guide pratique », « métro », « santé » ou consultez les annexes.'));
     }
     btnBack.addEventListener('click',function(){
       if(!history.length)return;
