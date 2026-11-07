@@ -22,9 +22,9 @@
 .priv-rg .priv-rg-tab > span { font-weight:600; }
 .priv-rg .priv-rg-tab:hover,
 .priv-rg .priv-rg-tab:focus-visible {
-  border-color:#7eafbc; background:color-mix(in srgb, #7eafbc 13%, transparent);
+  border-color:#a87cc5; background:color-mix(in srgb, #a87cc5 13%, transparent);
 }
-.priv-rg .priv-rg-tab:focus-visible { outline:2px solid #7eafbc; outline-offset:2px; }
+.priv-rg .priv-rg-tab:focus-visible { outline:2px solid #a87cc5; outline-offset:2px; }
 .priv-rg .priv-rg-panel { display:none; min-width:0; scroll-margin-top:25px; }
 /* Affichage initial = exactement le bottin fourni, y compris si l'URL cible une lettre de A à Z. */
 .priv-rg:not(:has(.priv-rg-panel:target)) .priv-rg-panel#priv-rg-faceclaims,
@@ -36,8 +36,8 @@
 .priv-rg:has(#priv-rg-organisations:target) .priv-rg-tab[href="#priv-rg-organisations"],
 .priv-rg:has(#priv-rg-metiers:target) .priv-rg-tab[href="#priv-rg-metiers"],
 .priv-rg:has(#priv-rg-habitations:target) .priv-rg-tab[href="#priv-rg-habitations"] {
-  border-color:#7eafbc;
-  background:color-mix(in srgb, #7eafbc 17%, transparent);
+  border-color:#a87cc5;
+  background:color-mix(in srgb, #a87cc5 17%, transparent);
 }
 /* Seulement les NOUVELLES lignes de registres ; pas d'impact sur le bloc de faceclaims. */
 .priv-rg .priv-rg-records {
