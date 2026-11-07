@@ -1,0 +1,67 @@
+/* ==========================================================
+   PRIVILÈGE / REGISTRES À ONGLETS
+   Styles UNIQUEMENT pour le nouveau système d'onglets.
+   Ne touche à aucune des classes existantes .priv-dem / .pd-*
+   CSS pur : pas de JS nécessaire.
+   ========================================================== */
+
+.priv-rg { width:100%; min-width:0; }
+.priv-rg .priv-rg-nav {
+  display:flex; flex-wrap:wrap; gap:7px; margin:0 0 16px;
+  padding:0 0 11px; border-bottom:1px solid color-mix(in srgb, currentColor 17%, transparent);
+}
+.priv-rg .priv-rg-tab {
+  display:inline-flex; align-items:center; gap:7px;
+  padding:10px 12px; border-radius:6px;
+  border:1px solid color-mix(in srgb, currentColor 20%, transparent);
+  background:color-mix(in srgb, currentColor 4%, transparent);
+  color:inherit; font:inherit; font-size:12px; font-weight:700;
+  letter-spacing:.03em; text-decoration:none !important;
+  line-height:1.3; transition:border-color .2s, background-color .2s;
+}
+.priv-rg .priv-rg-tab > span { font-weight:600; }
+.priv-rg .priv-rg-tab:hover,
+.priv-rg .priv-rg-tab:focus-visible {
+  border-color:#7eafbc; background:color-mix(in srgb, #7eafbc 13%, transparent);
+}
+.priv-rg .priv-rg-tab:focus-visible { outline:2px solid #7eafbc; outline-offset:2px; }
+.priv-rg .priv-rg-panel { display:none; min-width:0; scroll-margin-top:25px; }
+/* Affichage initial = exactement le bottin fourni, y compris si l'URL cible une lettre de A à Z. */
+.priv-rg:not(:has(.priv-rg-panel:target)) .priv-rg-panel#priv-rg-faceclaims,
+.priv-rg .priv-rg-panel:target { display:block; }
+/* Sélection visuelle. */
+.priv-rg:not(:has(.priv-rg-panel:target)) .priv-rg-tab[href="#priv-rg-faceclaims"],
+.priv-rg:has(#priv-rg-faceclaims:target) .priv-rg-tab[href="#priv-rg-faceclaims"],
+.priv-rg:has(#priv-rg-multicomptes:target) .priv-rg-tab[href="#priv-rg-multicomptes"],
+.priv-rg:has(#priv-rg-organisations:target) .priv-rg-tab[href="#priv-rg-organisations"],
+.priv-rg:has(#priv-rg-metiers:target) .priv-rg-tab[href="#priv-rg-metiers"],
+.priv-rg:has(#priv-rg-habitations:target) .priv-rg-tab[href="#priv-rg-habitations"] {
+  border-color:#7eafbc;
+  background:color-mix(in srgb, #7eafbc 17%, transparent);
+}
+/* Seulement les NOUVELLES lignes de registres ; pas d'impact sur le bloc de faceclaims. */
+.priv-rg .priv-rg-records {
+  margin:16px 0 18px; overflow:hidden; border-radius:5px;
+  border:1px solid color-mix(in srgb, currentColor 17%, transparent);
+}
+.priv-rg .priv-rg-recordhead,
+.priv-rg .priv-rg-record {
+  display:grid; grid-template-columns:minmax(130px, .8fr) minmax(0, 1.4fr);
+  gap:16px; align-items:baseline; padding:12px 14px;
+}
+.priv-rg .priv-rg-recordhead {
+  background:color-mix(in srgb, currentColor 9%, transparent);
+  text-transform:uppercase; letter-spacing:.09em; font-size:10px; font-weight:800;
+}
+.priv-rg .priv-rg-record + .priv-rg-record {
+  border-top:1px solid color-mix(in srgb, currentColor 12%, transparent);
+}
+.priv-rg .priv-rg-record strong { font-weight:750; }
+.priv-rg .priv-rg-record div { opacity:.85; overflow-wrap:anywhere; }
+.priv-rg .priv-rg-empty { padding:22px 14px; opacity:.6; font-style:italic; font-size:13px; }
+@media (max-width:620px) {
+  .priv-rg .priv-rg-nav { gap:5px; }
+  .priv-rg .priv-rg-tab { padding:9px 10px; font-size:11px; }
+  .priv-rg .priv-rg-recordhead,
+  .priv-rg .priv-rg-record { grid-template-columns:1fr; gap:4px; }
+}
