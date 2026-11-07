@@ -1,6 +1,7 @@
 /* ============================================================
-   PRIVILÈGE · NEXUS / MENU CITOYEN V1
-   Déplace le VRAI Switcheroo dans un panneau latéral.
+   PRIVILÈGE · NEXUS / MENU CITOYEN V3 / CORRECTIF SIDEBAR
+   Déplace les comptes dans le panneau tout en gardant les outils sur la barre.
+   SECURITE : si le CSS n’est pas chargé, ne touche pas au Switcheroo.
    À charger après l'initialisation de Switcheroo, une seule fois.
    ============================================================ */
 (function () {
@@ -52,6 +53,14 @@
 
     document.body.appendChild(root);
 
+    // Si le CSS V3 n'est pas servi (GitHub/CDN), ne pas déplacer Switcheroo.
+    // Cela évite de masquer les commandes de la sidebar.
+    if (window.getComputedStyle(root.querySelector('.priv-burger-panel')).position !== 'fixed') {
+      root.remove();
+      console.warn('[PRIVILÈGE] Menu NEXUS non initialisé : menuburger.css absent ou obsolète.');
+      return;
+    }
+
     var button = root.querySelector('.priv-burger-toggle');
     var panel = root.querySelector('.priv-burger-panel');
     var overlay = root.querySelector('.priv-burger-backdrop');
@@ -101,8 +110,39 @@
     function moveSwitcheroo() {
       var switcheroo = document.getElementById('switcheroo');
       if (!switcheroo) return false;
+      var list = switcheroo.querySelector('.switcheroo__squircles');
+      // Attendre que le plugin soit réellement initialisé.
+      if (!list || !list.querySelector('[data-action="open-login"]')) return false;
+
       if (switcheroo.parentElement !== accounts) {
-        // Déplacer le nœud, pas son HTML : on conserve les actions natives du plugin.
+        // Garder une ancre dans la colonne d'origine : elle maintient sa
+        // structure et la place occupée par Switcheroo dans la sidebar.
+        var anchor = document.getElementById('priv-burger-rail-spacer');
+        if (!anchor) {
+          anchor = document.createElement('nav');
+          anchor.id = 'priv-burger-rail-spacer';
+          anchor.className = 'switcheroo priv-burger-rail-spacer';
+          anchor.setAttribute('aria-label', 'Commandes rapides du forum');
+          var railList = document.createElement('ul');
+          railList.className = 'switcheroo__squircles';
+          anchor.appendChild(railList);
+          switcheroo.parentNode.insertBefore(anchor, switcheroo);
+        }
+        var rail = anchor.querySelector('.switcheroo__squircles');
+
+        // Déplacer les vrais boutons personnalisés (jour/nuit, haut, bas,
+        // messagerie si elle est dans Switcheroo), sans cloner leurs écouteurs.
+        Array.from(list.children).forEach(function (item) {
+          if (item.classList.contains('switcheroo__button') ||
+              item.classList.contains('switcheroo__logo') ||
+              item.classList.contains('switcheroo__divider')) {
+            rail.appendChild(item);
+          }
+        });
+        if (rail.children.length) anchor.classList.add('priv-burger-rail-spacer--has-tools');
+
+        // Garder le VRAI #switcheroo autour des comptes, pour les actions
+        // natives (changement, suppression, ajout et réorganisation).
         accounts.appendChild(switcheroo);
       }
       switcheroo.setAttribute('position', 'static');
@@ -118,6 +158,7 @@
           item.setAttribute('title', label);
         }
       });
+      document.body.classList.add('priv-burger-ready');
       return true;
     }
 
