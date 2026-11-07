@@ -1,12 +1,18 @@
 /* ======================================================================
    PRIVILÈGE  /  NEXUS 2046
-   MENU CITOYEN — V2 · ÉDITION INTÉGRÉE
+   MENU CITOYEN — V3 · CORRECTIF SWITCHEROO / SIDEBAR
    ----------------------------------------------------------------------
    Feuille COMPLÈTE : remplace intégralement l'ancien menuburger.css.
-   Compatible avec menuburger-nexus.js (structure V1 conservée), Switcheroo
-   et les variables du thème Forumactif. Aucun changement JS requis.
+   Compatible avec menuburger-nexus.js V3, Switcheroo et les
+   variables du thème Forumactif. Remplacer AUSSI le JS V1.
    Charger après le CSS principal du forum et celui de Switcheroo.
    ====================================================================== */
+
+/* Ancien menu nav1 / .hamburger : neutraliser l'ancien markup sans
+   toucher aux contrôles de Switcheroo ni aux boutons de la sidebar. */
+input.hamburger,
+input.hamburger + label,
+nav1 { display: none !important; }
 
 /* 01 — VARIABLES & ISOLATION =========================================== */
 #priv-burger-root {
@@ -113,7 +119,7 @@
 /* 03 — VOILE & PANNEAU ================================================ */
 #priv-burger-root .priv-burger-backdrop {
   position: fixed;
-  inset: 0;
+  inset: 0 0 0 80px; /* ne jamais couvrir la sidebar */
   z-index: 9996;
   background: rgba(5, 6, 10, .58);
   opacity: 0;
@@ -262,7 +268,7 @@
   color: var(--pb-muted);
   font-size: 11px;
 }
-/* Il s'agit du nœud Switcheroo déplacé par le JS, pas d'une copie. */
+/* Le véritable #switcheroo reste utilisable (reorder, changement de compte). */
 #priv-burger-panel #switcheroo,
 #priv-burger-panel .switcheroo {
   position: relative !important;
@@ -447,6 +453,67 @@
   box-shadow: 0 0 0 3px var(--pb-gold-soft);
 }
 #priv-burger-root .priv-burger-foot-version { margin-left: auto; opacity: .7; }
+
+/* 08 bis — CONSERVATION DES BOUTONS DE LA BARRE LATERALE =============== */
+/* Le JS laisse un emplacement à la place du Switcheroo et y maintient
+   les customButtons natifs. Ne jamais masquer .sidebar_bottom. */
+#priv-burger-rail-spacer.priv-burger-rail-spacer {
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  width: 100% !important;
+  min-width: 0;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#priv-burger-rail-spacer.priv-burger-rail-spacer::before,
+#priv-burger-rail-spacer.priv-burger-rail-spacer::after { content: none !important; display: none !important; }
+/* Les boutons custom séparés démarrent sous le burger, sans être cliqués
+   au travers de lui. Les commandes .sidebar_bottom restent en bas. */
+#priv-burger-rail-spacer.priv-burger-rail-spacer--has-tools {
+  position: fixed !important;
+  top: 170px !important;
+  left: 13px !important;
+  bottom: auto !important;
+  z-index: 9998 !important;
+  flex: none !important;
+  width: 56px !important;
+  min-height: 0 !important;
+}
+#priv-burger-rail-spacer .switcheroo__squircles {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+#priv-burger-rail-spacer .switcheroo__button,
+#priv-burger-rail-spacer .switcheroo__logo { cursor: pointer; pointer-events: auto; }
+/* Les commandes de bas de barre sont indépendantes de Switcheroo sur
+   plusieurs templates Forumactif : elles restent ancrées et accessibles. */
+body.priv-burger-ready .sidebar_bottom {
+  position: fixed !important;
+  left: 13px !important;
+  bottom: 15px !important;
+  z-index: 9998 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 56px !important;
+  gap: 7px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+/* Même le panneau ouvert ne rend pas la sidebar inactive. */
 
 /* 09 — FOCUS CLAVIER & MODALE D'AJOUT DE COMPTE ======================== */
 #priv-burger-root .priv-burger-toggle:focus-visible,
