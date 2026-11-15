@@ -1,0 +1,450 @@
+/* =====================================================
+   PRIVILEGE — ECHO (forum 34, mode blog)
+   Rendu blog / fil type Twitter — v2, écrit sur le vrai HTML
+   À coller dans : Affichage > Couleurs > CSS
+   (remplace tout ce que tu avais collé avant)
+   Sans JS : la page d'un sujet est détectée par body:has(.blog-title)
+===================================================== */
+
+:root {
+    --echo-card:   #24232b;
+    --echo-border: #38343e;
+    --echo-text:   var(--textColor, #e5e0e9);
+    --echo-muted:  #9f99a8;
+    --echo-accent: var(--accentClr, #e6c898);
+    --echo-radius: 14px;
+    --echo-col:    720px;
+    --echo-avatar: 44px;
+}
+
+
+/* =====================================================
+   PAGE D'UN SUJET — colonne centrale
+===================================================== */
+
+body:has(.blog-title) :is(.sub-header, .topic-actions, #bookmarks, #blog_comments) {
+    max-width: var(--echo-col);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+
+/* ---------- L'ARTICLE ---------- */
+
+body:has(.blog-title) div.post {
+    position: relative;
+    float: none !important;
+    width: auto !important;
+    max-width: var(--echo-col) !important;
+    margin: 24px auto 10px !important;
+    padding: 24px 26px 18px !important;
+    box-sizing: border-box !important;
+    background: var(--echo-card) !important;
+    border: 1px solid var(--echo-border) !important;
+    border-radius: var(--echo-radius) !important;
+}
+
+/* Profil réduit à : avatar rond + pseudo + rang */
+body:has(.blog-title) .postprofile {
+    float: none !important;
+    width: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 18px !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    text-align: left !important;
+}
+body:has(.blog-title) .postprofile dl { margin: 0; padding: 0; border: 0; }
+body:has(.blog-title) .postprofile dd { display: none !important; }
+
+body:has(.blog-title) .postprofile dt {
+    display: grid !important;
+    grid-template-columns: 52px 1fr;
+    grid-template-areas: "av name" "av rank";
+    column-gap: 12px;
+    align-items: center;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+body:has(.blog-title) .postprofile-avatar { grid-area: av; line-height: 0; }
+body:has(.blog-title) .postprofile-avatar img {
+    width: 52px !important;
+    height: 52px !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover;
+    border-radius: 50%;
+}
+body:has(.blog-title) .postprofile-name {
+    grid-area: name;
+    align-self: end;
+    font-size: 16px;
+}
+body:has(.blog-title) .postprofile-rank {
+    grid-area: rank;
+    align-self: start;
+    font-size: 13px;
+    color: var(--echo-muted);
+}
+body:has(.blog-title) .postprofile-rank br,
+body:has(.blog-title) .postprofile-rank .dd_award,
+body:has(.blog-title) .postprofile-rank .award_more { display: none !important; }
+
+body:has(.blog-title) div.post .postbody {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+/* Actions (mentionner, citer, éditer...) : en haut à droite, discrètes */
+body:has(.blog-title) div.post .postbody > .menu-wrap {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    margin: 0 !important;
+}
+
+/* Date : 15112026 → 15/11/2026 */
+body:has(.blog-title) .blog_cal-border {
+    display: flex !important;
+    float: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 0 8px !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    font-size: 13px;
+    color: var(--echo-muted);
+}
+body:has(.blog-title) .blog_cal-border span {
+    display: inline !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+    line-height: 1.4 !important;
+    color: inherit !important;
+    background: none !important;
+    border: 0 !important;
+}
+body:has(.blog-title) .blog_cal-day::after,
+body:has(.blog-title) .blog_cal-month::after { content: "/"; }
+
+/* Titre d'article */
+body:has(.blog-title) .blog-title {
+    margin: 0 0 14px !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+}
+body:has(.blog-title) .blog-title h2 {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+    border: 0 !important;
+}
+body:has(.blog-title) .blog-title h2 img { display: none !important; }
+body:has(.blog-title) .blog-title h2 a { color: inherit !important; text-decoration: none; }
+
+/* Texte */
+body:has(.blog-title) div.post .postbody .content {
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+    color: var(--echo-text);
+}
+body:has(.blog-title) div.post .postbody .content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Signature masquée (pour l'afficher : supprimer ce bloc) */
+body:has(.blog-title) .signature_div { display: none !important; }
+
+/* J'aime de l'article */
+body:has(.blog-title) div.post > .fa_like_div {
+    margin: 18px 0 0 !important;
+    padding: 12px 0 0 !important;
+    border-top: 1px solid var(--echo-border);
+}
+
+/* Partage : seulement aligné sur la colonne, le reste est intact */
+body:has(.blog-title) #bookmarks {
+    padding: 0 4px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--echo-muted);
+}
+
+
+/* =====================================================
+   COMMENTAIRES
+===================================================== */
+
+body:has(.blog-title) #blog_comments .comments-title {
+    margin: 22px 0 10px !important;
+    padding: 0 !important;
+    text-align: left !important;
+    font-size: 20px !important;
+}
+
+body:has(.blog-title) #blog_comments .comment {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px;
+    float: none !important;
+    clear: both !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 0 10px !important;
+    padding: 16px 18px !important;
+    box-sizing: border-box !important;
+    background: var(--echo-card) !important;
+    border: 1px solid var(--echo-border) !important;
+    border-radius: var(--echo-radius) !important;
+}
+
+/* Avatar rond (écrase le style inline max-width:200px) */
+body:has(.blog-title) .comment-avatar {
+    flex: 0 0 var(--echo-avatar) !important;
+    width: var(--echo-avatar) !important;
+    height: var(--echo-avatar) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    border-radius: 50%;
+}
+body:has(.blog-title) .comment-avatar a,
+body:has(.blog-title) .comment-avatar img {
+    display: block !important;
+    width: var(--echo-avatar) !important;
+    height: var(--echo-avatar) !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+body:has(.blog-title) .comment-body {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* En-tête : "Pseudo · date" à gauche, actions à droite.
+   (.h3 est le bandeau de titre générique du thème : on le neutralise) */
+body:has(.blog-title) .comment-body > .h3 {
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 0 0 2px !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    color: inherit !important;
+}
+body:has(.blog-title) .blog_comment-title { display: none !important; }
+
+body:has(.blog-title) .comment-info {
+    order: 1;
+    flex: 1 1 auto;
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    margin: 0 !important;
+    font-size: 13px !important;
+    color: var(--echo-muted) !important;
+}
+body:has(.blog-title) .comment-author { order: 1; font-weight: 700 !important; }
+body:has(.blog-title) .comment-author a { color: inherit; }
+body:has(.blog-title) .comment-time { order: 2; font-weight: 400 !important; }
+body:has(.blog-title) .comment-time::before { content: "·"; margin-right: 6px; }
+body:has(.blog-title) .comment-author i,
+body:has(.blog-title) .comment-time i { display: none; }
+
+body:has(.blog-title) .comment .menu-wrap { order: 2; flex: 0 0 auto; margin: 0 !important; }
+
+body:has(.blog-title) .comment .content.clearfix {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    color: var(--echo-text) !important;
+    word-wrap: break-word;
+}
+body:has(.blog-title) .comment .fa_like_div { margin-top: 10px !important; }
+
+
+/* =====================================================
+   ICÔNES D'ACTION (article + commentaires)
+   Le "+" qui déplie le menu est masqué, les icônes restent visibles
+===================================================== */
+
+body:has(.blog-title) .post-menu { display: none !important; }
+
+body:has(.blog-title) .profile-icons {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    opacity: .55;
+    transition: opacity .15s;
+}
+body:has(.blog-title) .profile-icons li {
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+body:has(.blog-title) .profile-icons a,
+body:has(.blog-title) .profile-icons span { color: var(--echo-muted); cursor: pointer; }
+body:has(.blog-title) .profile-icons a:hover { color: var(--echo-accent); }
+body:has(.blog-title) div.post:hover .profile-icons,
+body:has(.blog-title) .comment:hover .profile-icons,
+body:has(.blog-title) .profile-icons:focus-within { opacity: 1; }
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media screen and (max-width: 600px) {
+    :root { --echo-avatar: 36px; }
+
+    body:has(.blog-title) div.post { padding: 16px !important; margin: 12px auto 8px !important; }
+    body:has(.blog-title) div.post .postbody > .menu-wrap {
+        position: static;
+        margin: 0 0 10px !important;
+    }
+    body:has(.blog-title) .blog-title h2 { font-size: 22px !important; }
+    body:has(.blog-title) div.post .postbody .content { font-size: 15px !important; }
+    body:has(.blog-title) #blog_comments .comment { padding: 12px !important; gap: 10px; }
+}
+
+
+/* =====================================================
+   LISTE DES SUJETS (template topics_blog_box)
+   Fil de cartes dans la même colonne que les sujets
+===================================================== */
+
+.forumbg:has(.bloglist) {
+    max-width: var(--echo-col);
+    margin: 24px auto !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    box-sizing: border-box;
+}
+
+.bloglist {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+}
+
+/* Carte d'un sujet, organisée en colonne :
+   date → titre + infos → extrait */
+.bloglist li.row {
+    display: flex !important;
+    flex-direction: column;
+    float: none !important;
+    width: auto !important;
+    margin: 0 0 10px !important;
+    padding: 18px 22px !important;
+    box-sizing: border-box;
+    background: var(--echo-card) !important;
+    border: 1px solid var(--echo-border) !important;
+    border-radius: var(--echo-radius) !important;
+}
+
+/* Date : le "calendrier" devient une simple ligne discrète */
+.bloglist .blog_cal-border {
+    order: 0;
+    float: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 0 6px !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+.bloglist .blog_cal-content {
+    display: flex;
+    gap: 5px;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px;
+    color: var(--echo-muted);
+}
+.bloglist .blog_cal-content span {
+    display: inline !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+    line-height: 1.4 !important;
+    color: inherit !important;
+    background: none !important;
+}
+
+/* Titre + infos */
+.bloglist .bloglist-head { order: 1; margin: 0 !important; padding: 0 !important; }
+.bloglist .blog_title { margin: 0 0 4px !important; padding: 0 !important; }
+.bloglist .blog_title h2,
+.bloglist .blog_title a.topictitle {
+    font-size: 21px !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+}
+.bloglist .blog_comments {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin: 4px 0 12px !important;
+    padding: 0 !important;
+    font-size: 13px;
+    color: var(--echo-muted);
+}
+.bloglist .blog_comments i { margin-right: 5px; }
+.bloglist .blog_comments-num { color: var(--echo-muted); }
+.bloglist .blog_comments-num:hover { color: var(--echo-accent); }
+
+/* Extrait : hauteur limitée avec fondu, le titre mène à la suite */
+.bloglist .blog_message {
+    order: 2;
+    max-height: 18em;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--echo-text);
+    -webkit-mask-image: linear-gradient(#000 70%, transparent);
+            mask-image: linear-gradient(#000 70%, transparent);
+}
+.bloglist .blog_message img { max-width: 100%; height: auto; border-radius: 10px; }
+
+@media screen and (max-width: 600px) {
+    .bloglist li.row { padding: 14px !important; }
+    .bloglist .blog_title h2,
+    .bloglist .blog_title a.topictitle { font-size: 18px !important; }
+}
