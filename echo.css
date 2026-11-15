@@ -1,269 +1,545 @@
-/* PRIVILEGE — ECHO / forum 34
-   Ciblage CSS autonome : aucun JavaScript requis pour ajouter une classe.
-   Les règles ne s'appliquent que si le fil d'Ariane contient le lien ECHO.
-*/
+<br />
 
-@supports selector(body:has(a.nav[href="/f34-echo"])) {
-  body:has(a.nav[href="/f34-echo"]) {
-    --echo-card: #24232b;
-    --echo-border: #38343e;
-    --echo-text: #e5e0e9;
-    --echo-muted: #9f99a8;
-    --echo-accent: #a78bfa;
-    --echo-radius: 14px;
-    --echo-col: 720px;
-    --echo-avatar: 44px;
-  }
+ 
 
-  /* Publication principale */
-  body:has(a.nav[href="/f34-echo"]) div.post {
-    display: block !important;
-    float: none !important;
-    width: auto !important;
-    max-width: var(--echo-col) !important;
-    margin: 24px auto 10px !important;
-    padding: 24px 26px !important;
-    box-sizing: border-box !important;
-    background: var(--echo-card) !important;
-    border: 1px solid var(--echo-border) !important;
-    border-radius: var(--echo-radius) !important;
-  }
+<!----------------------------------------------->
+<!-- LIENS DE NAVIGATION -------------->
 
-  body:has(a.nav[href="/f34-echo"]) div.post .postprofile {
-    display: block !important;
-    float: none !important;
-    width: auto !important;
-    min-height: 0 !important;
-    margin: 0 0 18px !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: none !important;
-    text-align: left !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) div.post .postprofile dl {
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) div.post .postprofile dd {
-    display: none !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) div.post .postprofile dt {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    margin: 0 !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) div.post .postprofile img {
-    width: var(--echo-avatar) !important;
-    height: var(--echo-avatar) !important;
-    max-width: var(--echo-avatar) !important;
-    max-height: var(--echo-avatar) !important;
-    object-fit: cover !important;
-    border-radius: 50% !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) div.postbody {
-    display: block !important;
-    float: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) div.postbody h3,
-  body:has(a.nav[href="/f34-echo"]) div.postbody h3 a {
-    font-size: 26px !important;
-    line-height: 1.25 !important;
-    margin: 0 0 6px !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) .postbody .content {
-    font-size: 16px !important;
-    line-height: 1.75 !important;
-    color: var(--echo-text) !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) .postbody .content img {
-    max-width: 100% !important;
-    height: auto !important;
-    border-radius: 10px !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) div[id^="sig"].signature_div {
-    display: none !important;
-  }
-
-  /* Conteneur des commentaires */
-  body:has(a.nav[href="/f34-echo"]) #blog_comments {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    gap: 10px !important;
-    box-sizing: border-box !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comments-title {
-    width: 100% !important;
-    max-width: var(--echo-col) !important;
-    margin: 22px auto 8px !important;
-    color: var(--echo-text) !important;
-    font-size: 18px !important;
-  }
-
-  /* Une carte par commentaire */
-  body:has(a.nav[href="/f34-echo"]) #blog_comments > .comment {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    float: none !important;
-    clear: both !important;
-    width: 100% !important;
-    max-width: var(--echo-col) !important;
-    margin: 0 !important;
-    padding: 16px 18px !important;
-    box-sizing: border-box !important;
-    background: var(--echo-card) !important;
-    border: 1px solid var(--echo-border) !important;
-    border-radius: var(--echo-radius) !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment-avatar {
-    display: block !important;
-    flex: 0 0 var(--echo-avatar) !important;
-    width: var(--echo-avatar) !important;
-    min-width: var(--echo-avatar) !important;
-    max-width: var(--echo-avatar) !important;
-    height: var(--echo-avatar) !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    border-radius: 50% !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment-avatar a {
-    display: block !important;
-    width: var(--echo-avatar) !important;
-    height: var(--echo-avatar) !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment-avatar img {
-    display: block !important;
-    width: var(--echo-avatar) !important;
-    height: var(--echo-avatar) !important;
-    max-width: var(--echo-avatar) !important;
-    max-height: var(--echo-avatar) !important;
-    object-fit: cover !important;
-    border-radius: 50% !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment-body {
-    display: block !important;
-    flex: 1 1 auto !important;
-    width: auto !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .blog_comment-title {
-    display: none !important;
-  }
-
-  /* En-tête du commentaire */
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment-info {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-items: baseline !important;
-    gap: 6px !important;
-    margin: 0 0 4px !important;
-    font-size: 13px !important;
-    color: var(--echo-muted) !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment-author {
-    font-weight: 700 !important;
-    color: var(--echo-text) !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment-author a {
-    color: inherit !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment-time {
-    font-weight: 400 !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment-time::before {
-    content: "·";
-    margin-right: 6px;
-  }
-
-  /* Texte et réactions */
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment .content.clearfix {
-    font-size: 15px !important;
-    line-height: 1.6 !important;
-    color: var(--echo-text) !important;
-    overflow-wrap: anywhere !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment .fa_like_div {
-    margin-top: 10px !important;
-  }
-
-  /* Actions */
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment .menu-wrap {
-    margin: 8px 0 0 !important;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment .profile-icons {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-    gap: 14px !important;
-    margin: 8px 0 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    opacity: .55;
-    transition: opacity .15s ease;
-  }
-
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment:hover .profile-icons,
-  body:has(a.nav[href="/f34-echo"]) #blog_comments .comment .profile-icons:focus-within {
-    opacity: 1;
-  }
-
-  /* Mobile */
-  @media screen and (max-width: 600px) {
-    body:has(a.nav[href="/f34-echo"]) {
-      --echo-avatar: 36px;
-    }
-
-    body:has(a.nav[href="/f34-echo"]) div.post {
-      padding: 16px !important;
-      margin: 12px auto 8px !important;
-    }
-
-    body:has(a.nav[href="/f34-echo"]) div.postbody h3,
-    body:has(a.nav[href="/f34-echo"]) div.postbody h3 a {
-      font-size: 21px !important;
-    }
-
-    body:has(a.nav[href="/f34-echo"]) .postbody .content {
-      font-size: 15px !important;
-    }
-
-    body:has(a.nav[href="/f34-echo"]) #blog_comments > .comment {
-      padding: 12px !important;
-      gap: 10px !important;
-    }
-  }
+<style id="pv-topic-actions-v3">
+/* PRIVILÈGE — Nouveau / Répondre : liens purement textuels.
+   On n'utilise PLUS .buttons ni <img>, pour écarter les styles d'images natifs. */
+.links_bar a.pv-topic-action {
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  position:relative;
+  min-height:26px;
+  width:auto!important;
+  height:auto!important;
+  padding:3px 8px!important;
+  margin:0 8px 0 0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:var(--accentClr, #e6c898)!important;
+  font:700 11px/1.5 var(--mono-font, 'Space Mono', monospace)!important;
+  letter-spacing:.045em!important;
+  text-transform:uppercase;
+  text-decoration:none!important;
+  white-space:nowrap;
+  vertical-align:middle;
 }
+/* Protection contre d'anciens libellés générés en CSS */
+.links_bar a.pv-topic-action::before,
+.links_bar a.pv-topic-action::after {
+  content:none!important;
+  display:none!important;
+}
+.links_bar a.pv-topic-action:hover {
+  text-decoration:underline!important;
+  text-underline-offset:4px;
+}
+.links_bar a.pv-topic-action:focus-visible {
+  outline:1px solid var(--accentClr, #e6c898)!important;
+  outline-offset:3px;
+}
+
+/* Citer / Éditer / Supprimer / IP : macros natives, liens conservés. */
+.post_row .post_details > ul.profile-icons {
+  display:inline-flex!important;
+  flex-flow:row wrap!important;
+  align-items:center!important;
+  justify-content:flex-end;
+  column-gap:12px!important;
+  row-gap:3px!important;
+  float:none!important;
+  list-style:none!important;
+  min-width:0;
+  width:auto!important;
+  margin:0!important;
+  padding:0!important;
+}
+.post_row .post_details > ul.profile-icons > li {
+  display:inline-flex!important;
+  align-items:center!important;
+  float:none!important;
+  width:auto!important;
+  margin:0!important;
+  padding:0!important;
+  background:none!important;
+  border:0!important;
+}
+.post_row .post_details > ul.profile-icons > li a,
+.post_row .post_details > ul.profile-icons > li button {
+  display:inline-flex!important;
+  align-items:center;
+  width:auto!important;
+  min-height:25px;
+  margin:0!important;
+  padding:2px 0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:none!important;
+  box-shadow:none!important;
+  color:var(--textColor)!important;
+  font:600 11px/1.5 var(--mono-font,'Space Mono',monospace)!important;
+  letter-spacing:.035em;
+  text-decoration:none!important;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.post_row .post_details > ul.profile-icons > li a:hover,
+.post_row .post_details > ul.profile-icons > li button:hover{
+  color:var(--accentClr)!important;
+  text-decoration:underline!important;
+  text-underline-offset:4px;
+}
+/* J'aime est un bouton distinct de la liste, mais visuellement assorti. */
+.post_row .post_details .like_button {
+  flex:0 0 auto;
+  margin:0 0 0 10px!important;
+  padding:0!important;
+}
+.post_row .post_details .like_button .rep-button{
+  display:inline-flex!important;
+  align-items:center;
+  gap:5px;
+  min-height:25px;
+  padding:2px 0!important;
+  border:0!important;
+  background:none!important;
+  box-shadow:none!important;
+  color:var(--accentClr)!important;
+  font:600 11px/1.5 var(--mono-font,'Space Mono',monospace)!important;
+  letter-spacing:.035em;
+  text-transform:uppercase;
+}
+.post_row .post_details .like_button .rep-button:hover{
+  text-decoration:underline!important;
+  text-underline-offset:4px;
+}
+.post_row .post_details :is(a,button):focus-visible,
+ .links_bar a.pv-topic-action:focus-visible{
+  outline:1px solid var(--accentClr)!important;
+  outline-offset:3px;
+}
+@media(max-width:680px){
+  .post_row .post_details{flex-wrap:wrap;row-gap:5px;}
+  .post_row .post_details > ul.profile-icons{justify-content:flex-start;gap:3px 10px!important;}
+  .post_row .post_details .like_button{margin-left:0!important;}
+  .post_row .post_details > ul.profile-icons > li a,
+  .post_row .post_details .like_button .rep-button{font-size:10px!important;}
+}
+
+/* PRIVILEGE — Alignement des actions et ligne des likes */
+.post_row .post_details {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 0 12px !important;
+}
+
+.post_row .post_details > .post_date {
+    flex: 0 0 100% !important;
+}
+
+.post_row .post_details > ul.profile-icons {
+    order: 1;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+}
+
+.post_row .post_details > .like_button {
+    order: 2;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin: 0 !important;
+}
+
+.post_row .post_details > .pv-like-list {
+    order: 3;
+    display: block !important;
+    flex: 0 0 100% !important;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 3px 0 2px;
+    text-align: right;
+}
+
+@media(max-width:680px) {
+    .post_row .post_details {
+        row-gap: 5px !important;
+    }
+    .post_row .post_details > .pv-like-list {
+        text-align: left;
+    }
+}
+
+</style>
+
+<div class="navigation_links">
+
+    <!-- Chaîne de lien : Catégorie > Forum > Sous-fo -->
+    <span class="navigation_chain">
+        {NAV_CAT_DESC}
+    </span>
+
+</div>
+
+<!----------------------------------------------->
+<!-- BARRE DE GESTION -------------->
+
+<div class="links_bar">
+  
+        <!-- Boutons : nouveau -->
+        <!-- BEGIN switch_user_authpost -->
+        <a class="pv-topic-action pv-topic-new" href="{U_POST_NEW_TOPIC}" rel="nofollow" aria-label="{L_POST_NEW_TOPIC}">＋ NOUVEAU</a>&nbsp;
+        <!-- END switch_user_authpost -->
+
+        <!-- Bouton : répondre -->
+        <!-- BEGIN switch_user_authreply -->
+        <a class="pv-topic-action pv-topic-reply" href="{U_POST_REPLY_TOPIC}" aria-label="{L_POST_REPLY_TOPIC}">↗ RÉPONDRE</a>
+        <!-- END switch_user_authreply -->
+  
+        <!-- Pagination -->
+        <span class="pagination right">
+            {PAGINATION}
+        </span>
+         
+  
+</div>
+
+<!----------------------------------------------->
+<!-- MESSAGE -------------->
+
+
+<!-- Contenenur des messages -->
+<div class="container">
+
+    <!-- Titre du poste -->
+    <h1 class="page-title">{TOPIC_TITLE}</h1>
+  
+    <!-- Liste des participants du sujet -->
+    {POSTERS_LIST}
+
+    <!-- Sondage (template : viewtopic_poll_ballot /// viewtopic_poll_result) -->
+    {POLL_DISPLAY}
+
+
+    <!-- Affichage d'un message -->
+    <!-- BEGIN postrow -->
+    <!-- BEGIN displayed -->
+    <div id="{postrow.displayed.U_POST_ID}"></div>
+    <div class="post post_row post--{postrow.displayed.U_POST_ID}" id="p{postrow.displayed.U_POST_ID}">
+
+        <!-- Conteneur informations du message-->
+        <div class="post_details">
+
+            <span class="post_date">
+                <!-- Lien d'ancre vers le message -->
+                <a href="{postrow.displayed.POST_URL}">{postrow.displayed.POST_SUBJECT}</a>
+			&nbsp;
+                <!-- Date du message -->
+                <time>{postrow.displayed.POST_DATE_NEW}</time>
+            </span>
+              
+                <!-- Boutons d'édition de message -->
+                <ul class="profile-icons ">
+                    <li>{postrow.displayed.QUOTE_IMG}</li>
+                    <li>{postrow.displayed.EDIT_IMG}</li>
+                    <li>{postrow.displayed.DELETE_IMG}</li>
+                    <li>{postrow.displayed.IP_IMG}</li>
+                </ul>
+          
+                <!-- Conteneur du bouton like -->
+                <!-- BEGIN switch_likes_active -->
+                <div class="like_button">
+
+                    <!-- Bouton "j'aime" -->
+                    <button class="rep-button {postrow.displayed.switch_likes_active.C_VOTE_LIKE}" data-href="{postrow.displayed.switch_likes_active.U_VOTE_LIKE}" data-href-rm="{postrow.displayed.switch_likes_active.U_VOTE_RM_LIKE}">
+                        <span class="like_text">{postrow.displayed.switch_likes_active.L_LIKE}</span>
+                        {postrow.displayed.switch_likes_active.COUNT_VOTE_LIKE}
+                    </button>
+
+                </div>
+
+                <!-- Liste des membres ayant aimé : indépendante du bouton -->
+                <!-- BEGIN switch_like_list -->
+                <div class="pv-like-list">
+                    {postrow.displayed.switch_likes_active.switch_like_list.D_LIKE_LIST}
+                </div>
+                <!-- END switch_like_list -->
+                <!-- END switch_likes_active -->
+                <!-- Fin du bouton like -->
+
+
+        </div>
+        <!-- Fin détails -->
+
+
+      <!-- Colonne profil NEXUS / STABLE — AES traitée par le JS Forumactif « Sur les sujets » -->
+<div class="post_profile pn-mini" id="profile{postrow.displayed.U_POST_ID}">
+  <div class="pf-card">
+
+    <div class="pf-head">
+      <span class="pn-overline">NEXUS / CITIZEN ID</span>
+      <span class="post_pseudo">{postrow.displayed.POSTER_NAME}</span>
+      <small class="post_rank">{postrow.displayed.POSTER_RANK_NEW} {postrow.displayed.RANK_IMAGE}</small>
+    </div>
+
+    <div class="pf-avatar">
+      <div class="post_avatar">{postrow.displayed.POSTER_AVATAR}</div>
+      <div class="pf-status {postrow.displayed.ONLINE_IMG_NEW}">{postrow.displayed.ONLINE_IMG_NEW}</div>
+    </div>
+
+    <!-- L'image AES est lue automatiquement depuis le champ Forumactif « AES ». -->
+    <!-- Si le champ n'est pas renseigné, ce bloc reste entièrement masqué. -->
+    <div class="pf-aes" hidden>
+      <div class="pn-aes-header"><span>PERSONAL AESTHETIC</span><span aria-hidden="true">◇</span></div>
+      <img class="pn-aes-image" alt="Image esthétique personnelle" loading="lazy" />
+    </div>
+
+    <div class="pf-tabs">
+      <input type="radio" name="pf-{postrow.displayed.U_POST_ID}" id="pf1-{postrow.displayed.U_POST_ID}" checked="checked" />
+      <input type="radio" name="pf-{postrow.displayed.U_POST_ID}" id="pf2-{postrow.displayed.U_POST_ID}" />
+
+      <div class="pf-nav">
+        <label for="pf1-{postrow.displayed.U_POST_ID}">Infos</label>
+        <label for="pf2-{postrow.displayed.U_POST_ID}">Fiche</label>
+      </div>
+
+      <div class="pf-panel pf-p1">
+        <!-- BEGIN profile_field -->
+        <div class="user_field">
+          <span class="field_label">{postrow.displayed.profile_field.LABEL}</span>
+          <span class="field_content">{postrow.displayed.profile_field.CONTENT}</span>
+          <span class="field_separator">{postrow.displayed.profile_field.SEPARATOR}</span>
+        </div>
+        <!-- END profile_field -->
+
+        <!-- Distinctions NEXUS : affichées dans le Wombat uniquement. -->
+        <p class="pn-no-data" hidden>DONNÉES NON RENSEIGNÉES.</p>
+      </div>
+
+      <!-- FICHE RPG / NEXUS — source native Forumactif conservée. -->
+      <div class="pf-panel pf-p2" aria-label="Feuille de personnage">
+        <div class="pn-rpg-head" aria-hidden="true">
+          <span class="pn-rpg-headline">NEXUS / CHARACTER ARCHIVE</span>
+          <span class="pn-rpg-sigil">◇</span>
+        </div>
+        <div class="pn-rpg-source">
+          {postrow.displayed.POSTER_RPG}
+        </div>
+        <div class="pn-rpg-foot" aria-hidden="true">PERSONAL RECORD / NEW YORK — 2046</div>
+      </div>
+    </div>
+
+    <div class="profil_contact" aria-label="Liens de contact">
+      <span class="pn-contact-item">{postrow.displayed.PROFILE_IMG}</span>
+      <span class="pn-contact-item">{postrow.displayed.PM_IMG}</span>
+      <!-- BEGIN contact_field -->
+      <span class="pn-contact-item">{postrow.displayed.contact_field.CONTENT}</span>
+      <!-- END contact_field -->
+    </div>
+
+  </div>
+</div>
+<!-- Fin colonne profil -->
+
+
+        <!-- Contenu du message -->
+        <div class="post_message postbody content">
+            <div>{postrow.displayed.MESSAGE}</div>
+
+            <!-- Signature -->
+            <!-- BEGIN switch_signature -->
+            <div class="signature_div" id="sig{postrow.displayed.U_POST_ID}">{postrow.displayed.SIGNATURE_NEW}</div>
+            <!-- END switch_signature -->
+
+        </div>
+        <!-- Fin du contenu du message -->
+    </div>
+
+    <!-- END displayed -->
+    <!-- END postrow -->
+    <!-- Fin affichage d'un message -->
+
+</div>
+<!-- Fin des messages -->
+
+
+<!----------------------------------------------->
+<!-- BARRE DE GESTION -------------->
+
+
+<div class="links_bar">
+  
+        <!-- Lien "surveiller le sujet" -->
+        <!-- BEGIN switch_user_logged_in -->
+        <!-- BEGIN watchtopic -->
+        <span class="specials_links">{S_WATCH_TOPIC}</span>
+        <!-- END watchtopic -->
+        <!-- END switch_user_logged_in -->
+        
+        <!-- BEGIN switch_plus_menu -->
+        <!-- Lien "sujets surveillés" -->
+        &nbsp;<a class="specials_links" href="{U_WATCHSEARCH_JS_PLUS_MENU}">Sujets surveillés</a>
+        <!-- END switch_plus_menu -->
+
+    <!-- Pagination -->
+    <!-- BEGIN topicpagination -->
+    <span class="pagination right">{PAGINATION}</span>
+    <!-- END topicpagination -->
+
+</div>
+
+
+<!----------------------------------------------->
+<!-- REGLES DE LA CATEGORIE (si activé) -------------->
+
+<!-- BEGIN switch_forum_rules -->
+<div class="panel" id="forum_rules">
+
+    <!-- Titre "règlement" -->
+    <div class="h3">{L_FORUM_RULES}</div>
+
+    <!-- Règlement -->
+    <div class="postbody">
+        <!-- Image du règlement -->
+        <!-- BEGIN switch_forum_rule_image -->
+        <img class="left logo" src="{RULE_IMG_URL}" alt="" />
+        <!-- END switch_forum_rule_image -->
+
+        <!-- Contenu -->
+        {RULE_MSG}
+    </div>
+
+</div>
+<!-- END switch_forum_rules -->
+
+
+<!----------------------------------------------->
+<!-- REPONSE RAPIDE -------------->
+
+<div class="container quickreply" id="quickreply_content">
+    <!-- BEGIN switch_user_logged_in -->
+    {QUICK_REPLY_FORM}
+    <!-- END switch_user_logged_in -->
+</div>
+
+
+<!----------------------------------------------->
+<!-- BARRE DE GESTION -------------->
+
+
+<div class="links_bar">
+        <!-- Bouton : nouveau -->
+        <!-- BEGIN switch_user_authpost -->
+        <a class="pv-topic-action pv-topic-new" href="{U_POST_NEW_TOPIC}" rel="nofollow" aria-label="{L_POST_NEW_TOPIC}">＋ NOUVEAU</a>&nbsp;
+        <!-- END switch_user_authpost -->
+      
+        <!-- Bouton : répondre -->
+        <!-- BEGIN switch_user_authreply -->
+        <a class="pv-topic-action pv-topic-reply" href="{U_POST_REPLY_TOPIC}" aria-label="{L_POST_REPLY_TOPIC}">↗ RÉPONDRE</a>
+        <!-- END switch_user_authreply -->
+
+    <!-- BEGIN switch_plus_menu -->
+    <span class="right">
+        <a href="{U_FAVOURITE_JS_PLUS_MENU}">Ajouter le sujet à ses favoris</a>
+    </span>
+  <!-- END switch_plus_menu -->
+
+</div>
+
+<br/>
+
+<!----------------------------------------------->
+<!-- SAUTER VERS UN AUTRE FORUM -------------->
+
+
+<form action="{S_JUMPBOX_ACTION}" method="get" onsubmit="if(document.jumpbox.f.value == -1){return false;}" class="left">
+    <fieldset class="jumpbox">
+        <label>{L_JUMP_TO}:&nbsp;</label>
+        {S_JUMPBOX_SELECT}&nbsp;
+        <input class="button2" type="submit" value="{L_GO}" />
+    </fieldset>
+</form>
+
+
+<!----------------------------------------------->
+<!-- BOUTONS DE MODERATION -------------->
+
+<!-- BEGIN viewtopic_bottom -->
+<form method="get" action="{S_FORM_MOD_ACTION}" class="right">
+    <fieldset class="quickmod">
+        <input type="hidden" name="t" value="{TOPIC_ID}" />
+
+        <!-- <input type="hidden" name="sid" value="{S_SID}" /> -->
+        <input type="hidden" name="{SECURE_ID_NAME}" value="{SECURE_ID_VALUE}" />
+        <label>{L_MOD_TOOLS}:&nbsp;</label>
+        {S_SELECT_MOD}&nbsp;
+        <input class="button2" type="submit" value="{L_GO}" />
+    </fieldset>
+  <span class="right">{S_TOPIC_ADMIN}</span>
+</form>
+<!-- END viewtopic_bottom -->
+
+
+
+<div class="clear"></div>
+
+<!-- Script image recadré -->
+<!-- BEGIN switch_image_resize -->
+<script type="text/javascript">
+    //<![CDATA[
+    $(resize_images({
+        'selector': '.postbody .content',
+        'max_width': {
+            switch_image_resize.IMG_RESIZE_WIDTH
+        },
+        'max_height': {
+            switch_image_resize.IMG_RESIZE_HEIGHT
+        }
+    }));
+    //]]>
+
+</script>
+<!-- END switch_image_resize -->
+
+
+<!-- BEGIN switch_plus_menu -->
+<script type="text/javascript">
+    //<![CDATA[
+    var multiquote_img_off = '{JS_MULTIQUOTE_IMG_OFF}',
+        multiquote_img_on = '{JS_MULTIQUOTE_IMG_ON}';
+    //]]>
+</script>
+<!-- END switch_plus_menu -->
+
+<script type="text/javascript">
+    //<![CDATA[
+    var hiddenMsgLabel = {
+        visible: '{JS_HIDE_HIDDEN_MESSAGE}',
+        hidden: '{JS_SHOW_HIDDEN_MESSAGE}'
+    };
+
+    showHiddenMessage = function(id) {
+        var regId = parseInt(id, 10);
+
+        if (!isNaN(regId) && regId > 0) {
+            $('.post--' + regId).toggle(0, function() {
+                if ($(this).is(':visible')) {
+                    $('#hidden-title--' + regId).html(hiddenMsgLabel.visible);
+                } else {
+                    $('#hidden-title--' + regId).html(hiddenMsgLabel.hidden);
+                }
+            });
+        }
+
+        return false;
+    };
+    //]]>
+</script>
