@@ -1,0 +1,327 @@
+
+/* =====================================================
+   PRIVILEGE — ECHO (forum 34)
+   Rendu blog / fil type réseau social
+   Fichier : echo.css
+===================================================== */
+
+body.echo-topic {
+    --echo-card: #24232b;
+    --echo-border: #38343e;
+    --echo-text: #e5e0e9;
+    --echo-muted: #9f99a8;
+    --echo-accent: #a78bfa;
+    --echo-radius: 14px;
+    --echo-col: 720px;
+    --echo-avatar: 44px;
+}
+
+
+/* =====================================================
+   PUBLICATION PRINCIPALE
+===================================================== */
+
+body.echo-topic div.post {
+    display: block !important;
+    float: none !important;
+    width: auto !important;
+    max-width: var(--echo-col) !important;
+    margin: 24px auto 10px !important;
+    padding: 24px 26px !important;
+    box-sizing: border-box !important;
+    background: var(--echo-card) !important;
+    border: 1px solid var(--echo-border) !important;
+    border-radius: var(--echo-radius) !important;
+}
+
+/* En-tête du profil auteur */
+
+body.echo-topic div.post .postprofile {
+    display: block !important;
+    float: none !important;
+    width: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 18px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    text-align: left !important;
+}
+
+body.echo-topic div.post .postprofile dl {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+body.echo-topic div.post .postprofile dd {
+    display: none !important;
+}
+
+body.echo-topic div.post .postprofile dt {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 0 !important;
+}
+
+body.echo-topic div.post .postprofile img {
+    width: var(--echo-avatar) !important;
+    height: var(--echo-avatar) !important;
+    max-width: var(--echo-avatar) !important;
+    max-height: var(--echo-avatar) !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
+
+/* Corps de la publication */
+
+body.echo-topic div.postbody {
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Titre */
+
+body.echo-topic div.postbody h3,
+body.echo-topic div.postbody h3 a {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    margin: 0 0 6px !important;
+}
+
+/* Texte */
+
+body.echo-topic .postbody .content {
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+    color: var(--echo-text) !important;
+}
+
+body.echo-topic .postbody .content img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 10px !important;
+}
+
+/* Signatures */
+
+body.echo-topic div[id^="sig"].signature_div {
+    display: none !important;
+}
+
+
+/* =====================================================
+   CONTENEUR DES COMMENTAIRES
+===================================================== */
+
+body.echo-topic #blog_comments {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 10px !important;
+    box-sizing: border-box !important;
+}
+
+/* Titre de la section commentaires */
+
+body.echo-topic #blog_comments .comments-title {
+    width: 100% !important;
+    max-width: var(--echo-col) !important;
+    margin: 22px auto 8px !important;
+    color: var(--echo-text) !important;
+    font-size: 18px !important;
+}
+
+
+/* =====================================================
+   COMMENTAIRES — UNE CARTE PAR LIGNE
+===================================================== */
+
+body.echo-topic #blog_comments > .comment {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    float: none !important;
+    clear: both !important;
+    width: 100% !important;
+    max-width: var(--echo-col) !important;
+    margin: 0 !important;
+    padding: 16px 18px !important;
+    box-sizing: border-box !important;
+    background: var(--echo-card) !important;
+    border: 1px solid var(--echo-border) !important;
+    border-radius: var(--echo-radius) !important;
+}
+
+/* Avatar */
+
+body.echo-topic #blog_comments .comment-avatar {
+    display: block !important;
+    flex: 0 0 var(--echo-avatar) !important;
+    width: var(--echo-avatar) !important;
+    min-width: var(--echo-avatar) !important;
+    max-width: var(--echo-avatar) !important;
+    height: var(--echo-avatar) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
+}
+
+body.echo-topic #blog_comments .comment-avatar a {
+    display: block !important;
+    width: var(--echo-avatar) !important;
+    height: var(--echo-avatar) !important;
+}
+
+body.echo-topic #blog_comments .comment-avatar img {
+    display: block !important;
+    width: var(--echo-avatar) !important;
+    height: var(--echo-avatar) !important;
+    max-width: var(--echo-avatar) !important;
+    max-height: var(--echo-avatar) !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
+
+/* Corps du commentaire */
+
+body.echo-topic #blog_comments .comment-body {
+    display: block !important;
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Masquer le titre technique "Re:" */
+
+body.echo-topic #blog_comments .blog_comment-title {
+    display: none !important;
+}
+
+
+/* =====================================================
+   EN-TÊTE DU COMMENTAIRE
+===================================================== */
+
+body.echo-topic #blog_comments .comment-info {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    gap: 6px !important;
+    margin: 0 0 4px !important;
+    font-size: 13px !important;
+    color: var(--echo-muted) !important;
+}
+
+body.echo-topic #blog_comments .comment-author {
+    font-weight: 700 !important;
+    color: var(--echo-text) !important;
+}
+
+body.echo-topic #blog_comments .comment-author a {
+    color: inherit !important;
+}
+
+body.echo-topic #blog_comments .comment-time {
+    font-weight: 400 !important;
+}
+
+body.echo-topic #blog_comments .comment-time::before {
+    content: "·";
+    margin-right: 6px;
+}
+
+
+/* =====================================================
+   TEXTE DU COMMENTAIRE
+===================================================== */
+
+body.echo-topic #blog_comments .comment .content.clearfix {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    color: var(--echo-text) !important;
+    overflow-wrap: anywhere !important;
+}
+
+
+/* =====================================================
+   J'AIME
+===================================================== */
+
+body.echo-topic #blog_comments .comment .fa_like_div {
+    margin-top: 10px !important;
+}
+
+
+/* =====================================================
+   ACTIONS DU COMMENTAIRE
+===================================================== */
+
+body.echo-topic #blog_comments .comment .menu-wrap {
+    margin: 8px 0 0 !important;
+}
+
+body.echo-topic #blog_comments .comment .profile-icons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 14px !important;
+    margin: 8px 0 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    opacity: .55;
+    transition: opacity .15s ease;
+}
+
+body.echo-topic #blog_comments .comment:hover .profile-icons,
+body.echo-topic #blog_comments .comment .profile-icons:focus-within {
+    opacity: 1;
+}
+
+
+/* =====================================================
+   PARTAGE
+   Aucune règle appliquée volontairement
+===================================================== */
+
+
+/* =====================================================
+   RESPONSIVE — MOBILE
+===================================================== */
+
+@media screen and (max-width: 600px) {
+
+    body.echo-topic {
+        --echo-avatar: 36px;
+    }
+
+    body.echo-topic div.post {
+        padding: 16px !important;
+        margin: 12px auto 8px !important;
+    }
+
+    body.echo-topic div.postbody h3,
+    body.echo-topic div.postbody h3 a {
+        font-size: 21px !important;
+    }
+
+    body.echo-topic .postbody .content {
+        font-size: 15px !important;
+    }
+
+    body.echo-topic #blog_comments > .comment {
+        padding: 12px !important;
+        gap: 10px !important;
+    }
+}
